@@ -2,6 +2,8 @@
 // Prefix header for all source files of the 'og3' target in the 'og3' project
 //
 
+#include <opencv/cv.h>
+
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
 #endif

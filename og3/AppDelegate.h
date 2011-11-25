@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 Grow20 Corporation. All rights reserved.
 //
 
+#include <opencv/cv.h>
 #import <Cocoa/Cocoa.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
