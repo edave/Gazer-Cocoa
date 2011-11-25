@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7212EA43147C50C700CB2A8D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA42147C50C700CB2A8D /* Cocoa.framework */; };
 		7212EA4D147C50C700CB2A8D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7212EA4B147C50C700CB2A8D /* InfoPlist.strings */; };
-		7212EA4F147C50C700CB2A8D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212EA4E147C50C700CB2A8D /* main.m */; };
+		7212EA4F147C50C700CB2A8D /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7212EA4E147C50C700CB2A8D /* main.mm */; };
 		7212EA53147C50C700CB2A8D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7212EA51147C50C700CB2A8D /* Credits.rtf */; };
 		7212EA56147C50C700CB2A8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212EA55147C50C700CB2A8D /* AppDelegate.m */; };
 		7212EA59147C50C700CB2A8D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212EA57147C50C700CB2A8D /* MainMenu.xib */; };
@@ -90,7 +90,7 @@
 		7212EA47147C50C700CB2A8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7212EA4A147C50C700CB2A8D /* og3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "og3-Info.plist"; sourceTree = "<group>"; };
 		7212EA4C147C50C700CB2A8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7212EA4E147C50C700CB2A8D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7212EA4E147C50C700CB2A8D /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		7212EA50147C50C700CB2A8D /* og3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "og3-Prefix.pch"; sourceTree = "<group>"; };
 		7212EA52147C50C700CB2A8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		7212EA54147C50C700CB2A8D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 			children = (
 				7212EA4A147C50C700CB2A8D /* og3-Info.plist */,
 				7212EA4B147C50C700CB2A8D /* InfoPlist.strings */,
-				7212EA4E147C50C700CB2A8D /* main.m */,
+				7212EA4E147C50C700CB2A8D /* main.mm */,
 				7212EA50147C50C700CB2A8D /* og3-Prefix.pch */,
 				7212EA51147C50C700CB2A8D /* Credits.rtf */,
 			);
@@ -465,7 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7212EA4F147C50C700CB2A8D /* main.m in Sources */,
+				7212EA4F147C50C700CB2A8D /* main.mm in Sources */,
 				7212EA56147C50C700CB2A8D /* AppDelegate.m in Sources */,
 				7212EBB9147C5BD100CB2A8D /* BlinkDetector.mm in Sources */,
 				7212EBBA147C5BD100CB2A8D /* Calibrator.mm in Sources */,
