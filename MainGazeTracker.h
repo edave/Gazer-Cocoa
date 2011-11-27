@@ -7,7 +7,7 @@
 struct CommandLineArguments {
     vector<char*> parameters;
     vector<char*> options;
-     
+
     CommandLineArguments(int argc, char **argv);
     bool isoption(const char* option);
 };

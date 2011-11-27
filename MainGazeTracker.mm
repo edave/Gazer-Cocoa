@@ -40,7 +40,8 @@ VideoInput::VideoInput():
 {}
 
 VideoInput::VideoInput(const char* filename):
-    capture(cvCaptureFromFile(filename)), framecount(0),
+//    capture(cvCaptureFromFile(filename)), framecount(0),
+    capture(cvCaptureFromCAM(0)), framecount(0),
     frame(cvQueryFrame(capture)), size(cvSize(frame->width, frame->height)) 
 {}
 
