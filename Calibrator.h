@@ -9,8 +9,8 @@ using std::vector;
 
 class FrameProcessing;
 
-class FrameFunction: 
-public Containee<FrameProcessing, FrameFunction> 
+class FrameFunction:
+public Containee<FrameProcessing, FrameFunction>
 {
     const int &frameno;
     int startframe;
@@ -22,14 +22,14 @@ public:
     virtual ~FrameFunction();
 };
 
-class FrameProcessing: 
+class FrameProcessing:
 public ProcessContainer<FrameProcessing,FrameFunction> {};
 
 class MovingTarget: public FrameFunction {
     shared_ptr<WindowPointer> pointer;
  public:
-    MovingTarget(const int &frameno, 
-		 const vector<OpenGazer::Point>& points, 
+    MovingTarget(const int &frameno,
+		 const vector<OpenGazer::Point>& points,
 		 const shared_ptr<WindowPointer> &pointer,
 		 int dwelltime=20);
     virtual ~MovingTarget();
@@ -49,9 +49,9 @@ class Calibrator: public MovingTarget {
 public:
     static vector<OpenGazer::Point> defaultpoints;
     static vector<OpenGazer::Point> loadpoints(istream& in);
-    Calibrator(const int &frameno, 
-	       const shared_ptr<TrackingSystem> &trackingsystem, 
-	       const vector<OpenGazer::Point>& points, 
+    Calibrator(const int &frameno,
+	       const shared_ptr<TrackingSystem> &trackingsystem,
+	       const vector<OpenGazer::Point>& points,
 	       const shared_ptr<WindowPointer> &pointer,
 	       int dwelltime=20);
     virtual ~Calibrator();
