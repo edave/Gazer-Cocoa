@@ -6,8 +6,4 @@ dylibs.each do |path|
   lines = lines.map(&:strip)
   op_lines = lines.select{|l| l.include?("opt")}.map{|m| m.split.first}
   %x[install_name_tool -id @executable_path/../Frameworks/#{name} #{path}]
-  # op_lines.each do |line|
-  #   lib = line.split("/").last
-  #   %x[install_name_tool -change #{line} @executable_path/../Frameworks/#{lib} #{path}]
-  # end
 end
