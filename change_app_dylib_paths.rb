@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 path = "DerivedData/og3/Build/Products/Debug/og3.app/Contents/MacOS/og3"
 x = %x[otool -L #{path}]
 lines = x.split("\n")
