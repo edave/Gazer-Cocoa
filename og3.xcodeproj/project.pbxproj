@@ -13,8 +13,6 @@
 		7212EA53147C50C700CB2A8D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7212EA51147C50C700CB2A8D /* Credits.rtf */; };
 		7212EA56147C50C700CB2A8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212EA55147C50C700CB2A8D /* AppDelegate.m */; };
 		7212EA59147C50C700CB2A8D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212EA57147C50C700CB2A8D /* MainMenu.xib */; };
-		7212EA97147C514500CB2A8D /* libatk-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA68147C514500CB2A8D /* libatk-1.0.0.dylib */; };
-		7212EA98147C514500CB2A8D /* libatkmm-1.6.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA69147C514500CB2A8D /* libatkmm-1.6.1.dylib */; };
 		7212EA9A147C514500CB2A8D /* libvnl_algo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA6B147C514500CB2A8D /* libvnl_algo.dylib */; };
 		7212EA9B147C514500CB2A8D /* libvnl_io.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA6C147C514500CB2A8D /* libvnl_io.dylib */; };
 		7212EA9C147C514500CB2A8D /* libvnl_xio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA6D147C514500CB2A8D /* libvnl_xio.dylib */; };
@@ -32,33 +30,6 @@
 		7212EAA8147C514500CB2A8D /* libopencv_objdetect.2.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA79147C514500CB2A8D /* libopencv_objdetect.2.3.1.dylib */; };
 		7212EAA9147C514500CB2A8D /* libopencv_ts.2.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA7A147C514500CB2A8D /* libopencv_ts.2.3.1.dylib */; };
 		7212EAAA147C514500CB2A8D /* libopencv_video.2.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA7B147C514500CB2A8D /* libopencv_video.2.3.1.dylib */; };
-		7212EAAB147C514500CB2A8D /* libcairo-gobject.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA7C147C514500CB2A8D /* libcairo-gobject.2.dylib */; };
-		7212EAAC147C514500CB2A8D /* libcairo-script-interpreter.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA7D147C514500CB2A8D /* libcairo-script-interpreter.2.dylib */; };
-		7212EAAD147C514500CB2A8D /* libcairo-trace.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA7E147C514500CB2A8D /* libcairo-trace.0.dylib */; };
-		7212EAAE147C514500CB2A8D /* libcairo.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA7F147C514500CB2A8D /* libcairo.2.dylib */; };
-		7212EAAF147C514500CB2A8D /* libcairomm-1.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA80147C514500CB2A8D /* libcairomm-1.0.1.dylib */; };
-		7212EAB0147C514500CB2A8D /* libgdbm.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA81147C514500CB2A8D /* libgdbm.4.dylib */; };
-		7212EAB1147C514500CB2A8D /* libgdk_pixbuf_xlib-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA82147C514500CB2A8D /* libgdk_pixbuf_xlib-2.0.0.dylib */; };
-		7212EAB2147C514500CB2A8D /* libgdk_pixbuf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA83147C514500CB2A8D /* libgdk_pixbuf-2.0.0.dylib */; };
-		7212EAB3147C514500CB2A8D /* libgdk-x11-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA84147C514500CB2A8D /* libgdk-x11-2.0.0.dylib */; };
-		7212EAB4147C514500CB2A8D /* libgdkmm-2.4.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA85147C514500CB2A8D /* libgdkmm-2.4.1.dylib */; };
-		7212EAB5147C514500CB2A8D /* libgio-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA86147C514500CB2A8D /* libgio-2.0.0.dylib */; };
-		7212EAB6147C514500CB2A8D /* libgiomm-2.4.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA87147C514500CB2A8D /* libgiomm-2.4.1.dylib */; };
-		7212EAB7147C514500CB2A8D /* libglib-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA88147C514500CB2A8D /* libglib-2.0.0.dylib */; };
-		7212EAB8147C514500CB2A8D /* libglibmm_generate_extra_defs-2.4.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA89147C514500CB2A8D /* libglibmm_generate_extra_defs-2.4.1.dylib */; };
-		7212EAB9147C514500CB2A8D /* libglibmm-2.4.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA8A147C514500CB2A8D /* libglibmm-2.4.1.dylib */; };
-		7212EABA147C514500CB2A8D /* libgtk-x11-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA8B147C514500CB2A8D /* libgtk-x11-2.0.0.dylib */; };
-		7212EABB147C514500CB2A8D /* libgtkmm-2.4.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA8C147C514500CB2A8D /* libgtkmm-2.4.1.dylib */; };
-		7212EABC147C514500CB2A8D /* libgthread-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA8D147C514500CB2A8D /* libgthread-2.0.0.dylib */; };
-		7212EABD147C514500CB2A8D /* libgtk-x11-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA8E147C514500CB2A8D /* libgtk-x11-2.0.0.dylib */; };
-		7212EABE147C514500CB2A8D /* libgtkmm-2.4.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA8F147C514500CB2A8D /* libgtkmm-2.4.1.dylib */; };
-		7212EABF147C514500CB2A8D /* libpango-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA90147C514500CB2A8D /* libpango-1.0.0.dylib */; };
-		7212EAC0147C514500CB2A8D /* libpangocairo-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA91147C514500CB2A8D /* libpangocairo-1.0.0.dylib */; };
-		7212EAC1147C514500CB2A8D /* libpangoft2-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA92147C514500CB2A8D /* libpangoft2-1.0.0.dylib */; };
-		7212EAC2147C514500CB2A8D /* libpangomm-1.4.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA93147C514500CB2A8D /* libpangomm-1.4.1.dylib */; };
-		7212EAC3147C514500CB2A8D /* libpangox-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA94147C514500CB2A8D /* libpangox-1.0.0.dylib */; };
-		7212EAC4147C514500CB2A8D /* libpangoxft-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA95147C514500CB2A8D /* libpangoxft-1.0.0.dylib */; };
-		7212EAC5147C514500CB2A8D /* libgdkmm-2.4.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7212EA96147C514500CB2A8D /* libgdkmm-2.4.1.dylib */; };
 		7212EBB9147C5BD100CB2A8D /* BlinkDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7212EBA3147C5BD100CB2A8D /* BlinkDetector.mm */; };
 		7212EBBA147C5BD100CB2A8D /* Calibrator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7212EBA4147C5BD100CB2A8D /* Calibrator.mm */; };
 		7212EBBB147C5BD100CB2A8D /* Containers.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7212EBA5147C5BD100CB2A8D /* Containers.mm */; };
@@ -97,8 +68,6 @@
 		7212EA54147C50C700CB2A8D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7212EA55147C50C700CB2A8D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7212EA58147C50C700CB2A8D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		7212EA68147C514500CB2A8D /* libatk-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libatk-1.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA69147C514500CB2A8D /* libatkmm-1.6.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libatkmm-1.6.1.dylib"; sourceTree = "<group>"; };
 		7212EA6B147C514500CB2A8D /* libvnl_algo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libvnl_algo.dylib; sourceTree = "<group>"; };
 		7212EA6C147C514500CB2A8D /* libvnl_io.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libvnl_io.dylib; sourceTree = "<group>"; };
 		7212EA6D147C514500CB2A8D /* libvnl_xio.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libvnl_xio.dylib; sourceTree = "<group>"; };
@@ -116,33 +85,6 @@
 		7212EA79147C514500CB2A8D /* libopencv_objdetect.2.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_objdetect.2.3.1.dylib; sourceTree = "<group>"; };
 		7212EA7A147C514500CB2A8D /* libopencv_ts.2.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_ts.2.3.1.dylib; sourceTree = "<group>"; };
 		7212EA7B147C514500CB2A8D /* libopencv_video.2.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_video.2.3.1.dylib; sourceTree = "<group>"; };
-		7212EA7C147C514500CB2A8D /* libcairo-gobject.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libcairo-gobject.2.dylib"; sourceTree = "<group>"; };
-		7212EA7D147C514500CB2A8D /* libcairo-script-interpreter.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libcairo-script-interpreter.2.dylib"; sourceTree = "<group>"; };
-		7212EA7E147C514500CB2A8D /* libcairo-trace.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libcairo-trace.0.dylib"; sourceTree = "<group>"; };
-		7212EA7F147C514500CB2A8D /* libcairo.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libcairo.2.dylib; sourceTree = "<group>"; };
-		7212EA80147C514500CB2A8D /* libcairomm-1.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libcairomm-1.0.1.dylib"; sourceTree = "<group>"; };
-		7212EA81147C514500CB2A8D /* libgdbm.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libgdbm.4.dylib; sourceTree = "<group>"; };
-		7212EA82147C514500CB2A8D /* libgdk_pixbuf_xlib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgdk_pixbuf_xlib-2.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA83147C514500CB2A8D /* libgdk_pixbuf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgdk_pixbuf-2.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA84147C514500CB2A8D /* libgdk-x11-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgdk-x11-2.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA85147C514500CB2A8D /* libgdkmm-2.4.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgdkmm-2.4.1.dylib"; sourceTree = "<group>"; };
-		7212EA86147C514500CB2A8D /* libgio-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgio-2.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA87147C514500CB2A8D /* libgiomm-2.4.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgiomm-2.4.1.dylib"; sourceTree = "<group>"; };
-		7212EA88147C514500CB2A8D /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libglib-2.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA89147C514500CB2A8D /* libglibmm_generate_extra_defs-2.4.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libglibmm_generate_extra_defs-2.4.1.dylib"; sourceTree = "<group>"; };
-		7212EA8A147C514500CB2A8D /* libglibmm-2.4.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libglibmm-2.4.1.dylib"; sourceTree = "<group>"; };
-		7212EA8B147C514500CB2A8D /* libgtk-x11-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgtk-x11-2.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA8C147C514500CB2A8D /* libgtkmm-2.4.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgtkmm-2.4.1.dylib"; sourceTree = "<group>"; };
-		7212EA8D147C514500CB2A8D /* libgthread-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgthread-2.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA8E147C514500CB2A8D /* libgtk-x11-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgtk-x11-2.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA8F147C514500CB2A8D /* libgtkmm-2.4.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgtkmm-2.4.1.dylib"; sourceTree = "<group>"; };
-		7212EA90147C514500CB2A8D /* libpango-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpango-1.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA91147C514500CB2A8D /* libpangocairo-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpangocairo-1.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA92147C514500CB2A8D /* libpangoft2-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpangoft2-1.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA93147C514500CB2A8D /* libpangomm-1.4.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpangomm-1.4.1.dylib"; sourceTree = "<group>"; };
-		7212EA94147C514500CB2A8D /* libpangox-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpangox-1.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA95147C514500CB2A8D /* libpangoxft-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpangoxft-1.0.0.dylib"; sourceTree = "<group>"; };
-		7212EA96147C514500CB2A8D /* libgdkmm-2.4.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgdkmm-2.4.1.dylib"; sourceTree = "<group>"; };
 		7212EB90147C5BD100CB2A8D /* BlinkDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkDetector.h; sourceTree = "<group>"; };
 		7212EB91147C5BD100CB2A8D /* Calibrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calibrator.h; sourceTree = "<group>"; };
 		7212EB92147C5BD100CB2A8D /* Containers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Containers.h; sourceTree = "<group>"; };
@@ -191,8 +133,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7212EA43147C50C700CB2A8D /* Cocoa.framework in Frameworks */,
-				7212EA97147C514500CB2A8D /* libatk-1.0.0.dylib in Frameworks */,
-				7212EA98147C514500CB2A8D /* libatkmm-1.6.1.dylib in Frameworks */,
 				7212EA9A147C514500CB2A8D /* libvnl_algo.dylib in Frameworks */,
 				7212EA9B147C514500CB2A8D /* libvnl_io.dylib in Frameworks */,
 				7212EA9C147C514500CB2A8D /* libvnl_xio.dylib in Frameworks */,
@@ -210,33 +150,6 @@
 				7212EAA8147C514500CB2A8D /* libopencv_objdetect.2.3.1.dylib in Frameworks */,
 				7212EAA9147C514500CB2A8D /* libopencv_ts.2.3.1.dylib in Frameworks */,
 				7212EAAA147C514500CB2A8D /* libopencv_video.2.3.1.dylib in Frameworks */,
-				7212EAAB147C514500CB2A8D /* libcairo-gobject.2.dylib in Frameworks */,
-				7212EAAC147C514500CB2A8D /* libcairo-script-interpreter.2.dylib in Frameworks */,
-				7212EAAD147C514500CB2A8D /* libcairo-trace.0.dylib in Frameworks */,
-				7212EAAE147C514500CB2A8D /* libcairo.2.dylib in Frameworks */,
-				7212EAAF147C514500CB2A8D /* libcairomm-1.0.1.dylib in Frameworks */,
-				7212EAB0147C514500CB2A8D /* libgdbm.4.dylib in Frameworks */,
-				7212EAB1147C514500CB2A8D /* libgdk_pixbuf_xlib-2.0.0.dylib in Frameworks */,
-				7212EAB2147C514500CB2A8D /* libgdk_pixbuf-2.0.0.dylib in Frameworks */,
-				7212EAB3147C514500CB2A8D /* libgdk-x11-2.0.0.dylib in Frameworks */,
-				7212EAB4147C514500CB2A8D /* libgdkmm-2.4.1.dylib in Frameworks */,
-				7212EAB5147C514500CB2A8D /* libgio-2.0.0.dylib in Frameworks */,
-				7212EAB6147C514500CB2A8D /* libgiomm-2.4.1.dylib in Frameworks */,
-				7212EAB7147C514500CB2A8D /* libglib-2.0.0.dylib in Frameworks */,
-				7212EAB8147C514500CB2A8D /* libglibmm_generate_extra_defs-2.4.1.dylib in Frameworks */,
-				7212EAB9147C514500CB2A8D /* libglibmm-2.4.1.dylib in Frameworks */,
-				7212EABA147C514500CB2A8D /* libgtk-x11-2.0.0.dylib in Frameworks */,
-				7212EABB147C514500CB2A8D /* libgtkmm-2.4.1.dylib in Frameworks */,
-				7212EABC147C514500CB2A8D /* libgthread-2.0.0.dylib in Frameworks */,
-				7212EABD147C514500CB2A8D /* libgtk-x11-2.0.0.dylib in Frameworks */,
-				7212EABE147C514500CB2A8D /* libgtkmm-2.4.1.dylib in Frameworks */,
-				7212EABF147C514500CB2A8D /* libpango-1.0.0.dylib in Frameworks */,
-				7212EAC0147C514500CB2A8D /* libpangocairo-1.0.0.dylib in Frameworks */,
-				7212EAC1147C514500CB2A8D /* libpangoft2-1.0.0.dylib in Frameworks */,
-				7212EAC2147C514500CB2A8D /* libpangomm-1.4.1.dylib in Frameworks */,
-				7212EAC3147C514500CB2A8D /* libpangox-1.0.0.dylib in Frameworks */,
-				7212EAC4147C514500CB2A8D /* libpangoxft-1.0.0.dylib in Frameworks */,
-				7212EAC5147C514500CB2A8D /* libgdkmm-2.4.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,8 +220,6 @@
 		7212EA5F147C50DF00CB2A8D /* dylibs */ = {
 			isa = PBXGroup;
 			children = (
-				7212EA68147C514500CB2A8D /* libatk-1.0.0.dylib */,
-				7212EA69147C514500CB2A8D /* libatkmm-1.6.1.dylib */,
 				7212EA6B147C514500CB2A8D /* libvnl_algo.dylib */,
 				7212EA6C147C514500CB2A8D /* libvnl_io.dylib */,
 				7212EA6D147C514500CB2A8D /* libvnl_xio.dylib */,
@@ -326,33 +237,6 @@
 				7212EA79147C514500CB2A8D /* libopencv_objdetect.2.3.1.dylib */,
 				7212EA7A147C514500CB2A8D /* libopencv_ts.2.3.1.dylib */,
 				7212EA7B147C514500CB2A8D /* libopencv_video.2.3.1.dylib */,
-				7212EA7C147C514500CB2A8D /* libcairo-gobject.2.dylib */,
-				7212EA7D147C514500CB2A8D /* libcairo-script-interpreter.2.dylib */,
-				7212EA7E147C514500CB2A8D /* libcairo-trace.0.dylib */,
-				7212EA7F147C514500CB2A8D /* libcairo.2.dylib */,
-				7212EA80147C514500CB2A8D /* libcairomm-1.0.1.dylib */,
-				7212EA81147C514500CB2A8D /* libgdbm.4.dylib */,
-				7212EA82147C514500CB2A8D /* libgdk_pixbuf_xlib-2.0.0.dylib */,
-				7212EA83147C514500CB2A8D /* libgdk_pixbuf-2.0.0.dylib */,
-				7212EA84147C514500CB2A8D /* libgdk-x11-2.0.0.dylib */,
-				7212EA85147C514500CB2A8D /* libgdkmm-2.4.1.dylib */,
-				7212EA86147C514500CB2A8D /* libgio-2.0.0.dylib */,
-				7212EA87147C514500CB2A8D /* libgiomm-2.4.1.dylib */,
-				7212EA88147C514500CB2A8D /* libglib-2.0.0.dylib */,
-				7212EA89147C514500CB2A8D /* libglibmm_generate_extra_defs-2.4.1.dylib */,
-				7212EA8A147C514500CB2A8D /* libglibmm-2.4.1.dylib */,
-				7212EA8B147C514500CB2A8D /* libgtk-x11-2.0.0.dylib */,
-				7212EA8C147C514500CB2A8D /* libgtkmm-2.4.1.dylib */,
-				7212EA8D147C514500CB2A8D /* libgthread-2.0.0.dylib */,
-				7212EA8E147C514500CB2A8D /* libgtk-x11-2.0.0.dylib */,
-				7212EA8F147C514500CB2A8D /* libgtkmm-2.4.1.dylib */,
-				7212EA90147C514500CB2A8D /* libpango-1.0.0.dylib */,
-				7212EA91147C514500CB2A8D /* libpangocairo-1.0.0.dylib */,
-				7212EA92147C514500CB2A8D /* libpangoft2-1.0.0.dylib */,
-				7212EA93147C514500CB2A8D /* libpangomm-1.4.1.dylib */,
-				7212EA94147C514500CB2A8D /* libpangox-1.0.0.dylib */,
-				7212EA95147C514500CB2A8D /* libpangoxft-1.0.0.dylib */,
-				7212EA96147C514500CB2A8D /* libgdkmm-2.4.1.dylib */,
 			);
 			name = dylibs;
 			sourceTree = "<group>";
@@ -583,26 +467,6 @@
 				GCC_PREFIX_HEADER = "og3/og3-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				"HEADER_SEARCH_PATHS[arch=*]" = (
-					"/opt/local/include/atk-1.0/**",
-					"/opt/local/include/giomm-2.4/**",
-					"/opt/local/include/gdk-pixbuf-2.0/**",
-					"/opt/local/lib/gtk-2.0/include/**",
-					"/opt/local/include/gtk-2.0/**",
-					"/opt/local/include/gdkmm-2.4/**",
-					"/opt/local/include/freetype2/**",
-					"/opt/local/include/atkmm-1.6/**",
-					"/opt/local/include/cairo/**",
-					"/opt/local/include/cairomm-1.0/**",
-					"/opt/local/include/pango-1.0/**",
-					"/opt/local/include/pangomm-1.4/**",
-					"/opt/local/lib/pangomm-1.4/**",
-					"/opt/local/lib/gdkmm-2.4/include/**",
-					"/opt/local/lib/gtkmm-2.4/include/**",
-					"/opt/local/lib/glib-2.0/include/**",
-					"/opt/local/include/glib-2.0/**",
-					"/opt/local/lib/glibmm-2.4/include/**",
-					"/opt/local/include/glibmm-2.4/**",
-					"/opt/local/include/gtkmm-2.4/**",
 					/opt/local/include/vxl/vcl,
 					/opt/local/include/boost,
 					/opt/local/include/vxl/core/vnl,
