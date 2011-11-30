@@ -17,6 +17,8 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #import <Cocoa/Cocoa.h>
 #include "CoreFoundation/CoreFoundation.h"
@@ -100,6 +102,11 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
     }
 }
 
+void drawFrame() {
+    cvShowImage(MAIN_WINDOW_NAME, gazeTracker->canvas.get());
+}
+
+
 //void createButtons() {
 //    //Create the buttons
 //    //These don't work - they fail to connect the signal
@@ -128,8 +135,13 @@ void findEyes() {
     PointTracker &tracker = gazeTracker->tracking->tracker;
     std::vector<cv::Point> all_eyes;
 
-    for(int j=0 ; j < 6 ; j++) {
+    int points_added = 0;
+    srand(time(NULL));
+    while(points_added < 12) {
+
         gazeTracker->doprocessing();
+        drawFrame();
+        
         Mat frame = gazeTracker->videoinput->frame;
         if( !frame.empty() ) {
             std::vector<cv::Rect> faces;
@@ -140,8 +152,9 @@ void findEyes() {
             
             face_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
             
-            for( int i = 0; i < faces.size(); i++ )
+            if(faces.size()==1) 
             {
+                int i = 0;
                 cv::Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5 );
                 //ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 255, 0, 255 ), 4, 8, 0 );
                 
@@ -151,16 +164,72 @@ void findEyes() {
                 //-- In each face, detect eyes
                 eyes_cascade.detectMultiScale( faceROI, eyes, 1.1, 2, 0 |CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
                 
-                for( int j = 0; j < eyes.size(); j++ )
-                {
-                    cv::Point center( faces[i].x + eyes[j].x + eyes[j].width*0.5, faces[i].y + eyes[j].y + eyes[j].height*0.5 );
-                    OpenGazer::Point addPoint(center.x+15, center.y);
-                    tracker.addtracker(addPoint);
-                    all_eyes.push_back(center);
-//                    int radius = cvRound( (eyes[j].width + eyes[i].height)*0.25 );                    
-                    //circle( frame, center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
+                if(eyes.size()==2) {
+                    int left, right;
+                    //printf("\n two eyes \n");
+                    if (eyes[0].x < eyes[1].x) {
+                        left = 0;
+                        right = 1;
+                    }
+                    else {
+                        left = 1;
+                        right = 0;
+                    }
                     
+                    cv::Point left_eye( faces[i].x + eyes[left].x + eyes[left].width*0.5, faces[i].y + eyes[left].y + eyes[left].height*0.5 );                    
+                    cv::Point right_eye( faces[i].x + eyes[right].x + eyes[right].width*0.5, faces[i].y + eyes[right].y + eyes[right].height*0.5 );
+
+                    printf("\n left eye width: %d", eyes[left].width);
+                    printf("\n right eye width: %d", eyes[right].width);
+                    
+                    int xoffset = 0;
+                    int yoffset = 0;
+                    if (points_added == 0) {
+                        xoffset = 25;
+                    }
+                    else if (points_added == 2) {
+                        xoffset = -25;
+                    }
+                    else if (points_added == 4) {
+                        yoffset = 25;
+                    }
+                    else if (points_added == 6) {
+                        yoffset = -25;
+                    }
+                    else if (points_added == 8) {
+                        xoffset = 40;
+                        yoffset = 40;
+                    }
+                    else if (points_added == 10) {
+                        xoffset = -40;
+                        yoffset = -40;
+                    }
+                    else {
+                        int sign = rand() % 2;
+                        if(sign==0) {
+                            sign = -1;
+                        }
+                        int rand_num1 = rand() % 50 + 1;
+                        int rand_num2 = rand() % 50 + 1;
+                        xoffset = rand_num1 * sign;
+                        yoffset = rand_num2 * sign;
+                    }
+                    
+                    OpenGazer::Point left_point(left_eye.x-xoffset, left_eye.y+yoffset);
+                    OpenGazer::Point right_point(right_eye.x+xoffset, left_eye.y+yoffset);                    
+                    tracker.addtracker(left_point);
+                    tracker.addtracker(right_point);
+                    points_added = points_added + 2;
+
+//                    for( int j = 0; j < eyes.size(); j++ )
+//                    {
+//                        tracker.addtracker(addPoint);
+//                        all_eyes.push_back(center);
+//                        int radius = cvRound( (eyes[j].width + eyes[i].height)*0.25 );                    
+//                        circle( frame, center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
+//                    }
                 }
+                
             }
             // just for debug
             //imshow( window_name, frame );
@@ -216,10 +285,6 @@ void findEyes() {
 ////    tracker.addtracker(point2);
 }
 
-void drawFrame() {
-    cvShowImage(MAIN_WINDOW_NAME, gazeTracker->canvas.get());
-}
-
 int main(int argc, char **argv) {
     // set the right path so the classifiers can find their data
     CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -246,7 +311,7 @@ int main(int argc, char **argv) {
     gazeTracker->doprocessing();
     drawFrame();
     
-    findEyes();
+//    findEyes();
     
     
     while(1) {
@@ -270,6 +335,9 @@ int main(int argc, char **argv) {
                 break;
             case 'x':
                 gazeTracker->clearpoints();
+                break;
+            case 'r':
+                findEyes();
                 break;
             default:
                 break;
