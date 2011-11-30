@@ -139,7 +139,7 @@ void drawFrame() {
         for( int i = 0; i < faces.size(); i++ )
         {
             cv::Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5 );
-            ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 255, 0, 255 ), 4, 8, 0 );
+            //ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 255, 0, 255 ), 4, 8, 0 );
             
             cv::Mat faceROI = frame_gray( faces[i] );
             std::vector<cv::Rect> eyes;
@@ -151,7 +151,12 @@ void drawFrame() {
             {
                 cv::Point center( faces[i].x + eyes[j].x + eyes[j].width*0.5, faces[i].y + eyes[j].y + eyes[j].height*0.5 );
                 int radius = cvRound( (eyes[j].width + eyes[i].height)*0.25 );
-                circle( frame, center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
+                PointTracker &tracker = gazeTracker->tracking->tracker;
+                OpenGazer::Point point(center.x, center.y);
+                tracker.addtracker(point);
+                
+                //circle( frame, center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
+                
             }
         }
         // just for debug
