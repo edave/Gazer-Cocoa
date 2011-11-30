@@ -39,6 +39,8 @@
 		722F1CA41485DBE700276526 /* haarcascade_frontalface_alt.xml in Resources */ = {isa = PBXBuildFile; fileRef = 722F1CA21485DBE700276526 /* haarcascade_frontalface_alt.xml */; };
 		722F1CA71485E1AD00276526 /* haarcascade_eye_tree_eyeglasses.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 722F1CA11485DBE700276526 /* haarcascade_eye_tree_eyeglasses.xml */; };
 		722F1CA81485E1AD00276526 /* haarcascade_frontalface_alt.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 722F1CA21485DBE700276526 /* haarcascade_frontalface_alt.xml */; };
+		722F1CBC1486B19300276526 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 722F1CB91486B17700276526 /* QTKit.framework */; };
+		722F1CC21486B8D100276526 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 722F1CC11486B8D100276526 /* QuartzCore.framework */; };
 		723712481480343300CF491E /* ogPoint.mm in Sources */ = {isa = PBXBuildFile; fileRef = 723712461480342D00CF491E /* ogPoint.mm */; };
 		7285AED314821EA60062CA2B /* calpoints.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7285AED214821EA60062CA2B /* calpoints.txt */; };
 		72A6122D14858C9E000FF917 /* libavcodec.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A611F214858C9E000FF917 /* libavcodec.dylib */; };
@@ -292,6 +294,8 @@
 		7212EBB8147C5BD100CB2A8D /* WindowStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WindowStore.mm; sourceTree = "<group>"; };
 		722F1CA11485DBE700276526 /* haarcascade_eye_tree_eyeglasses.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_eye_tree_eyeglasses.xml; sourceTree = "<group>"; };
 		722F1CA21485DBE700276526 /* haarcascade_frontalface_alt.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalface_alt.xml; sourceTree = "<group>"; };
+		722F1CB91486B17700276526 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/QTKit.framework; sourceTree = DEVELOPER_DIR; };
+		722F1CC11486B8D100276526 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		723712461480342D00CF491E /* ogPoint.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ogPoint.mm; sourceTree = "<group>"; };
 		723712471480343100CF491E /* ogPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogPoint.h; sourceTree = "<group>"; };
 		7285AED214821EA60062CA2B /* calpoints.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = calpoints.txt; sourceTree = "<group>"; };
@@ -376,6 +380,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				722F1CC21486B8D100276526 /* QuartzCore.framework in Frameworks */,
+				722F1CBC1486B19300276526 /* QTKit.framework in Frameworks */,
 				7212EA43147C50C700CB2A8D /* Cocoa.framework in Frameworks */,
 				72A6122D14858C9E000FF917 /* libavcodec.dylib in Frameworks */,
 				72A6122E14858C9E000FF917 /* libavformat.dylib in Frameworks */,
@@ -442,6 +448,7 @@
 		7212EA33147C50C600CB2A8D = {
 			isa = PBXGroup;
 			children = (
+				722F1CC11486B8D100276526 /* QuartzCore.framework */,
 				7212EAC6147C516500CB2A8D /* opengazer */,
 				7212EA5F147C50DF00CB2A8D /* dylibs */,
 				7212EA48147C50C700CB2A8D /* og3 */,
@@ -470,6 +477,7 @@
 		7212EA44147C50C700CB2A8D /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				722F1CB91486B17700276526 /* QTKit.framework */,
 				7212EA45147C50C700CB2A8D /* AppKit.framework */,
 				7212EA46147C50C700CB2A8D /* CoreData.framework */,
 				7212EA47147C50C700CB2A8D /* Foundation.framework */,
