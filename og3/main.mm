@@ -170,8 +170,10 @@ void drawFrame() {
 int main(int argc, char **argv) {
     // set the right path so the classifiers can find their data
 
-    [[LCCalibrationWindowController alloc] initWithWIndowNibName:@"CalibrationWindow"];
+//    LCCalibrationWindowController *win = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
+//    [win awakeFromNib];
     
+        
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
     char path[PATH_MAX];
