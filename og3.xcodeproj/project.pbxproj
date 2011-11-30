@@ -448,7 +448,6 @@
 		7212EA33147C50C600CB2A8D = {
 			isa = PBXGroup;
 			children = (
-				722F1CC11486B8D100276526 /* QuartzCore.framework */,
 				7212EAC6147C516500CB2A8D /* opengazer */,
 				7212EA5F147C50DF00CB2A8D /* dylibs */,
 				7212EA48147C50C700CB2A8D /* og3 */,
@@ -477,6 +476,7 @@
 		7212EA44147C50C700CB2A8D /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				722F1CC11486B8D100276526 /* QuartzCore.framework */,
 				722F1CB91486B17700276526 /* QTKit.framework */,
 				7212EA45147C50C700CB2A8D /* AppKit.framework */,
 				7212EA46147C50C700CB2A8D /* CoreData.framework */,

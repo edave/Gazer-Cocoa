@@ -21,6 +21,8 @@
 #import <Cocoa/Cocoa.h>
 #include "CoreFoundation/CoreFoundation.h"
 
+#include "LCCalibrationWindowController.h"
+
 //int main(int argc, char *argv[])
 //{
 //    return NSApplicationMain(argc, (const char **)argv);
@@ -167,6 +169,9 @@ void drawFrame() {
 
 int main(int argc, char **argv) {
     // set the right path so the classifiers can find their data
+
+    [[LCCalibrationWindowController alloc] initWithWIndowNibName:@"CalibrationWindow"];
+    
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
     char path[PATH_MAX];
