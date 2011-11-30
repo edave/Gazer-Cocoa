@@ -123,46 +123,101 @@ CascadeClassifier face_cascade;
 CascadeClassifier eyes_cascade;
 RNG rng(12345);
 
+void findEyes() {
+
+    PointTracker &tracker = gazeTracker->tracking->tracker;
+    std::vector<cv::Point> all_eyes;
+
+    for(int j=0 ; j < 6 ; j++) {
+        gazeTracker->doprocessing();
+        Mat frame = gazeTracker->videoinput->frame;
+        if( !frame.empty() ) {
+            std::vector<cv::Rect> faces;
+            cv::Mat frame_gray;
+            
+            cvtColor(frame, frame_gray, CV_BGR2GRAY);
+            equalizeHist( frame_gray, frame_gray );
+            
+            face_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
+            
+            for( int i = 0; i < faces.size(); i++ )
+            {
+                cv::Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5 );
+                //ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 255, 0, 255 ), 4, 8, 0 );
+                
+                cv::Mat faceROI = frame_gray( faces[i] );
+                std::vector<cv::Rect> eyes;
+                
+                //-- In each face, detect eyes
+                eyes_cascade.detectMultiScale( faceROI, eyes, 1.1, 2, 0 |CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
+                
+                for( int j = 0; j < eyes.size(); j++ )
+                {
+                    cv::Point center( faces[i].x + eyes[j].x + eyes[j].width*0.5, faces[i].y + eyes[j].y + eyes[j].height*0.5 );
+                    OpenGazer::Point addPoint(center.x+15, center.y);
+                    tracker.addtracker(addPoint);
+                    all_eyes.push_back(center);
+//                    int radius = cvRound( (eyes[j].width + eyes[i].height)*0.25 );                    
+                    //circle( frame, center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
+                    
+                }
+            }
+            // just for debug
+            //imshow( window_name, frame );
+            
+        }        
+    }
+
+//    int eye_one_x = 0;
+//    int eye_one_y = 0;
+//    int eye_two_x = 0;
+//    int eye_two_y = 0;
+//    
+//    int sum_one = 0;
+//    int sum_two = 0;
+//    int count_one = 0;
+//    int count_two = 0;
+//    
+//    cv::Point eyeOne = all_eyes[0];
+//    cv::Point eyeTwo = all_eyes[1];
+//    
+//    eye_one_x = eyeOne.x;
+//    eye_one_y = eyeOne.y;
+//    eye_two_x = eyeTwo.x;
+//    eye_two_y = eyeTwo.y;
+//    OpenGazer::Point first_point(eyeOne.x-50, eyeOne.y);
+//    OpenGazer::Point second_point(eyeTwo.x+50, eyeTwo.y);
+//    
+//    tracker.addtracker(first_point);
+//    tracker.addtracker(second_point);
+//    
+//    for(int k=2; k<all_eyes.size() ; k++) {
+//        cv::Point anEye = all_eyes[k];
+//        int x = anEye.x;
+//        int y = anEye.y;
+////        OpenGazer::Point a_point(x, y);
+////        tracker.addtracker(a_point);
+//        if ( (x/eye_one_x < 1.10 || x/eye_one_x > 0.90) && (y/eye_one_y < 1.10 || y/eye_one_y > 0.90)) {
+//            eye_one_x = (eye_one_x + x) / 2;
+//            eye_one_y = (eye_one_y + y) / 2;
+//        }
+//        else {
+//            eye_two_x = (eye_two_x + x) / 2;
+//            eye_two_y = (eye_two_y + y) / 2;
+//        }
+//    }
+//    
+//
+//    OpenGazer::Point point_a(eye_one_x+50, eye_one_y);
+//    tracker.addtracker(point_a);
+//    OpenGazer::Point point_b(eye_one_x-50, eye_one_y);
+//    tracker.addtracker(point_b);
+////    OpenGazer::Point point2(eye_two_x, eye_two_y);
+////    tracker.addtracker(point2);
+}
 
 void drawFrame() {
     cvShowImage(MAIN_WINDOW_NAME, gazeTracker->canvas.get());
-    Mat frame = gazeTracker->videoinput->frame;
-    if( !frame.empty() ) {
-        std::vector<cv::Rect> faces;
-        cv::Mat frame_gray;
-        
-        cvtColor(frame, frame_gray, CV_BGR2GRAY);
-        equalizeHist( frame_gray, frame_gray );
-
-        face_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
-        
-        for( int i = 0; i < faces.size(); i++ )
-        {
-            cv::Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5 );
-            //ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 255, 0, 255 ), 4, 8, 0 );
-            
-            cv::Mat faceROI = frame_gray( faces[i] );
-            std::vector<cv::Rect> eyes;
-            
-            //-- In each face, detect eyes
-            eyes_cascade.detectMultiScale( faceROI, eyes, 1.1, 2, 0 |CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
-            
-            for( int j = 0; j < eyes.size(); j++ )
-            {
-                cv::Point center( faces[i].x + eyes[j].x + eyes[j].width*0.5, faces[i].y + eyes[j].y + eyes[j].height*0.5 );
-                int radius = cvRound( (eyes[j].width + eyes[i].height)*0.25 );
-                PointTracker &tracker = gazeTracker->tracking->tracker;
-                OpenGazer::Point point(center.x, center.y);
-                tracker.addtracker(point);
-                
-                //circle( frame, center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
-                
-            }
-        }
-        // just for debug
-        //imshow( window_name, frame );
-        
-    }
 }
 
 int main(int argc, char **argv) {
@@ -182,13 +237,18 @@ int main(int argc, char **argv) {
     cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
     cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
 
-    system("pwd");
     if( !face_cascade.load( face_cascade_name ) ){ printf("\n\n--(!)Error loading face\n"); return -1; };
     if( !eyes_cascade.load( eyes_cascade_name ) ){ printf("\n\n--(!)Error loading eyes\n"); return -1; };
     
-//    createButtons();
+    //    createButtons();
     registerMouseCallbacks();
 
+    gazeTracker->doprocessing();
+    drawFrame();
+    
+    findEyes();
+    
+    
     while(1) {
         gazeTracker->doprocessing();
 
