@@ -61,22 +61,20 @@ Calibrator::Calibrator(const int &framecount,
 
 
 void Calibrator::process() {
-    if (active()) {
-  int id = getPointNo();
-  int frame = getPointFrame();
-  if (frame == 1) // start
+  if (active()) {
+    int id = getPointNo();
+    int frame = getPointFrame();
+    if (frame == 1) // start
       averageeye.reset(new FeatureDetector(EyeExtractor::eyesize));
-
-  if (frame >= dwelltime/2) // middle
-      averageeye->addSample(trackingsystem->eyex.eyefloat.get());
-
-  if (frame == dwelltime-1) { // end
-      trackingsystem->gazetracker.
-    addExemplar(points[id], averageeye->getMean().get(),
-          trackingsystem->eyex.eyegrey.get());
-  }
+    if (frame >= dwelltime/2) // middle
+        averageeye->addSample(trackingsystem->eyex.eyefloat.get());
+    if (frame == dwelltime-1) { // end
+        trackingsystem->gazetracker.
+      addExemplar(points[id], averageeye->getMean().get(),
+            trackingsystem->eyex.eyegrey.get());
     }
-    MovingTarget::process();
+  }
+  MovingTarget::process();
 }
 
 const OpenGazer::Point Calibrator::defaultpointarr[] = {OpenGazer::Point(0.5, 0.5),
