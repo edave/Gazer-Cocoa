@@ -6,7 +6,7 @@
 
 /* represents the pointer as a small window and moves that window */
 class WindowPointer {
-	
+
 public:
 struct PointerSpec {
 	int width, height;
@@ -19,7 +19,7 @@ private:
 
 public:
 	static int windowNumber;
-	
+
 	WindowPointer(const PointerSpec &pointerspec);
 	void setPosition(int x, int y);
 };
