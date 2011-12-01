@@ -14,6 +14,7 @@
 @implementation LCCalibrationWindowController
 
 @synthesize hostView;
+@synthesize _targetLayer;
 
 - (id)initWithWindowNibName:(NSString *)windowNibName
 {
@@ -58,6 +59,7 @@
                                              selector: @selector(applicationWillResignActive:)
                                                  name: NSApplicationWillResignActiveNotification
                                                object:nil];
+
 }
 
 - (void) setupVideoCapture{

@@ -9,6 +9,7 @@
 class WindowPointer {
 
 public:
+  CALayer *layer;
 struct PointerSpec {
 	int width, height;
   int red, green, blue;

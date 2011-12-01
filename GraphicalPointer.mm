@@ -11,14 +11,13 @@ WindowPointer::PointerSpec::PointerSpec(NSView *view, int width, int height, int
 WindowPointer::WindowPointer(const PointerSpec &spec) {
   printf("this is a window or something");
   NSScreen *_screen = [NSScreen mainScreen];
-  CALayer *layer = [CALayer layer];
+  layer = [CALayer layer];
   NSImage* targetImage = [NSImage imageNamed:@"calibrationTarget"];
   layer.contents = targetImage;
   layer.frame = CGRectMake(128,128, targetImage.size.width, targetImage.size.height);
-  layer.hidden = YES;
-  layer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
+  // layer.hidden = YES;
+  layer.position = CGPointMake(_screen.frame.size.width/4.0, _screen.frame.size.height/4.0);
   [spec.view.layer addSublayer:layer];
-
   // stringstream stream;
   // stream << "Window" << WindowPointer::windowNumber++;
   // name = stream.str();
@@ -31,5 +30,6 @@ WindowPointer::WindowPointer(const PointerSpec &spec) {
 
 void WindowPointer::setPosition(int x, int y) {
   // cvMoveWindow(name.c_str(), x, y);
+  layer.position = CGPointMake(x, y);
   printf("you wanted me to move it to: %d, %d", x, y);
 }

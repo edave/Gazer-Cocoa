@@ -33,6 +33,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet NSView* hostView;
+@property (nonatomic, retain) CALayer* _targetLayer;
 
 - (IBAction)startCalibrationAction:(id)sender;
 - (IBAction)closeCalibrationAction:(id)sender;

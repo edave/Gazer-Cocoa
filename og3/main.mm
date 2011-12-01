@@ -148,8 +148,8 @@ int main(int argc, char **argv) {
 
     gazeTracker = new MainGazeTracker(argc, argv, getStores(win.hostView), win.hostView);
 
-//    cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
-//    cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
+    cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
+    cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
 
     if( !face_cascade.load( face_cascade_name ) ){ printf("\n\n--(!)Error loading face\n"); return -1; };
     if( !eyes_cascade.load( eyes_cascade_name ) ){ printf("\n\n--(!)Error loading eyes\n"); return -1; };
@@ -160,7 +160,7 @@ int main(int argc, char **argv) {
     while(1) {
         gazeTracker->doprocessing();
 
-//        drawFrame();
+        drawFrame();
 
         char c = cvWaitKey(33);
         switch(c) {
@@ -186,7 +186,7 @@ int main(int argc, char **argv) {
         if(c == 27) break;
     }
 
-//    cvDestroyWindow(MAIN_WINDOW_NAME);
+    cvDestroyWindow(MAIN_WINDOW_NAME);
     delete gazeTracker;
     return 0;
 }
