@@ -9,7 +9,7 @@
 
 template <class ParentType, class ChildType> class Container;
 
-template <class ParentType, class ChildType> 
+template <class ParentType, class ChildType>
 class  Containee {
  protected:
     void detach() { parent = 0; }
@@ -19,16 +19,16 @@ class  Containee {
     virtual ~Containee() {}
 };
 
-template <class ParentType, class ChildType>		
+template <class ParentType, class ChildType>
 class Container {
     typedef shared_ptr<ChildType> ChildPtr;
-    static bool isFinished(const ChildPtr &object) { 
+    static bool isFinished(const ChildPtr &object) {
 	return !(object && object->parent);
     }
  protected:
     std::vector<ChildPtr> objects;
 
-    void removeFinished() { 
+    void removeFinished() {
 	objects.erase(remove_if(objects.begin(), objects.end(), isFinished),
 		      objects.end());
     }
@@ -39,12 +39,12 @@ class Container {
 	    (*iter)->parent = 0;
 	removeFinished();
     }
-	    
+
 
     static void addchild(ParentType *parent, const ChildPtr &child) {
 	parent->objects.push_back(child);
 	child->parent = parent;
- 	parent->removeFinished(); 
+ 	parent->removeFinished();
     }
 
     virtual ~Container() {
@@ -58,7 +58,7 @@ class ProcessContainer: public Container<ParentPtr, ChildPtr> {
     virtual void process() {
 	xforeachactive(iter, this->objects)
 	    (*iter)->process();
- 	this->removeFinished(); 
+ 	this->removeFinished();
     }
     virtual ~ProcessContainer() {};
 };

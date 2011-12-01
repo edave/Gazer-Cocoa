@@ -65,7 +65,6 @@ Calibrator::Calibrator(const int &framecount,
 
 
 void Calibrator::process() {
-    int status = 1;
   if (active()) {
     int id = getPointNo();
     int frame = getPointFrame();
@@ -77,14 +76,13 @@ void Calibrator::process() {
         trackingsystem->gazetracker.
       addExemplar(points[id], averageeye->getMean().get(),
             trackingsystem->eyex.eyegrey.get());
-//        status = 0;
     }
+    MovingTarget::process();
+  } else {
+    MovingTarget::process();
+    MovingTarget::killPoint();
+    printf("this is the end of calibration");
   }
-  MovingTarget::process();
-    if(status ==0) {
-        printf("i think calibration is done.");
-        MovingTarget::killPoint();
-    }
 }
 
 const OpenGazer::Point Calibrator::defaultpointarr[] = {OpenGazer::Point(0.5, 0.5),
