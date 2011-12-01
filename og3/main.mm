@@ -287,11 +287,14 @@ void findEyes() {
 ////    tracker.addtracker(point2);
 
 int main(int argc, char **argv) {
-    // set the right path so the classifiers can find their data
+
     [NSApplication sharedApplication];
+    //Can't run this just yet
+    //    [NSApp run];
     LCCalibrationWindowController *win = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
     [win awakeFromNib];
 
+    // set the right path so the classifiers can find their data
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
     char path[PATH_MAX];
@@ -301,7 +304,8 @@ int main(int argc, char **argv) {
     }
     CFRelease(resourcesURL);
     chdir(path);
-
+    // end path settings
+    
     gazeTracker = new MainGazeTracker(argc, argv, getStores(win.hostView), win.hostView);
 
     cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
