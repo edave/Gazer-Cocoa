@@ -42,9 +42,9 @@ static vector<shared_ptr<AbstractStore> > getStores(NSView *theView) {
 
     stores.push_back(shared_ptr<AbstractStore>(new SocketStore()));
     stores.push_back(shared_ptr<AbstractStore>(new StreamStore(cout)));
-    stores.push_back(shared_ptr<AbstractStore>
-                     ( new WindowStore( WindowPointer::PointerSpec(theView, 60, 60, 0, 0, 255),
-                                       WindowPointer::PointerSpec(theView, 60, 60, 250, 0, 250) ) ) );
+//    stores.push_back(shared_ptr<AbstractStore>
+//                     ( new WindowStore( WindowPointer::PointerSpec(theView, 60, 60, 0, 0, 255),
+//                                       WindowPointer::PointerSpec(theView, 60, 60, 250, 0, 250) ) ) );
 
     return stores;
 }
@@ -134,7 +134,6 @@ RNG rng(12345);
 
 void findEyes() {
 
-<<<<<<< HEAD
     PointTracker &tracker = gazeTracker->tracking->tracker;
     std::vector<cv::Point> all_eyes;
 
@@ -239,7 +238,7 @@ void findEyes() {
 
         }
     }
-
+}
 //    int eye_one_x = 0;
 //    int eye_one_y = 0;
 //    int eye_two_x = 0;
