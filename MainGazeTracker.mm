@@ -1,6 +1,7 @@
 #include "utils.h"
 #include <fstream>
 #include "MainGazeTracker.h"
+#import <Cocoa/Cocoa.h>
 
 class VideoWriter {
   CvVideoWriter *video;
@@ -116,6 +117,8 @@ void MainGazeTracker::doprocessing(void) {
 
   try {
     tracking->doprocessing(frame, canvas.get());
+
+    // RYAN - this is the updating mechanism
     if (tracking->gazetracker.isActive()) {
       xforeach(iter, stores)
       (*iter)->store(tracking->gazetracker.output);
