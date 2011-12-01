@@ -11,7 +11,7 @@ static OpenGazer::Point subpixelminimum(const IplImage *values) {
     CvPoint maxpoint;
     cvMinMaxLoc(values, NULL, NULL, &maxpoint);
 //     cout << "max: " << maxpoint.x << " " << maxpoint.y << endl;
-    
+
     int x = maxpoint.x;
     int y = maxpoint.y;
 
@@ -21,7 +21,7 @@ static OpenGazer::Point subpixelminimum(const IplImage *values) {
 	p.x += quadraticminimum(cvGetReal2D(values, y, x-1),
 				cvGetReal2D(values, y, x+0),
 				cvGetReal2D(values, y, x+1));
-    
+
     if (y > 0 && y < 4)
 	p.y += quadraticminimum(cvGetReal2D(values, y-1, x),
 				cvGetReal2D(values, y+0, x),
@@ -32,12 +32,12 @@ static OpenGazer::Point subpixelminimum(const IplImage *values) {
 
 
 TrackingSystem::TrackingSystem(CvSize size):
-    tracker(size), headtracker(tracker), headcomp(headtracker), eyex(tracker) 
+    tracker(size), headtracker(tracker), headcomp(headtracker), eyex(tracker)
 {}
 
 
-void TrackingSystem::doprocessing(const IplImage *frame, 
-				  IplImage *image) 
+void TrackingSystem::doprocessing(const IplImage *frame,
+				  IplImage *image)
 {
     tracker.track(frame, 2);
     if (tracker.countactivepoints() < 4) {
@@ -48,14 +48,14 @@ void TrackingSystem::doprocessing(const IplImage *frame,
     headtracker.updatetracker();
     eyex.extractEye(frame);	// throws Tracking Exception
     gazetracker.update(eyex.eyefloat.get());
-	
+
     displayeye(image, 0, 0, 0, 2);
     tracker.draw(image);
     headtracker.draw(image);
 }
 
-void TrackingSystem::displayeye(IplImage *image, 
-				 int basex, int basey, int stepx, int stepy) 
+void TrackingSystem::displayeye(IplImage *image,
+				 int basex, int basey, int stepx, int stepy)
 {
     CvSize eyesize = EyeExtractor::eyesize;
     int eyedx = EyeExtractor::eyedx;
@@ -87,9 +87,9 @@ void TrackingSystem::displayeye(IplImage *image,
 // //     cvCvtColor(eyegreytemp, image, CV_GRAY2RGB);
 
 //     // compute the x-derivative
-    
+
 //     static IplImage *eyegreytemp1 = cvCreateImage( eyesize, IPL_DEPTH_32F, 1 );
-//     static scoped_ptr<IplImage> 
+//     static scoped_ptr<IplImage>
 // 	eyegreytemp2(cvCreateImage(eyesize, IPL_DEPTH_32F, 1));
 
 // //     static IplImage *eyegreytemp3 = cvCreateImage( eyesize, IPL_DEPTH_32F, 1 );
@@ -99,9 +99,9 @@ void TrackingSystem::displayeye(IplImage *image,
 //     double distance = cvNorm(eyegreytemp1, eyegreytemp2.get(), CV_L2);
 //     static BlinkDetector blinkdet;
 //     blinkdet.update(eyegreytemp2);
-//     cout << "distance: " << distance 
+//     cout << "distance: " << distance
 // 	 << " blink: " << blinkdet.getState() <<endl;
-    
+
 //     cvSetImageROI(eyegreytemp1, cvRect(2,2,eyedx*2-6,eyedy*2-4));
 //     cvMatchTemplate(eyegreytemp2.get(), eyegreytemp1, eyegreytemp4, CV_TM_SQDIFF);
 //     cvResetImageROI(eyegreytemp1);
@@ -117,7 +117,7 @@ void TrackingSystem::displayeye(IplImage *image,
 //     cvMinMaxLoc(eyegreytemp4, NULL, NULL, &maxpoint);
 //     cout << "max: " << maxpoint.x << " " << maxpoint.y << endl;
 
-//     cvSetImageROI(eyex.eyegrey, 
+//     cvSetImageROI(eyex.eyegrey,
 // 		  cvRect(maxpoint.x, maxpoint.y, eyedx*2-6, eyedy*2-4));
 //     cvSetImageROI(image, cvRect(basex, basey+stepy*3, eyedx*2-6, eyedy*2-4));
 //     cvCvtColor(eyex.eyegrey, image, CV_GRAY2RGB);
@@ -137,17 +137,17 @@ void TrackingSystem::displayeye(IplImage *image,
 //     cvResetImageROI(eyegreytemp2);
 //     cvAddS(eyegreytemp1, cvScalar(128.0), eyegreytemp1);
 //     cvSub(eyegreytemp1, eyegreytemp2, eyegreytemp1);
-    
+
 //     cvSetImageROI(image, cvRect(basex, basey+stepy*2, eyedx*2, eyedy*2));
 //     cvConvertScale(eyegreytemp1, eyegreytemp);
 
 // //     cvMul(eyegreytemp3, eyegreytemp1, eyegreytemp3);
 // //     cout << "x movement: " << cvAvg(eyegreytemp3).val[0] << endl;
-    
+
 
 //     cvCvtColor(eyegreytemp, image, CV_GRAY2RGB);
 
-    
+
 
     cvResetImageROI(image);
 }

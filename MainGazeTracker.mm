@@ -2,6 +2,7 @@
 #include <fstream>
 #include "MainGazeTracker.h"
 
+
 class VideoWriter {
   CvVideoWriter *video;
 public:
@@ -56,10 +57,11 @@ VideoInput::~VideoInput() {
 
 MainGazeTracker::MainGazeTracker(int argc, char** argv,
          const vector<shared_ptr<AbstractStore> >
-         &stores):
+         &stores, NSView *hostView):
     framestoreload(-1), stores(stores), autoreload(false)
 {
   CommandLineArguments args(argc, argv);
+  appView = hostView;
 
   if (args.parameters.size() == 0) {
     videoinput.reset(new VideoInput());
@@ -116,6 +118,8 @@ void MainGazeTracker::doprocessing(void) {
 
   try {
     tracking->doprocessing(frame, canvas.get());
+
+    // RYAN - this is the updating mechanism
     if (tracking->gazetracker.isActive()) {
       xforeach(iter, stores)
       (*iter)->store(tracking->gazetracker.output);
@@ -159,7 +163,7 @@ static vector<OpenGazer::Point> scalebyscreen(const vector<OpenGazer::Point> &po
 
 void MainGazeTracker::startCalibration() {
   shared_ptr<WindowPointer>
-  pointer(new WindowPointer(WindowPointer::PointerSpec(60,60,255,0,0)));
+  pointer(new WindowPointer(WindowPointer::PointerSpec(appView, 60,60,255,0,0)));
   ifstream calfile("calpoints.txt");
 
   shared_ptr<Calibrator>
@@ -178,7 +182,7 @@ void MainGazeTracker::startTesting() {
       points.push_back(OpenGazer::Point(x,y));
 
   shared_ptr<WindowPointer>
-  pointer(new WindowPointer(WindowPointer::PointerSpec(60,60,0,255,0)));
+  pointer(new WindowPointer(WindowPointer::PointerSpec(appView, 60,60,0,255,0)));
 
   shared_ptr<MovingTarget>
   moving(new MovingTarget(framecount, scalebyscreen(points), pointer));
