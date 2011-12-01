@@ -30,8 +30,9 @@
     QTCaptureDeviceInput        *mCaptureVideoDeviceInput;
     
     id <LCGazeTracker> _trackerDelegate;
-
 }
+
+@property (nonatomic, retain) IBOutlet NSView* hostView;
 
 - (IBAction)startCalibrationAction:(id)sender;
 - (IBAction)closeCalibrationAction:(id)sender;

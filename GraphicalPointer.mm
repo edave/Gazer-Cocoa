@@ -1,16 +1,24 @@
 #include "GraphicalPointer.h"
-#import <QuartzCore/QuartzCore.h>
 
 int WindowPointer::windowNumber;
 
-WindowPointer::PointerSpec::PointerSpec(int width, int height, int red, int green, int blue)
-: width(width), height(height), red(red), green(green), blue(blue)
-{ 
+WindowPointer::PointerSpec::PointerSpec(NSView *view, int width, int height, int red, int green, int blue)
+: view(view), width(width), height(height), red(red), green(green), blue(blue)
+{
 
   }
 
 WindowPointer::WindowPointer(const PointerSpec &spec) {
   printf("this is a window or something");
+  NSScreen *_screen = [NSScreen mainScreen];
+  CALayer *layer = [CALayer layer];
+  NSImage* targetImage = [NSImage imageNamed:@"calibrationTarget"];
+  layer.contents = targetImage;
+  layer.frame = CGRectMake(128,128, targetImage.size.width, targetImage.size.height);
+  layer.hidden = YES;
+  layer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
+  [spec.view.layer addSublayer:layer];
+
   // stringstream stream;
   // stream << "Window" << WindowPointer::windowNumber++;
   // name = stream.str();

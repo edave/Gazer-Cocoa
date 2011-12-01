@@ -3,6 +3,7 @@
 #include "Containers.h"
 #include <string>
 #include <sstream>
+#import <QuartzCore/QuartzCore.h>
 
 /* represents the pointer as a small window and moves that window */
 class WindowPointer {
@@ -11,7 +12,8 @@ public:
 struct PointerSpec {
 	int width, height;
   int red, green, blue;
-  PointerSpec(int width, int height, int red, int green, int blue);
+  NSView *view;
+  PointerSpec(NSView *view, int width, int height, int red, int green, int blue);
 };
 
 private:

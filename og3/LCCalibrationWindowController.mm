@@ -13,6 +13,8 @@
 
 @implementation LCCalibrationWindowController
 
+@synthesize hostView;
+
 - (id)initWithWindowNibName:(NSString *)windowNibName
 {
     self = [super initWithWindowNibName:windowNibName];

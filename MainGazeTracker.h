@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "TrackingSystem.h"
 #include "Calibrator.h"
+#import <Cocoa/Cocoa.h>
 
 struct CommandLineArguments {
     vector<char*> parameters;
@@ -43,8 +44,11 @@ class MainGazeTracker {
     scoped_ptr<IplImage> canvas;
     scoped_ptr<VideoInput> videoinput;
 
+    NSView *appView;
+
     MainGazeTracker(int argc, char** argv,
-		    const vector<shared_ptr<AbstractStore> > &stores);
+		    const vector<shared_ptr<AbstractStore> > &stores,
+		    NSView *hostView);
     void doprocessing(void);
     ~MainGazeTracker(void);
     void addTracker(OpenGazer::Point point);

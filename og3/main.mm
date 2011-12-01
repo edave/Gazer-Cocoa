@@ -35,14 +35,14 @@ using namespace cv;
 
 MainGazeTracker* gazeTracker;
 
-static vector<shared_ptr<AbstractStore> > getStores() {
+static vector<shared_ptr<AbstractStore> > getStores(NSView *theView) {
     vector<shared_ptr<AbstractStore> > stores;
 
     stores.push_back(shared_ptr<AbstractStore>(new SocketStore()));
     stores.push_back(shared_ptr<AbstractStore>(new StreamStore(cout)));
     stores.push_back(shared_ptr<AbstractStore>
-                     ( new WindowStore( WindowPointer::PointerSpec(60, 60, 0, 0, 255),
-                                       WindowPointer::PointerSpec(60, 60, 250, 0, 250) ) ) );
+                     ( new WindowStore( WindowPointer::PointerSpec(theView, 60, 60, 0, 0, 255),
+                                       WindowPointer::PointerSpec(theView, 60, 60, 250, 0, 250) ) ) );
 
     return stores;
 }
@@ -135,8 +135,6 @@ int main(int argc, char **argv) {
     [NSApplication sharedApplication];
     LCCalibrationWindowController *win = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
     [win awakeFromNib];
-//    [win startCalibrationAction:nil];
-
 
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
@@ -148,7 +146,7 @@ int main(int argc, char **argv) {
     CFRelease(resourcesURL);
     chdir(path);
 
-    gazeTracker = new MainGazeTracker(argc, argv, getStores());
+    gazeTracker = new MainGazeTracker(argc, argv, getStores(win.hostView), win.hostView);
 
 //    cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
 //    cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
