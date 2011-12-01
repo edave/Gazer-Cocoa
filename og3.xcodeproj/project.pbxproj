@@ -43,7 +43,7 @@
 		722F1CC21486B8D100276526 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 722F1CC11486B8D100276526 /* QuartzCore.framework */; };
 		723712481480343300CF491E /* ogPoint.mm in Sources */ = {isa = PBXBuildFile; fileRef = 723712461480342D00CF491E /* ogPoint.mm */; };
 		7285AED314821EA60062CA2B /* calpoints.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7285AED214821EA60062CA2B /* calpoints.txt */; };
-		729A59A114874C88006155E1 /* calibrationTarget.png in Resources */ = {isa = PBXBuildFile; fileRef = 729A59A014874C88006155E1 /* calibrationTarget.png */; };
+		729A59B0148800D9006155E1 /* calibrationTarget.png in Resources */ = {isa = PBXBuildFile; fileRef = 729A59AF148800D9006155E1 /* calibrationTarget.png */; };
 		72A6122D14858C9E000FF917 /* libavcodec.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A611F214858C9E000FF917 /* libavcodec.dylib */; };
 		72A6122E14858C9E000FF917 /* libavformat.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A611F314858C9E000FF917 /* libavformat.dylib */; };
 		72A6122F14858C9E000FF917 /* libavutil.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A611F414858C9E000FF917 /* libavutil.dylib */; };
@@ -300,7 +300,7 @@
 		723712461480342D00CF491E /* ogPoint.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ogPoint.mm; sourceTree = "<group>"; };
 		723712471480343100CF491E /* ogPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogPoint.h; sourceTree = "<group>"; };
 		7285AED214821EA60062CA2B /* calpoints.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = calpoints.txt; sourceTree = "<group>"; };
-		729A59A014874C88006155E1 /* calibrationTarget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calibrationTarget.png; sourceTree = "<group>"; };
+		729A59AF148800D9006155E1 /* calibrationTarget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calibrationTarget.png; sourceTree = "<group>"; };
 		72A611F214858C9E000FF917 /* libavcodec.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libavcodec.dylib; sourceTree = "<group>"; };
 		72A611F314858C9E000FF917 /* libavformat.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libavformat.dylib; sourceTree = "<group>"; };
 		72A611F414858C9E000FF917 /* libavutil.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libavutil.dylib; sourceTree = "<group>"; };
@@ -627,7 +627,7 @@
 		729A599F14874C78006155E1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				729A59A014874C88006155E1 /* calibrationTarget.png */,
+				729A59AF148800D9006155E1 /* calibrationTarget.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -718,7 +718,7 @@
 				722F1CA31485DBE700276526 /* haarcascade_eye_tree_eyeglasses.xml in Resources */,
 				722F1CA41485DBE700276526 /* haarcascade_frontalface_alt.xml in Resources */,
 				AE815AB114863FCF009E362E /* CalibrationWindow.xib in Resources */,
-				729A59A114874C88006155E1 /* calibrationTarget.png in Resources */,
+				729A59B0148800D9006155E1 /* calibrationTarget.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
