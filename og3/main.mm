@@ -128,52 +128,15 @@ RNG rng(12345);
 
 void drawFrame() {
     cvShowImage(MAIN_WINDOW_NAME, gazeTracker->canvas.get());
-    Mat frame = gazeTracker->videoinput->frame;
-    if( !frame.empty() ) {
-        std::vector<cv::Rect> faces;
-        cv::Mat frame_gray;
-        
-        cvtColor(frame, frame_gray, CV_BGR2GRAY);
-        equalizeHist( frame_gray, frame_gray );
-
-        face_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
-        
-        for( int i = 0; i < faces.size(); i++ )
-        {
-            cv::Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5 );
-            //ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 255, 0, 255 ), 4, 8, 0 );
-            
-            cv::Mat faceROI = frame_gray( faces[i] );
-            std::vector<cv::Rect> eyes;
-            
-            //-- In each face, detect eyes
-            eyes_cascade.detectMultiScale( faceROI, eyes, 1.1, 2, 0 |CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
-            
-            for( int j = 0; j < eyes.size(); j++ )
-            {
-                cv::Point center( faces[i].x + eyes[j].x + eyes[j].width*0.5, faces[i].y + eyes[j].y + eyes[j].height*0.5 );
-                int radius = cvRound( (eyes[j].width + eyes[i].height)*0.25 );
-                PointTracker &tracker = gazeTracker->tracking->tracker;
-                OpenGazer::Point point(center.x, center.y);
-                tracker.addtracker(point);
-                
-                //circle( frame, center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
-                
-            }
-        }
-        // just for debug
-        //imshow( window_name, frame );
-        
-    }
 }
 
 int main(int argc, char **argv) {
     // set the right path so the classifiers can find their data
 
-//    LCCalibrationWindowController *win = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
-//    [win awakeFromNib];
+    LCCalibrationWindowController *win = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
+    [win awakeFromNib];
     
-        
+
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
     char path[PATH_MAX];
@@ -186,8 +149,8 @@ int main(int argc, char **argv) {
 
     gazeTracker = new MainGazeTracker(argc, argv, getStores());
 
-    cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
-    cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
+//    cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
+//    cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
 
     system("pwd");
     if( !face_cascade.load( face_cascade_name ) ){ printf("\n\n--(!)Error loading face\n"); return -1; };
@@ -199,7 +162,7 @@ int main(int argc, char **argv) {
     while(1) {
         gazeTracker->doprocessing();
 
-        drawFrame();
+//        drawFrame();
 
         char c = cvWaitKey(33);
         switch(c) {
@@ -225,7 +188,7 @@ int main(int argc, char **argv) {
         if(c == 27) break;
     }
 
-    cvDestroyWindow(MAIN_WINDOW_NAME);
+//    cvDestroyWindow(MAIN_WINDOW_NAME);
     delete gazeTracker;
     return 0;
 }
