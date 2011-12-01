@@ -63,7 +63,6 @@ int main(int argc, char **argv) {
     //Can't run this just yet
     //    [NSApp run];
     LCCalibrationWindowController *win = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
-    [win awakeFromNib];
 
     // set the right path so the classifiers can find their data
     CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -83,6 +82,8 @@ int main(int argc, char **argv) {
     MainGazeTracker *gazeTracker = g->gazeTracker;
 //    new MainGazeTracker(argc, argv, getStores(win.hostView), win.hostView);
 
+    win.pv = [NSValue valueWithPointer:g];
+    [win awakeFromNib];
     cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
     cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
 

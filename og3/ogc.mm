@@ -40,6 +40,10 @@ int ogc::loadClassifiers() {
 
 }
 
+void ogc::startCalibration() {
+    gazeTracker->startCalibration();
+}
+
 // Redundant work to wrap the buttons
 // TODO: Abstract this using macros
 void ogc::calibrateCallbackWrapper(int state, void*) {

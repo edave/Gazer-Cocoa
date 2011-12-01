@@ -42,7 +42,7 @@ class ogc {
       ogc(int argc, char **argv, NSView *view);
 
       int loadClassifiers();
-
+    void startCalibration();
       void calibrateCallbackWrapper(int state, void*);
       void testCallbackWrapper(int state, void*);
       void savePointsCallbackWrapper(int state, void*);

@@ -162,6 +162,7 @@ static vector<OpenGazer::Point> scalebyscreen(const vector<OpenGazer::Point> &po
 }
 
 void MainGazeTracker::startCalibration() {
+  printf("startCalibration signal received");
   shared_ptr<WindowPointer>
   pointer(new WindowPointer(WindowPointer::PointerSpec(appView, 60,60,255,0,0)));
   ifstream calfile("calpoints.txt");

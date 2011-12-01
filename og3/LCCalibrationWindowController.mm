@@ -15,6 +15,8 @@
 
 @synthesize hostView;
 @synthesize _targetLayer;
+@synthesize pv;
+@synthesize gt;
 
 - (id)initWithWindowNibName:(NSString *)windowNibName
 {
@@ -125,12 +127,17 @@
 }
 
 
+
 - (IBAction)startCalibrationAction:(id)sender{
     NSLog(@"Start Calibration Action");
     
 //    _targetLayer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
     [introWindow close];
     [failureWindow close];
+    gt = [pv pointerValue];
+    ogc *t = (ogc *)gt;
+    t->startCalibration();
+    
 //    [self beginCalibration:0];
 }
 

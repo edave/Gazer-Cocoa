@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTkit.h>
 #import "LCGazeCalibratorInterface.h"
+#import "ogc.h"
 
 @interface LCCalibrationWindowController : NSWindowController<NSWindowDelegate, LCGazeCalibratorInterface>{
     
@@ -18,6 +19,9 @@
     
     IBOutlet NSWindow* successWindow;
     IBOutlet NSWindow* failureWindow;
+    
+    NSValue *pv;
+    void *gt;
     
     CGDirectDisplayID currentDisplayID;
     LCCalibrationPoint* currentCalibrationPoint;
@@ -34,6 +38,8 @@
 
 @property (nonatomic, retain) IBOutlet NSView* hostView;
 @property (nonatomic, retain) CALayer* _targetLayer;
+@property (nonatomic, retain) NSValue *pv;
+@property void *gt;
 
 - (IBAction)startCalibrationAction:(id)sender;
 - (IBAction)closeCalibrationAction:(id)sender;
