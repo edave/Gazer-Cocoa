@@ -8,6 +8,7 @@
 
 #import "LCCalibrationWindowController.h"
 #import "LCGazeTracker.h"
+#import "LCDummyGazeTracker.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation LCCalibrationWindowController
@@ -18,7 +19,6 @@
     if (self) {
         NSLog(@"Initializing Calibration Window Controller");
     }
-    
     return self;
 }
 
@@ -56,27 +56,22 @@
                                              selector: @selector(applicationWillResignActive:)
                                                  name: NSApplicationWillResignActiveNotification
                                                object:nil];
-    
 }
 
 - (void) setupVideoCapture{
     // Create the capture session
-    
 	mCaptureSession = [[QTCaptureSession alloc] init];
     
     // Connect inputs and outputs to the session	
-    
 	BOOL success = NO;
 	NSError *error;
 	
     // Find a video device  
-    
     QTCaptureDevice *videoDevice = [QTCaptureDevice defaultInputDeviceWithMediaType:QTMediaTypeVideo];
     success = [videoDevice open:&error];
     
     
     // If a video input device can't be found or opened, try to find and open a muxed input device
-    
 	if (!success) {
 		videoDevice = [QTCaptureDevice defaultInputDeviceWithMediaType:QTMediaTypeMuxed];
 		success = [videoDevice open:&error];
@@ -90,8 +85,7 @@
     }
     
     if (videoDevice) {
-        //Add the video device to the session as a device input
-		
+        //Add the video device to the session as a device input	
 		mCaptureVideoDeviceInput = [[QTCaptureDeviceInput alloc] initWithDevice:videoDevice];
 		success = [mCaptureSession addInput:mCaptureVideoDeviceInput error:&error];
 		if (!success) {
@@ -99,13 +93,9 @@
 		}
         
         // Associate the capture view in the UI with the session
-        
         [mCaptureView setCaptureSession:mCaptureSession];
-        
         [mCaptureSession startRunning];
-        
 	}
-
 }
 
 
@@ -185,8 +175,10 @@
 
 // Start the calibration process using the given display
 -(void) beginCalibration:(CGDirectDisplayID)displayID{
-    NSLog(@"Beging Calibration");
+    NSLog(@"Begin Calibration");
     currentDisplayID = displayID;
+    _trackerDelegate = [[LCDummyGazeTracker alloc] init];
+
     [NSThread detachNewThreadSelector:@selector(readyToCalibrate) toTarget:_trackerDelegate withObject:nil];
     if(_targetLayer.hidden){
         _targetLayer.hidden = NO;

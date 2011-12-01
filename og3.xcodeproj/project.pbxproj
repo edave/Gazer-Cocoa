@@ -43,6 +43,7 @@
 		722F1CC21486B8D100276526 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 722F1CC11486B8D100276526 /* QuartzCore.framework */; };
 		723712481480343300CF491E /* ogPoint.mm in Sources */ = {isa = PBXBuildFile; fileRef = 723712461480342D00CF491E /* ogPoint.mm */; };
 		7285AED314821EA60062CA2B /* calpoints.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7285AED214821EA60062CA2B /* calpoints.txt */; };
+		729A59A114874C88006155E1 /* calibrationTarget.png in Resources */ = {isa = PBXBuildFile; fileRef = 729A59A014874C88006155E1 /* calibrationTarget.png */; };
 		72A6122D14858C9E000FF917 /* libavcodec.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A611F214858C9E000FF917 /* libavcodec.dylib */; };
 		72A6122E14858C9E000FF917 /* libavformat.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A611F314858C9E000FF917 /* libavformat.dylib */; };
 		72A6122F14858C9E000FF917 /* libavutil.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A611F414858C9E000FF917 /* libavutil.dylib */; };
@@ -154,7 +155,7 @@
 		72AF309F1485A2FD00EDF5CF /* libopencv_highgui.2.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF309D1485A2FD00EDF5CF /* libopencv_highgui.2.3.1.dylib */; };
 		72AF30A01485A2FD00EDF5CF /* libopencv_highgui.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF309E1485A2FD00EDF5CF /* libopencv_highgui.2.3.dylib */; };
 		AE815AAA14863FA6009E362E /* LCCalibrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9A14863FA6009E362E /* LCCalibrationView.m */; };
-		AE815AAB14863FA6009E362E /* LCCalibrationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9C14863FA6009E362E /* LCCalibrationWindowController.m */; };
+		AE815AAB14863FA6009E362E /* LCCalibrationWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9C14863FA6009E362E /* LCCalibrationWindowController.mm */; };
 		AE815AAC14863FA6009E362E /* LCCalibrationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9E14863FA6009E362E /* LCCalibrationLayer.m */; };
 		AE815AAD14863FA6009E362E /* LCDummyGazeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815AA014863FA6009E362E /* LCDummyGazeTracker.m */; };
 		AE815AAE14863FA6009E362E /* LCGazePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815AA214863FA6009E362E /* LCGazePoint.m */; };
@@ -299,6 +300,7 @@
 		723712461480342D00CF491E /* ogPoint.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ogPoint.mm; sourceTree = "<group>"; };
 		723712471480343100CF491E /* ogPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogPoint.h; sourceTree = "<group>"; };
 		7285AED214821EA60062CA2B /* calpoints.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = calpoints.txt; sourceTree = "<group>"; };
+		729A59A014874C88006155E1 /* calibrationTarget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calibrationTarget.png; sourceTree = "<group>"; };
 		72A611F214858C9E000FF917 /* libavcodec.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libavcodec.dylib; sourceTree = "<group>"; };
 		72A611F314858C9E000FF917 /* libavformat.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libavformat.dylib; sourceTree = "<group>"; };
 		72A611F414858C9E000FF917 /* libavutil.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libavutil.dylib; sourceTree = "<group>"; };
@@ -358,7 +360,7 @@
 		AE815A9914863FA6009E362E /* LCCalibrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCalibrationView.h; sourceTree = "<group>"; };
 		AE815A9A14863FA6009E362E /* LCCalibrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCalibrationView.m; sourceTree = "<group>"; };
 		AE815A9B14863FA6009E362E /* LCCalibrationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCalibrationWindowController.h; sourceTree = "<group>"; };
-		AE815A9C14863FA6009E362E /* LCCalibrationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCalibrationWindowController.m; sourceTree = "<group>"; };
+		AE815A9C14863FA6009E362E /* LCCalibrationWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LCCalibrationWindowController.mm; sourceTree = "<group>"; };
 		AE815A9D14863FA6009E362E /* LCCalibrationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCalibrationLayer.h; sourceTree = "<group>"; };
 		AE815A9E14863FA6009E362E /* LCCalibrationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCalibrationLayer.m; sourceTree = "<group>"; };
 		AE815A9F14863FA6009E362E /* LCDummyGazeTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCDummyGazeTracker.h; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 		7212EA33147C50C600CB2A8D = {
 			isa = PBXGroup;
 			children = (
+				729A599F14874C78006155E1 /* Resources */,
 				7212EAC6147C516500CB2A8D /* opengazer */,
 				7212EA5F147C50DF00CB2A8D /* dylibs */,
 				7212EA48147C50C700CB2A8D /* og3 */,
@@ -621,13 +624,21 @@
 			name = opengazer;
 			sourceTree = "<group>";
 		};
+		729A599F14874C78006155E1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				729A59A014874C88006155E1 /* calibrationTarget.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		AE815A9414863F50009E362E /* LCGazeFoundation */ = {
 			isa = PBXGroup;
 			children = (
 				AE815A9914863FA6009E362E /* LCCalibrationView.h */,
 				AE815A9A14863FA6009E362E /* LCCalibrationView.m */,
 				AE815A9B14863FA6009E362E /* LCCalibrationWindowController.h */,
-				AE815A9C14863FA6009E362E /* LCCalibrationWindowController.m */,
+				AE815A9C14863FA6009E362E /* LCCalibrationWindowController.mm */,
 				AE815A9D14863FA6009E362E /* LCCalibrationLayer.h */,
 				AE815A9E14863FA6009E362E /* LCCalibrationLayer.m */,
 				AE815A9F14863FA6009E362E /* LCDummyGazeTracker.h */,
@@ -707,6 +718,7 @@
 				722F1CA31485DBE700276526 /* haarcascade_eye_tree_eyeglasses.xml in Resources */,
 				722F1CA41485DBE700276526 /* haarcascade_frontalface_alt.xml in Resources */,
 				AE815AB114863FCF009E362E /* CalibrationWindow.xib in Resources */,
+				729A59A114874C88006155E1 /* calibrationTarget.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,7 +769,7 @@
 				7212EBCE147C5BD100CB2A8D /* WindowStore.mm in Sources */,
 				723712481480343300CF491E /* ogPoint.mm in Sources */,
 				AE815AAA14863FA6009E362E /* LCCalibrationView.m in Sources */,
-				AE815AAB14863FA6009E362E /* LCCalibrationWindowController.m in Sources */,
+				AE815AAB14863FA6009E362E /* LCCalibrationWindowController.mm in Sources */,
 				AE815AAC14863FA6009E362E /* LCCalibrationLayer.m in Sources */,
 				AE815AAD14863FA6009E362E /* LCDummyGazeTracker.m in Sources */,
 				AE815AAE14863FA6009E362E /* LCGazePoint.m in Sources */,

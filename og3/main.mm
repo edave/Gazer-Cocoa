@@ -132,10 +132,11 @@ void drawFrame() {
 
 int main(int argc, char **argv) {
     // set the right path so the classifiers can find their data
-
+    [NSApplication sharedApplication];
     LCCalibrationWindowController *win = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
     [win awakeFromNib];
-    
+//    [win startCalibrationAction:nil];
+
 
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
@@ -144,7 +145,7 @@ int main(int argc, char **argv) {
     {
         // error!
     }
-    CFRelease(resourcesURL);    
+    CFRelease(resourcesURL);
     chdir(path);
 
     gazeTracker = new MainGazeTracker(argc, argv, getStores());
@@ -152,10 +153,9 @@ int main(int argc, char **argv) {
 //    cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
 //    cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
 
-    system("pwd");
     if( !face_cascade.load( face_cascade_name ) ){ printf("\n\n--(!)Error loading face\n"); return -1; };
     if( !eyes_cascade.load( eyes_cascade_name ) ){ printf("\n\n--(!)Error loading eyes\n"); return -1; };
-    
+
 //    createButtons();
     registerMouseCallbacks();
 
