@@ -4,9 +4,7 @@ int WindowPointer::windowNumber;
 
 WindowPointer::PointerSpec::PointerSpec(NSView *view, int width, int height, int red, int green, int blue)
 : view(view), width(width), height(height), red(red), green(green), blue(blue)
-{
-
-  }
+{}
 
 WindowPointer::WindowPointer(const PointerSpec &spec) {
   printf("this is a window or something");
