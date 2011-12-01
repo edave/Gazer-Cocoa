@@ -154,7 +154,7 @@ void MainGazeTracker::addExemplar(OpenGazer::Point exemplar) {
 
 //TODO: Screen size currently hardcoded
 static vector<OpenGazer::Point> scalebyscreen(const vector<OpenGazer::Point> &points) {
-  return Calibrator::scaled(points, 1680, 1050);
+  return Calibrator::scaled(points, 1440, 900);
 }
 
 void MainGazeTracker::startCalibration() {
