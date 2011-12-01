@@ -32,6 +32,7 @@ class MovingTarget: public FrameFunction {
 		 const vector<OpenGazer::Point>& points,
 		 const shared_ptr<WindowPointer> &pointer,
 		 int dwelltime=20);
+    void killPoint();
     virtual ~MovingTarget();
     virtual void process();
  protected:

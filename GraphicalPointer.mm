@@ -31,3 +31,7 @@ void WindowPointer::setPosition(int x, int y) {
   layer.position = CGPointMake(x, y);
   printf("you wanted me to move it to: %d, %d", x, y);
 }
+
+void WindowPointer::hide() {
+  layer.hidden = YES;
+}

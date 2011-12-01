@@ -9,6 +9,54 @@
 #ifndef og3_ogc_h
 #define og3_ogc_h
 
+#include <opencv/highgui.h>
+#include "utils.h"
+#include "OutputMethods.h"
+#include "MainGazeTracker.h"
+#include "WindowStore.h"
+
+#include "opencv2/objdetect/objdetect.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#import <Cocoa/Cocoa.h>
+#import "CoreFoundation/CoreFoundation.h"
+#import "LCCalibrationWindowController.h"
+
+#define MAIN_WINDOW_NAME "OpenGazer"
+
+void mouseClick(int event, int x, int y, int flags, void* param);
+
+class ogc {
+
+  public:
+        MainGazeTracker* gazeTracker;
+        cv::CascadeClassifier face_cascade;
+        cv::CascadeClassifier eyes_cascade;
+
+
+      ogc(int argc, char **argv, NSView *view);
+
+      int loadClassifiers();
+
+      void calibrateCallbackWrapper(int state, void*);
+      void testCallbackWrapper(int state, void*);
+      void savePointsCallbackWrapper(int state, void*);
+      void loadPointsCallbackWrapper(int state, void*);
+      void clearPointsCallbackWrapper(int state, void*);
+
+
+      void drawFrame();
+
+      void registerMouseCallbacks();
+
+      void findEyes();
+
+    };
 
 
 #endif

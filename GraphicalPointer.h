@@ -25,4 +25,6 @@ public:
 
 	WindowPointer(const PointerSpec &pointerspec);
 	void setPosition(int x, int y);
+  void hide();
+
 };
