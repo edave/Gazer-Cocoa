@@ -128,10 +128,10 @@
 - (IBAction)startCalibrationAction:(id)sender{
     NSLog(@"Start Calibration Action");
     
-    _targetLayer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
+//    _targetLayer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
     [introWindow close];
     [failureWindow close];
-    [self beginCalibration:0];
+//    [self beginCalibration:0];
 }
 
 - (IBAction)closeCalibrationAction:(id)sender{
