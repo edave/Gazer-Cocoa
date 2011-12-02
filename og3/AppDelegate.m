@@ -11,6 +11,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize calibrationFlag;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {

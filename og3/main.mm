@@ -27,6 +27,8 @@
 
 #import "ogc.h"
 
+#import "GlobalManager.h"
+
 //int main(int argc, char *argv[])
 //{
 //    return NSApplicationMain(argc, (const char **)argv);
@@ -76,6 +78,7 @@ int main(int argc, char **argv) {
     chdir(path);
     // end path settings
 
+    [win awakeFromNib];
     g = new ogc::ogc(argc, argv, win.hostView);
     g->loadClassifiers();
 
@@ -83,7 +86,7 @@ int main(int argc, char **argv) {
 //    new MainGazeTracker(argc, argv, getStores(win.hostView), win.hostView);
 
     win.pv = [NSValue valueWithPointer:g];
-    [win awakeFromNib];
+
     cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
     cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
 
@@ -94,13 +97,19 @@ int main(int argc, char **argv) {
     g->drawFrame();
 
 //    findEyes();
-
-
+//    YourAppDelegate *appDelegate = (YourAppDelegate *)[[UIApplication sharedApplication] delegate];
+//    app.delegate.calibrationFlag = NO;
+    GlobalManager *gm = [GlobalManager sharedGlobalManager];
+    gm.calibrationFlag = NO;
+    
     while(1) {
         gazeTracker->doprocessing();
 
         g->drawFrame();
-
+        if (gm.calibrationFlag) {
+            gazeTracker->startCalibration();
+            gm.calibrationFlag = NO;
+        }
         char c = cvWaitKey(33);
         switch(c) {
             case 'c':
@@ -128,7 +137,7 @@ int main(int argc, char **argv) {
         if(c == 27) break;
     }
 
-    cvDestroyWindow(MAIN_WINDOW_NAME);
+//    //cvDestroyWindow(MAIN_WINDOW_NAME);
     delete gazeTracker;
     return 0;
 }

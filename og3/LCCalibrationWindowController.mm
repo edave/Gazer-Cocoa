@@ -10,6 +10,7 @@
 #import "LCGazeTracker.h"
 #import "LCDummyGazeTracker.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GlobalManager.h"
 
 @implementation LCCalibrationWindowController
 
@@ -134,10 +135,14 @@
 //    _targetLayer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
     [introWindow close];
     [failureWindow close];
-    gt = [pv pointerValue];
-    ogc *t = (ogc *)gt;
-    t->startCalibration();
+//    gt = [pv pointerValue];
+//    ogc *t = (ogc *)gt;
+//    t->startCalibration();
     
+//    NSApplication *app = [NSApplication sharedApplication];
+//    app.delegate.calibrationFlag = YES;
+    GlobalManager *gm = [GlobalManager sharedGlobalManager];
+    gm.calibrationFlag = YES;
 //    [self beginCalibration:0];
 }
 
