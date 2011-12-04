@@ -1,13 +1,13 @@
 //
-//  ogc.h
+//  OGc.h
 //  og3
 //
 //  Created by Ryan Kabir on 12/1/11.
 //  Copyright (c) 2011 Grow20 Corporation. All rights reserved.
 //
 
-#ifndef og3_ogc_h
-#define og3_ogc_h
+#ifndef og3_OGc_h
+#define og3_OGc_h
 
 #include <opencv/highgui.h>
 #include "utils.h"
@@ -31,7 +31,7 @@
 
 void mouseClick(int event, int x, int y, int flags, void* param);
 
-class ogc {
+class OGc {
 
   public:
         MainGazeTracker* gazeTracker;
@@ -39,10 +39,10 @@ class ogc {
         cv::CascadeClassifier eyes_cascade;
 
 
-      ogc(int argc, char **argv, NSView *view);
+      OGc(int argc, char **argv, NSView *view);
 
       int loadClassifiers();
-    void startCalibration();
+      void startCalibration();
       void calibrateCallbackWrapper(int state, void*);
       void testCallbackWrapper(int state, void*);
       void savePointsCallbackWrapper(int state, void*);

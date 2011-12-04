@@ -12,7 +12,7 @@
 		7212EA4D147C50C700CB2A8D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7212EA4B147C50C700CB2A8D /* InfoPlist.strings */; };
 		7212EA4F147C50C700CB2A8D /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7212EA4E147C50C700CB2A8D /* main.mm */; };
 		7212EA53147C50C700CB2A8D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7212EA51147C50C700CB2A8D /* Credits.rtf */; };
-		7212EA56147C50C700CB2A8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212EA55147C50C700CB2A8D /* AppDelegate.m */; };
+		7212EA56147C50C700CB2A8D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7212EA55147C50C700CB2A8D /* AppDelegate.mm */; };
 		7212EA59147C50C700CB2A8D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212EA57147C50C700CB2A8D /* MainMenu.xib */; };
 		7212EBB9147C5BD100CB2A8D /* BlinkDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7212EBA3147C5BD100CB2A8D /* BlinkDetector.mm */; };
 		7212EBBA147C5BD100CB2A8D /* Calibrator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7212EBA4147C5BD100CB2A8D /* Calibrator.mm */; };
@@ -258,8 +258,8 @@
 		7212EA4E147C50C700CB2A8D /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		7212EA50147C50C700CB2A8D /* og3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "og3-Prefix.pch"; sourceTree = "<group>"; };
 		7212EA52147C50C700CB2A8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		7212EA54147C50C700CB2A8D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7212EA55147C50C700CB2A8D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7212EA54147C50C700CB2A8D /* AppDelegate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppDelegate.hpp; sourceTree = "<group>"; };
+		7212EA55147C50C700CB2A8D /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		7212EA58147C50C700CB2A8D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7212EB90147C5BD100CB2A8D /* BlinkDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkDetector.h; sourceTree = "<group>"; };
 		7212EB91147C5BD100CB2A8D /* Calibrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calibrator.h; sourceTree = "<group>"; };
@@ -499,8 +499,8 @@
 			isa = PBXGroup;
 			children = (
 				AE815A9414863F50009E362E /* LCGazeFoundation */,
-				7212EA54147C50C700CB2A8D /* AppDelegate.h */,
-				7212EA55147C50C700CB2A8D /* AppDelegate.m */,
+				7212EA54147C50C700CB2A8D /* AppDelegate.hpp */,
+				7212EA55147C50C700CB2A8D /* AppDelegate.mm */,
 				7212EA57147C50C700CB2A8D /* MainMenu.xib */,
 				7212EA49147C50C700CB2A8D /* Supporting Files */,
 			);
@@ -758,7 +758,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7212EA4F147C50C700CB2A8D /* main.mm in Sources */,
-				7212EA56147C50C700CB2A8D /* AppDelegate.m in Sources */,
+				7212EA56147C50C700CB2A8D /* AppDelegate.mm in Sources */,
 				7212EBB9147C5BD100CB2A8D /* BlinkDetector.mm in Sources */,
 				7212EBBA147C5BD100CB2A8D /* Calibrator.mm in Sources */,
 				7212EBBB147C5BD100CB2A8D /* Containers.mm in Sources */,

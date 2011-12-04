@@ -1,12 +1,12 @@
 //
-//  ogc.mm
+//  OGc.mm
 //  og3
 //
 //  Created by Ryan Kabir on 12/1/11.
 //  Copyright (c) 2011 Grow20 Corporation. All rights reserved.
 //
 
-#import "ogc.h"
+#import "OGc.h"
 
 using namespace std;
 using namespace cv;
@@ -22,13 +22,13 @@ static vector<shared_ptr<AbstractStore> > getStores(NSView *theView) {
 
     return stores;
 }
-
-ogc::ogc(int argc, char **argv, NSView *view):
+OGc *g;
+OGc::OGc(int argc, char **argv, NSView *view):
   gazeTracker(new MainGazeTracker(argc, argv, getStores(view), view))
     {
 }
 
-int ogc::loadClassifiers() {
+int OGc::loadClassifiers() {
     String face_cascade_name = "haarcascade_frontalface_alt.xml";
     String eyes_cascade_name = "haarcascade_eye_tree_eyeglasses.xml";
     string window_name = "Capture - Face detection";
@@ -37,46 +37,46 @@ int ogc::loadClassifiers() {
 
     if( !face_cascade.load( face_cascade_name ) ){ printf("\n\n--(!)Error loading face\n"); return -1; };
     if( !eyes_cascade.load( eyes_cascade_name ) ){ printf("\n\n--(!)Error loading eyes\n"); return -1; };
-
+    return 0;
 }
 
-void ogc::startCalibration() {
+void OGc::startCalibration() {
     gazeTracker->startCalibration();
 }
 
 // Redundant work to wrap the buttons
 // TODO: Abstract this using macros
-void ogc::calibrateCallbackWrapper(int state, void*) {
+void OGc::calibrateCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->startCalibration();
     }
 }
 
-void ogc::testCallbackWrapper(int state, void*) {
+void OGc::testCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->startTesting();
     }
 }
 
-void ogc::savePointsCallbackWrapper(int state, void*) {
+void OGc::savePointsCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->savepoints();
     }
 }
 
-void ogc::loadPointsCallbackWrapper(int state, void*) {
+void OGc::loadPointsCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->loadpoints();
     }
 }
 
-void ogc::clearPointsCallbackWrapper(int state, void*) {
+void OGc::clearPointsCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->clearpoints();
     }
 }
 
-void ogc::drawFrame() {
+void OGc::drawFrame() {
     cvShowImage(MAIN_WINDOW_NAME, gazeTracker->canvas.get());
 }
 
@@ -92,7 +92,7 @@ void ogc::drawFrame() {
 //    cvCreateButton("Clear Points", clearPointsCallbackWrapper);
 //}
 
-void ogc::registerMouseCallbacks() {
+void OGc::registerMouseCallbacks() {
     cvSetMouseCallback(MAIN_WINDOW_NAME, mouseClick, NULL);
 }
 
@@ -102,7 +102,7 @@ CascadeClassifier face_cascade;
 CascadeClassifier eyes_cascade;
 RNG rng(12345);
 
-void ogc::findEyes() {
+void OGc::findEyes() {
 
     PointTracker &tracker = gazeTracker->tracking->tracker;
     std::vector<cv::Point> all_eyes;
