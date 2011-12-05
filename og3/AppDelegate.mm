@@ -69,7 +69,8 @@
     GlobalManager *gm = [GlobalManager sharedGlobalManager];
     gm.calibrationFlag = NO;
     NSLog(@"Entering while loop");
-    while(1) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0), ^{ // Run on a background thread - dispatch_get_main_queue()
+        while(1){
         gazeTracker->doprocessing();
 
         openGazerCocoa->drawFrame();
@@ -103,6 +104,7 @@
 
         if(c == 27) break;
     }
+    });
 
 }
 
