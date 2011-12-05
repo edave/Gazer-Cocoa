@@ -163,6 +163,7 @@
 		AE815AAE14863FA6009E362E /* LCGazePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815AA214863FA6009E362E /* LCGazePoint.m */; };
 		AE815AAF14863FA6009E362E /* LCCalibrationPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815AA414863FA6009E362E /* LCCalibrationPoint.m */; };
 		AE815AB114863FCF009E362E /* CalibrationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE815AB014863FCF009E362E /* CalibrationWindow.xib */; };
+		AEEAA609148C44E20049271E /* LCCalibrationCameraView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEEAA608148C44E20049271E /* LCCalibrationCameraView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -382,6 +383,8 @@
 		AE815AA814863FA6009E362E /* LCGazeFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCGazeFoundation.h; sourceTree = "<group>"; };
 		AE815AA914863FA6009E362E /* LCGazeMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCGazeMonitor.h; sourceTree = "<group>"; };
 		AE815AB014863FCF009E362E /* CalibrationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationWindow.xib; sourceTree = "<group>"; };
+		AEEAA607148C44E20049271E /* LCCalibrationCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCalibrationCameraView.h; sourceTree = "<group>"; };
+		AEEAA608148C44E20049271E /* LCCalibrationCameraView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LCCalibrationCameraView.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -647,6 +650,8 @@
 		AE815A9414863F50009E362E /* LCGazeFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				AEEAA607148C44E20049271E /* LCCalibrationCameraView.h */,
+				AEEAA608148C44E20049271E /* LCCalibrationCameraView.mm */,
 				AE815A9914863FA6009E362E /* LCCalibrationView.h */,
 				AE815A9A14863FA6009E362E /* LCCalibrationView.m */,
 				AE815A9B14863FA6009E362E /* LCCalibrationWindowController.h */,
@@ -788,6 +793,7 @@
 				AE815AAF14863FA6009E362E /* LCCalibrationPoint.m in Sources */,
 				729A59B314880FF3006155E1 /* ogc.mm in Sources */,
 				7204E6751489649400D482B9 /* GlobalManager.mm in Sources */,
+				AEEAA609148C44E20049271E /* LCCalibrationCameraView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

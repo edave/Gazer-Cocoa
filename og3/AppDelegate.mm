@@ -17,12 +17,13 @@
 
 -(void)applicationWillFinishLaunching:(NSNotification*)aNotification{
     [[NSApplication sharedApplication] disableRelaunchOnLogin];
+     
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    LCCalibrationWindowController *win = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
-     [win awakeFromNib];
+    LCCalibrationWindowController *calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
+    
     // set the right path so the classifiers can find their data
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
@@ -34,28 +35,28 @@
     CFRelease(resourcesURL);
     chdir(path);
     // end path settings
-     NSArray *args = [[NSProcessInfo processInfo] arguments];
+    // NSArray *args = [[NSProcessInfo processInfo] arguments];
     //int count = [args count];
     
     NSView* view = [[self window] contentView];
     
     
-    OGc* g = new OGc::OGc(0, NULL, view);
-    g->loadClassifiers();
+    OGc* openGazerCocoa = new OGc::OGc(0, NULL, view);
+    openGazerCocoa->loadClassifiers();
 
-    MainGazeTracker *gazeTracker = g->gazeTracker;
+    MainGazeTracker *gazeTracker = openGazerCocoa->gazeTracker;
 //    new MainGazeTracker(argc, argv, getStores(win.hostView), win.hostView);
 
-    win.pv = [NSValue valueWithPointer:g];
+    calibrationWindowController.openGazerCocoaPointer = [NSValue valueWithPointer:openGazerCocoa];
 
     cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
     cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
 
     //    createButtons();
-    g->registerMouseCallbacks();
+    //openGazerCocoa->registerMouseCallbacks();
 
     gazeTracker->doprocessing();
-    g->drawFrame();
+    openGazerCocoa->drawFrame();
 
 //    findEyes();
 //    YourAppDelegate *appDelegate = (YourAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -63,13 +64,15 @@
     
     // to declare an object Object* blah = &gazeTracker
     
+    [calibrationWindowController awakeFromNib];
+    
     GlobalManager *gm = [GlobalManager sharedGlobalManager];
     gm.calibrationFlag = NO;
     NSLog(@"Entering while loop");
     while(1) {
         gazeTracker->doprocessing();
 
-        g->drawFrame();
+        openGazerCocoa->drawFrame();
         if (gm.calibrationFlag) {
             gazeTracker->startCalibration();
             gm.calibrationFlag = NO;
@@ -92,7 +95,7 @@
                 gazeTracker->clearpoints();
                 break;
             case 'r':
-                g->findEyes();
+                openGazerCocoa->findEyes();
                 break;
             default:
                 break;

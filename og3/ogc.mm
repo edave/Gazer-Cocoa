@@ -93,7 +93,7 @@ void OGc::drawFrame() {
 //}
 
 void OGc::registerMouseCallbacks() {
-    cvSetMouseCallback(MAIN_WINDOW_NAME, mouseClick, NULL);
+    //cvSetMouseCallback(MAIN_WINDOW_NAME, mouseClick, NULL);
 }
 
 string window_name = "Capture - Face detection";

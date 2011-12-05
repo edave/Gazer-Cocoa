@@ -9,6 +9,7 @@
 #import "LCCalibrationWindowController.h"
 #import "LCGazeTracker.h"
 #import "LCDummyGazeTracker.h"
+#import "LCCalibrationCameraView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GlobalManager.h"
 
@@ -16,8 +17,8 @@
 
 @synthesize hostView;
 @synthesize _targetLayer;
-@synthesize pv;
-@synthesize gt;
+@synthesize openGazerCocoaPointer;
+@synthesize gazeTrackerPointer;
 
 - (id)initWithWindowNibName:(NSString *)windowNibName
 {
@@ -56,6 +57,9 @@
     // Setup target focus layer
     _targetLayer = [self setupFocusTargetLayer:hostView.layer];
     [self setupVideoCapture];
+    if(mCaptureView != nil){
+        mCaptureView.openGazerCocoaPointer = self.openGazerCocoaPointer;
+    }
     [self centerAndShowWindow:introWindow];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -101,6 +105,8 @@
         
         // Associate the capture view in the UI with the session
         [mCaptureView setCaptureSession:mCaptureSession];
+        mCaptureView.cameraHeight = 480.0f;
+        mCaptureView.cameraWidth = 640.0f;
         [mCaptureSession startRunning];
 	}
 }
@@ -126,7 +132,6 @@
 - (void)applicationWillResignActive:(NSNotification *)aNotification{
     [self closeWindows];
 }
-
 
 
 - (IBAction)startCalibrationAction:(id)sender{

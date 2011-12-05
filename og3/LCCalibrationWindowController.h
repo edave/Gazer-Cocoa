@@ -11,6 +11,8 @@
 #import "LCGazeCalibratorInterface.h"
 #import "ogc.h"
 
+@class LCCalibrationCameraView;
+
 @interface LCCalibrationWindowController : NSWindowController<NSWindowDelegate, LCGazeCalibratorInterface>{
     
     IBOutlet NSWindow* introWindow;
@@ -20,15 +22,15 @@
     IBOutlet NSWindow* successWindow;
     IBOutlet NSWindow* failureWindow;
     
-    NSValue *pv;
-    void *gt;
+    NSValue *openGazerCocoaPointer;
+    void *gazeTrackerPointer;
     
     CGDirectDisplayID currentDisplayID;
     LCCalibrationPoint* currentCalibrationPoint;
     CALayer* _targetLayer;
     NSScreen* _screen;
     
-    IBOutlet QTCaptureView *mCaptureView;
+    IBOutlet LCCalibrationCameraView *mCaptureView;
     
     QTCaptureSession            *mCaptureSession;
     QTCaptureDeviceInput        *mCaptureVideoDeviceInput;
@@ -38,8 +40,8 @@
 
 @property (nonatomic, retain) IBOutlet NSView* hostView;
 @property (nonatomic, retain) CALayer* _targetLayer;
-@property (nonatomic, retain) NSValue *pv;
-@property void *gt;
+@property (nonatomic, retain) NSValue *openGazerCocoaPointer;
+@property void *gazeTrackerPointer;
 
 - (IBAction)startCalibrationAction:(id)sender;
 - (IBAction)closeCalibrationAction:(id)sender;

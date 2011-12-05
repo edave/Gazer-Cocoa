@@ -34,30 +34,6 @@ int main(int argc, char *argv[])
     return NSApplicationMain(argc, (const char **)argv);
 }
 
-
-void mouseClick(int event, int x, int y, int flags, void* param) {
-    if(event == CV_EVENT_LBUTTONDOWN || event == CV_EVENT_LBUTTONDBLCLK) {
-        OpenGazer::Point point(x, y);
-        OGc *g;
-        PointTracker &tracker = g->gazeTracker->tracking->tracker;
-        int closest = tracker.getClosestTracker(point);
-        int lastPointId;
-        
-        if(closest >= 0 && point.distance(tracker.currentpoints[closest]) <= 10) lastPointId = closest;
-        else
-            lastPointId = -1;
-        
-        if(event == CV_EVENT_LBUTTONDOWN) {
-            if(lastPointId >= 0) tracker.updatetracker(lastPointId, point);
-            else {
-                tracker.addtracker(point);
-            }
-        }
-        if(event == CV_EVENT_LBUTTONDBLCLK) {
-            if(lastPointId >= 0) tracker.removetracker(lastPointId);
-        }
-    }
-}
 //
 //int main(int argc, char **argv) {
 //
