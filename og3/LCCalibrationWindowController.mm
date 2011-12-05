@@ -57,9 +57,7 @@
     // Setup target focus layer
     _targetLayer = [self setupFocusTargetLayer:hostView.layer];
     [self setupVideoCapture];
-    if(mCaptureView != nil){
-        mCaptureView.openGazerCocoaPointer = self.openGazerCocoaPointer;
-    }
+
     [self centerAndShowWindow:introWindow];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -67,6 +65,15 @@
                                                  name: NSApplicationWillResignActiveNotification
                                                object:nil];
 
+}
+
+-(void) setOpenGazerCocoaPointer:(NSValue*)pointerValue{
+    [openGazerCocoaPointer release];
+    openGazerCocoaPointer = pointerValue;
+    [openGazerCocoaPointer retain];
+    if(mCaptureView != nil){
+        mCaptureView.openGazerCocoaPointer = openGazerCocoaPointer;
+    }
 }
 
 - (void) setupVideoCapture{

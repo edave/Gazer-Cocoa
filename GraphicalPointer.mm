@@ -29,7 +29,8 @@ WindowPointer::WindowPointer(const PointerSpec &spec) {
 void WindowPointer::setPosition(int x, int y) {
   // cvMoveWindow(name.c_str(), x, y);
   layer.position = CGPointMake(x, y);
-  printf("you wanted me to move it to: %d, %d", x, y);
+
+  printf("you wanted me to move it to: %i, %i\n", x, y);
 }
 
 void WindowPointer::hide() {

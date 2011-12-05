@@ -17,14 +17,12 @@
 
 -(void)applicationWillFinishLaunching:(NSNotification*)aNotification{
     [[NSApplication sharedApplication] disableRelaunchOnLogin];
-     
+     calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
+    [[calibrationWindowController window] makeKeyAndOrderFront:self];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    LCCalibrationWindowController *calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
-    
-    // set the right path so the classifiers can find their data
+{  // set the right path so the classifiers can find their data
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
     char path[PATH_MAX];
@@ -38,10 +36,11 @@
     // NSArray *args = [[NSProcessInfo processInfo] arguments];
     //int count = [args count];
     
-    NSView* view = [[self window] contentView];
+    //NSView* view = [[self window] contentView];
     
-    
-    OGc* openGazerCocoa = new OGc::OGc(0, NULL, view);
+    // calibrationWindowController.hostView
+    NSLog(@"HostView:%@", calibrationWindowController.hostView);
+    OGc* openGazerCocoa = new OGc::OGc(0, NULL, calibrationWindowController.hostView);
     openGazerCocoa->loadClassifiers();
 
     MainGazeTracker *gazeTracker = openGazerCocoa->gazeTracker;
@@ -64,7 +63,6 @@
     
     // to declare an object Object* blah = &gazeTracker
     
-    [calibrationWindowController awakeFromNib];
     
     GlobalManager *gm = [GlobalManager sharedGlobalManager];
     gm.calibrationFlag = NO;

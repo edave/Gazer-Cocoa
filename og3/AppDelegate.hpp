@@ -27,7 +27,9 @@
 #import "GlobalManager.h"
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate>{
+    LCCalibrationWindowController* calibrationWindowController;
+}
 
 @property (assign) IBOutlet NSWindow *window;
 @property (nonatomic) BOOL calibrationFlag;
