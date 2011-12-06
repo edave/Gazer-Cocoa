@@ -9,6 +9,7 @@
 #import "AppDelegate.hpp"
 
 #import "CoreFoundation/CoreFoundation.h"
+#import "LCCalibrationPoint.h"
 
 @implementation AppDelegate
 
@@ -19,6 +20,11 @@
     [[NSApplication sharedApplication] disableRelaunchOnLogin];
      calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
     [[calibrationWindowController window] makeKeyAndOrderFront:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moveCalibrationPoint:)
+                                                 name:@"changeCalibrationTarget"
+                                               object:nil];
+
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -104,6 +110,18 @@
     }
     });
 
+}
+
+#pragma mark - Notifications
+
+-(void)moveCalibrationPoint:(NSNotification*)note{
+    NSLog(@"Receive move calibration Point");
+    NSPoint point = [(NSValue*)[(NSDictionary*)[note userInfo] objectForKey:@"point"] pointValue];
+    LCCalibrationPoint* calibrationPoint = [[LCCalibrationPoint alloc] init];
+    NSLog(@"Points: %f %f", point.x, point.y);
+    calibrationPoint.x = point.x;
+    calibrationPoint.y = point.y;
+    [calibrationWindowController moveToNextPoint:calibrationPoint];
 }
 
 @end

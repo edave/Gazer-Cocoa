@@ -29,7 +29,7 @@ void MovingTarget::process() {
     if (active()) {
   int id = getPointNo();
   if (getPointFrame() == 1)
-      pointer->setPosition((int)points[id].x, (int)points[id].y);
+      pointer->setPosition(points[id].x, points[id].y);
     }
     else
   detach();

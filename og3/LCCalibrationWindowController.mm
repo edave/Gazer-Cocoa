@@ -144,7 +144,7 @@
 - (IBAction)startCalibrationAction:(id)sender{
     NSLog(@"Start Calibration Action");
     
-//    _targetLayer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
+    _targetLayer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
     [introWindow close];
     [failureWindow close];
 //    gt = [pv pointerValue];
@@ -155,7 +155,7 @@
 //    app.delegate.calibrationFlag = YES;
     GlobalManager *gm = [GlobalManager sharedGlobalManager];
     gm.calibrationFlag = YES;
-//    [self beginCalibration:0];
+    [self beginCalibration:0];
 }
 
 - (IBAction)closeCalibrationAction:(id)sender{
@@ -206,11 +206,11 @@
     NSLog(@"Begin Calibration");
     currentDisplayID = displayID;
     _trackerDelegate = [[LCDummyGazeTracker alloc] init];
-
-    [NSThread detachNewThreadSelector:@selector(readyToCalibrate) toTarget:_trackerDelegate withObject:nil];
     if(_targetLayer.hidden){
         _targetLayer.hidden = NO;
     }
+   // [NSThread detachNewThreadSelector:@selector(readyToCalibrate) toTarget:_trackerDelegate withObject:nil];
+
 }
 
 // Finish the calibration process
@@ -230,9 +230,9 @@
 -(void) moveToNextPoint:(LCCalibrationPoint*) point{
     [CATransaction begin];
     [CATransaction setValue:[NSNumber numberWithFloat:0.5f] forKey:kCATransactionAnimationDuration];
-    _targetLayer.position = [point pointForScreen:_screen];
+    _targetLayer.position = CGPointMake(point.x, point.y);
     [CATransaction commit];
-        NSLog(@"Calibration Point: %@ -> %f, %f", point,  _targetLayer.position.x,  _targetLayer.position.y);
+    NSLog(@"Calibration Point: %@ -> %f, %f", point,  _targetLayer.position.x,  _targetLayer.position.y);
 }
 
 // Calibration display size

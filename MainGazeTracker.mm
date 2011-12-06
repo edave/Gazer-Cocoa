@@ -1,7 +1,7 @@
 #include "utils.h"
 #include <fstream>
 #include "MainGazeTracker.h"
-
+#import <Cocoa/Cocoa.h>
 
 class VideoWriter {
   CvVideoWriter *video;
@@ -158,11 +158,14 @@ void MainGazeTracker::addExemplar(OpenGazer::Point exemplar) {
 
 //TODO: Screen size currently hardcoded
 static vector<OpenGazer::Point> scalebyscreen(const vector<OpenGazer::Point> &points) {
-  return Calibrator::scaled(points, 1440, 900);
+  NSRect screenRect = [[NSScreen mainScreen] frame];
+    int screenX = (int)screenRect.size.width;
+    int screenY = (int)screenRect.size.height;
+  return Calibrator::scaled(points, screenX, screenY);
 }
 
 void MainGazeTracker::startCalibration() {
-  printf("startCalibration signal received");
+  printf("startCalibration signal received\n");
   shared_ptr<WindowPointer>
   pointer(new WindowPointer(WindowPointer::PointerSpec(appView, 60,60,255,0,0)));
   ifstream calfile("calpoints.txt");
