@@ -46,21 +46,27 @@
     // calibrationWindowController.hostView
     NSLog(@"HostView:%@", calibrationWindowController.hostView);
     OGc* openGazerCocoa = new OGc::OGc(0, NULL, calibrationWindowController.hostView);
-    openGazerCocoa->loadClassifiers();
+    int status = openGazerCocoa->loadClassifiers();
+    if (status==0) {
+        NSLog(@"\n\n\n\n Loaded classifiers fine");
+    }
+    else {
+        NSLog(@"\n\n\n\n Didn't load the classifiers");
+    }
 
     MainGazeTracker *gazeTracker = openGazerCocoa->gazeTracker;
 //    new MainGazeTracker(argc, argv, getStores(win.hostView), win.hostView);
 
     calibrationWindowController.openGazerCocoaPointer = [NSValue valueWithPointer:openGazerCocoa];
 
-    cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
-    cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
+//    cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
+//    cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
 
     //    createButtons();
-    //openGazerCocoa->registerMouseCallbacks();
+//    openGazerCocoa->registerMouseCallbacks();
 
     gazeTracker->doprocessing();
-    openGazerCocoa->drawFrame();
+//    openGazerCocoa->drawFrame();
 
 //    findEyes();
     
@@ -74,36 +80,38 @@
         while(1){
         gazeTracker->doprocessing();
 
-        openGazerCocoa->drawFrame();
+//        openGazerCocoa->drawFrame();
         if (gm.calibrationFlag) {
             gazeTracker->startCalibration();
             gm.calibrationFlag = NO;
         }
+            // [RYAN] I think this line inserts a kind of delay into the loop
+            // which in turn makes the calibration dot animate at a more human speed.
         char c = cvWaitKey(33);
-        switch(c) {
-            case 'c':
-                gazeTracker->startCalibration();
-                break;
-            case 't':
-                gazeTracker->startTesting();
-                break;
-            case 's':
-                gazeTracker->savepoints();
-                break;
-            case 'l':
-                gazeTracker->loadpoints();
-                break;
-            case 'x':
-                gazeTracker->clearpoints();
-                break;
-            case 'r':
-                openGazerCocoa->findEyes();
-                break;
-            default:
-                break;
-        }
-
-        if(c == 27) break;
+//        switch(c) {
+//            case 'c':
+//                gazeTracker->startCalibration();
+//                break;
+//            case 't':
+//                gazeTracker->startTesting();
+//                break;
+//            case 's':
+//                gazeTracker->savepoints();
+//                break;
+//            case 'l':
+//                gazeTracker->loadpoints();
+//                break;
+//            case 'x':
+//                gazeTracker->clearpoints();
+//                break;
+//            case 'r':
+//                openGazerCocoa->findEyes();
+//                break;
+//            default:
+//                break;
+//        }
+//
+//        if(c == 27) break;
     }
     });
 
