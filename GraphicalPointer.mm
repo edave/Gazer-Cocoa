@@ -1,5 +1,6 @@
 #include "GraphicalPointer.h"
 #import <Cocoa/Cocoa.h>
+#import "LCGazeFoundation.h"
 
 int WindowPointer::windowNumber;
 
@@ -28,8 +29,11 @@ void WindowPointer::setPosition(int x, int y) {
  printf("you wanted me to move it to: %i, %i\n", x, y);
 }
 
+// [Dave] Is this the best place to fire off the CalibrationEnded notification? Seems
+// brittle, is there a better central place?
 void WindowPointer::hide() {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"endCalibration"
-                                                        object:nil
-                                                      userInfo:nil];
+    [[NSDistributedNotificationCenter defaultCenter] 
+     postNotificationName:kGrazeTrackerCalibrationEnded
+                   object:nil
+                 userInfo:nil];
 }

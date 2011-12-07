@@ -17,8 +17,14 @@
 
 -(void)applicationWillFinishLaunching:(NSNotification*)aNotification{
     [[NSApplication sharedApplication] disableRelaunchOnLogin];
+    gazeWindowController = [[LCGazeTrackerWindowController alloc] initWithScreen:[NSScreen mainScreen]];
      calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
     [[calibrationWindowController window] makeKeyAndOrderFront:self];
+    
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(calibrationStarted:)
+                                                 name:kGazeTrackerCalibrationStart
+                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveCalibrationPoint:)
                                                  name:@"changeCalibrationTarget"
@@ -28,9 +34,9 @@
                                                  name:kGazePointNotification
                                                object:nil];
 
-     [[NSNotificationCenter defaultCenter] addObserver:self
+     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(finishedCalibration:)
-                                                 name:@"endCalibration"
+                                                 name:kGrazeTrackerCalibrationEnded
                                                object:nil];
 }
 
@@ -49,10 +55,7 @@
     // NSArray *args = [[NSProcessInfo processInfo] arguments];
     //int count = [args count];
 
-    //NSView* view = [[self window] contentView];
-
-    // calibrationWindowController.hostView
-    NSLog(@"HostView:%@", calibrationWindowController.hostView);
+    
     OGc* openGazerCocoa = new OGc::OGc(0, NULL, calibrationWindowController.hostView);
     int status = openGazerCocoa->loadClassifiers();
     if (status==0) {
@@ -83,7 +86,6 @@
 
     GlobalManager *gm = [GlobalManager sharedGlobalManager];
     gm.calibrationFlag = NO;
-    NSLog(@"Entering while loop");
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0), ^{ // Run on a background thread - dispatch_get_main_queue()
         while(1){
         gazeTracker->doprocessing();
@@ -129,9 +131,9 @@
 #pragma mark - Notifications
 
 -(void)moveGazeEstimationTarget:(NSNotification*)note{
-    NSLog(@"Receive move gaze tracking Point");
+    //NSLog(@"Receive move gaze tracking Point");
     LCGazePoint* point = (LCGazePoint*)[(NSDictionary*)[note userInfo] objectForKey:kGazePointKey];
-    [calibrationWindowController moveGazeTarget:point];
+    [gazeWindowController moveGazeTarget:point];
 }
 
 -(void)moveCalibrationPoint:(NSNotification*)note{
@@ -144,9 +146,14 @@
     [calibrationWindowController moveToNextPoint:calibrationPoint];
 }
 
+-(void)calibrationStarted:(NSNotification*)note{
+    //NSLog(@"Calibration Started");
+    [gazeWindowController window];
+}
+
 -(void)finishedCalibration:(NSNotification*)note{
     NSLog(@"\n\n\n\n\n      finishedCalibration");
-    [calibrationWindowController finishCalibration:@"kLCGazeTrackerCalibrated"];
+    [calibrationWindowController finishCalibration:kGazeTrackerCalibrated];
 }
 
 @end

@@ -89,13 +89,13 @@ const OpenGazer::Point Calibrator::defaultpointarr[] = {OpenGazer::Point(0.5, 0.
     OpenGazer::Point(0.5, 0.1), OpenGazer::Point(0.5, 0.9), 
     OpenGazer::Point(0.1, 0.1), OpenGazer::Point(0.1, 0.9), 
     OpenGazer::Point(0.9, 0.9), OpenGazer::Point(0.9, 0.1), 
-    OpenGazer::Point(0.33, 0.33), OpenGazer::Point(0.33, 0.66), 
-    OpenGazer::Point(0.66, 0.66), OpenGazer::Point(0.66, 0.33),
-    OpenGazer::Point(0.05, 0.5), OpenGazer::Point(0.95, 0.5),
-    OpenGazer::Point(0.5, 0.05), OpenGazer::Point(0.5, 0.95), 
-    OpenGazer::Point(0.05, 0.05), OpenGazer::Point(0.05, 0.95), 
-    OpenGazer::Point(0.95, 0.95), OpenGazer::Point(0.95, 0.05), 
-    OpenGazer::Point(0.25, 0.25), OpenGazer::Point(0.25, 0.75), 
+//    OpenGazer::Point(0.33, 0.33), OpenGazer::Point(0.33, 0.66), 
+//    OpenGazer::Point(0.66, 0.66), OpenGazer::Point(0.66, 0.33),
+//    OpenGazer::Point(0.05, 0.5), OpenGazer::Point(0.95, 0.5),
+//    OpenGazer::Point(0.5, 0.05), OpenGazer::Point(0.5, 0.95), 
+//    OpenGazer::Point(0.05, 0.05), OpenGazer::Point(0.05, 0.95), 
+//    OpenGazer::Point(0.95, 0.95), OpenGazer::Point(0.95, 0.05), 
+//    OpenGazer::Point(0.25, 0.25), OpenGazer::Point(0.25, 0.75), 
     OpenGazer::Point(0.75, 0.75), OpenGazer::Point(0.75, 0.25)};
 
 vector<OpenGazer::Point>

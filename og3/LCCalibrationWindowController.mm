@@ -24,7 +24,7 @@
 {
     self = [super initWithWindowNibName:windowNibName];
     if (self) {
-        NSLog(@"Initializing Calibration Window Controller");
+        //NSLog(@"Initializing Calibration Window Controller");
     }
     return self;
 }
@@ -35,7 +35,7 @@
     _screen = [NSScreen mainScreen];
 
     [self setupHostView];
-    NSLog(@"Calibration Window Controller :: awakeFromNib");
+    //NSLog(@"Calibration Window Controller :: awakeFromNib");
     NSPanel *panel = (id)[self window];
     [panel setAcceptsMouseMovedEvents:NO];
     [panel setStyleMask:[panel styleMask] ^ NSBorderlessWindowMask];
@@ -56,7 +56,7 @@
 
     // Setup calibration target focus layer
     _targetLayer = [self setupFocusTargetLayer:hostView.layer];
-    _gazeTargetLayer = [self setupGazeTargetLayer:hostView.layer];
+   // _gazeTargetLayer = [self setupGazeTargetLayer:hostView.layer];
     
     [self setupVideoCapture];
 
@@ -145,7 +145,7 @@
 
 - (IBAction)startCalibrationAction:(id)sender{
     NSLog(@"Start Calibration Action");
-
+    
     _targetLayer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
     [introWindow close];
     [failureWindow close];
@@ -190,17 +190,6 @@
     return layer;
 }
 
--(CALayer*)setupGazeTargetLayer:(CALayer*)parentLayer{
-    CALayer *layer = [CALayer layer];
-    NSImage* gazeImage = [NSImage imageNamed:@"gazeTarget"];
-    layer.contents = gazeImage;
-    layer.frame = CGRectMake(0,0, gazeImage.size.width, gazeImage.size.height);
-    layer.hidden = YES;
-    layer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
-    [parentLayer addSublayer:layer];
-    return layer;
-}
-
 -(void)centerAndShowWindow:(NSWindow*)window{
     NSRect screenFrame = [_screen frame];
     NSRect windowFrame = [window frame];
@@ -222,27 +211,27 @@
     if(_targetLayer.hidden){
         _targetLayer.hidden = NO;
     }
+    [[NSDistributedNotificationCenter defaultCenter] 
+     postNotificationName:kGazeTrackerCalibrationStart 
+                   object:nil
+                 userInfo:nil];
     
-    // Temp fix til we can tie into a notification that the gaze tracking has started
-    if(_gazeTargetLayer.hidden){
-        _gazeTargetLayer.hidden = NO;
-    }
    // [NSThread detachNewThreadSelector:@selector(readyToCalibrate) toTarget:_trackerDelegate withObject:nil];
 
 }
 
 // Finish the calibration process
 -(void) finishCalibration:(NSString*)status{
-    // NSLog(@"\n\n\n\nfinishCalibration called");
-    // _targetLayer.hidden = YES;
-    // if ([status isEqualToString: kGazeTrackerCalibrated]) {
-    //     [self centerAndShowWindow:successWindow];
-    // 
-    // }else if ([status isEqualToString:  kGazeTrackerNeedsRecalibration]){
-    //     [self centerAndShowWindow:failureWindow];
-    // 
-    // }
-    // NSLog(@"Calibration Finished ------------------");
+ NSLog(@"\n\n\n\nfinishCalibration called");
+//[_targetLayer removeFromSuperlayer];
+ if ([status isEqualToString: kGazeTrackerCalibrated]) {
+     [self centerAndShowWindow:successWindow];
+ 
+ }else if ([status isEqualToString:  kGazeTrackerNeedsRecalibration]){
+     [self centerAndShowWindow:failureWindow];
+ 
+ }
+//NSLog(@"Calibration Finished ------------------");
 }
 
 // Go to the next calibration point
@@ -252,15 +241,6 @@
     _targetLayer.position = CGPointMake(point.x, point.y);
     [CATransaction commit];
     NSLog(@"Calibration Point: %@ -> %f, %f", point,  _targetLayer.position.x,  _targetLayer.position.y);
-}
-
-// Move the gaze estimation target
--(void) moveGazeTarget:(LCGazePoint*) point{
-    //NSLog(@"Gaze Point: %@ -> %f, %f", point,  point.x,  point.y);
-    [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat:0.1f] forKey:kCATransactionAnimationDuration];
-    _gazeTargetLayer.position = CGPointMake(point.x, point.y);
-    [CATransaction commit];
 }
 
 // Calibration display size

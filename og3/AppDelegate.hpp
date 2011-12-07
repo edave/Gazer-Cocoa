@@ -20,15 +20,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#import "LCCalibrationWindowController.h"
 
 #import "ogc.h"
 
 #import "GlobalManager.h"
 #import <Cocoa/Cocoa.h>
+#import "LCCalibrationWindowController.h"
+#import "LCGazeTrackerWindowController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
     LCCalibrationWindowController* calibrationWindowController;
+    LCGazeTrackerWindowController* gazeWindowController;
 }
 
 @property (assign) IBOutlet NSWindow *window;

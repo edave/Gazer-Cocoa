@@ -28,7 +28,6 @@
     CGDirectDisplayID currentDisplayID;
     LCCalibrationPoint* currentCalibrationPoint;
     CALayer* _targetLayer;
-    CALayer* _gazeTargetLayer;
     NSScreen* _screen;
     
     IBOutlet LCCalibrationCameraView *mCaptureView;
@@ -65,6 +64,4 @@
 // Get the webcam up and running for display in the intro window
 - (void) setupVideoCapture;
 
-// Move the gaze estimation target
--(void) moveGazeTarget:(LCGazePoint*) point;
 @end

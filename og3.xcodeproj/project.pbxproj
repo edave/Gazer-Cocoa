@@ -157,6 +157,8 @@
 		72AF309F1485A2FD00EDF5CF /* libopencv_highgui.2.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF309D1485A2FD00EDF5CF /* libopencv_highgui.2.3.1.dylib */; };
 		72AF30A01485A2FD00EDF5CF /* libopencv_highgui.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF309E1485A2FD00EDF5CF /* libopencv_highgui.2.3.dylib */; };
 		AE1D9F27148F35D9009FB298 /* gazeTarget.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1D9F26148F35D9009FB298 /* gazeTarget.png */; };
+		AE1D9F2A149002EE009FB298 /* LCGazeTrackerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1D9F29149002EE009FB298 /* LCGazeTrackerWindowController.m */; };
+		AE1D9F2C14901374009FB298 /* GazeTrackerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE1D9F2B14901373009FB298 /* GazeTrackerWindow.xib */; };
 		AE815AAA14863FA6009E362E /* LCCalibrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9A14863FA6009E362E /* LCCalibrationView.m */; };
 		AE815AAB14863FA6009E362E /* LCCalibrationWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9C14863FA6009E362E /* LCCalibrationWindowController.mm */; };
 		AE815AAC14863FA6009E362E /* LCCalibrationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9E14863FA6009E362E /* LCCalibrationLayer.m */; };
@@ -367,6 +369,9 @@
 		72AF309D1485A2FD00EDF5CF /* libopencv_highgui.2.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_highgui.2.3.1.dylib; sourceTree = "<group>"; };
 		72AF309E1485A2FD00EDF5CF /* libopencv_highgui.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_highgui.2.3.dylib; sourceTree = "<group>"; };
 		AE1D9F26148F35D9009FB298 /* gazeTarget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gazeTarget.png; sourceTree = "<group>"; };
+		AE1D9F28149002ED009FB298 /* LCGazeTrackerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCGazeTrackerWindowController.h; sourceTree = "<group>"; };
+		AE1D9F29149002EE009FB298 /* LCGazeTrackerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCGazeTrackerWindowController.m; sourceTree = "<group>"; };
+		AE1D9F2B14901373009FB298 /* GazeTrackerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GazeTrackerWindow.xib; sourceTree = "<group>"; };
 		AE815A9914863FA6009E362E /* LCCalibrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCalibrationView.h; sourceTree = "<group>"; };
 		AE815A9A14863FA6009E362E /* LCCalibrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCalibrationView.m; sourceTree = "<group>"; };
 		AE815A9B14863FA6009E362E /* LCCalibrationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCalibrationWindowController.h; sourceTree = "<group>"; };
@@ -667,12 +672,15 @@
 				AE815AA214863FA6009E362E /* LCGazePoint.m */,
 				AE815AA314863FA6009E362E /* LCCalibrationPoint.h */,
 				AE815AA414863FA6009E362E /* LCCalibrationPoint.m */,
+				AE1D9F28149002ED009FB298 /* LCGazeTrackerWindowController.h */,
+				AE1D9F29149002EE009FB298 /* LCGazeTrackerWindowController.m */,
 				AE815AA514863FA6009E362E /* LCGazeListener.h */,
 				AE815AA614863FA6009E362E /* LCGazeTracker.h */,
 				AE815AA714863FA6009E362E /* LCGazeCalibratorInterface.h */,
 				AE815AA814863FA6009E362E /* LCGazeFoundation.h */,
 				AE815AA914863FA6009E362E /* LCGazeMonitor.h */,
 				AE815AB014863FCF009E362E /* CalibrationWindow.xib */,
+				AE1D9F2B14901373009FB298 /* GazeTrackerWindow.xib */,
 			);
 			name = LCGazeFoundation;
 			sourceTree = "<group>";
@@ -740,6 +748,7 @@
 				AE815AB114863FCF009E362E /* CalibrationWindow.xib in Resources */,
 				729A59B0148800D9006155E1 /* calibrationTarget.png in Resources */,
 				AE1D9F27148F35D9009FB298 /* gazeTarget.png in Resources */,
+				AE1D9F2C14901374009FB298 /* GazeTrackerWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +807,7 @@
 				729A59B314880FF3006155E1 /* ogc.mm in Sources */,
 				7204E6751489649400D482B9 /* GlobalManager.mm in Sources */,
 				AEEAA609148C44E20049271E /* LCCalibrationCameraView.mm in Sources */,
+				AE1D9F2A149002EE009FB298 /* LCGazeTrackerWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
