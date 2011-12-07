@@ -120,10 +120,10 @@
 #pragma mark - Notifications
 
 -(void)moveCalibrationPoint:(NSNotification*)note{
-    NSLog(@"Receive move calibration Point");
+    //NSLog(@"Receive move calibration Point");
     NSPoint point = [(NSValue*)[(NSDictionary*)[note userInfo] objectForKey:@"point"] pointValue];
     LCCalibrationPoint* calibrationPoint = [[LCCalibrationPoint alloc] init];
-    NSLog(@"Points: %f %f", point.x, point.y);
+    //NSLog(@"Points: %f %f", point.x, point.y);
     calibrationPoint.x = point.x;
     calibrationPoint.y = point.y;
     [calibrationWindowController moveToNextPoint:calibrationPoint];
