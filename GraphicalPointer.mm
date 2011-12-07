@@ -22,10 +22,14 @@ WindowPointer::WindowPointer(const PointerSpec &spec) {
 
 void WindowPointer::setPosition(int x, int y) {
   // cvMoveWindow(name.c_str(), x, y);
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCalibrationTarget" object:nil userInfo: [NSDictionary dictionaryWithObject:[NSValue valueWithPoint:NSMakePoint(x,y)] forKey:@"point"]];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCalibrationTarget"
+                                                      object:nil
+                                                    userInfo:[NSDictionary dictionaryWithObject:[NSValue valueWithPoint:NSMakePoint(x,y)] forKey:@"point"]];
  printf("you wanted me to move it to: %i, %i\n", x, y);
 }
 
 void WindowPointer::hide() {
- 
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"endCalibration"
+                                                        object:nil
+                                                      userInfo:nil];
 }

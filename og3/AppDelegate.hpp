@@ -32,6 +32,5 @@
 }
 
 @property (assign) IBOutlet NSWindow *window;
-@property (nonatomic) BOOL calibrationFlag;
 
 @end
