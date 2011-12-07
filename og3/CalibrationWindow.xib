@@ -76,7 +76,7 @@
 			<object class="NSWindowTemplate" id="300635358">
 				<int key="NSWindowStyleMask">17</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{167, 107}, {314, 312}}</string>
+				<string key="NSWindowRect">{{167, 107}, {440, 432}}</string>
 				<int key="NSWTFlags">-1535638528</int>
 				<string key="NSWindowTitle">Gaze Calibration</string>
 				<string key="NSWindowClass">NSPanel</string>
@@ -90,7 +90,7 @@
 						<object class="NSTextField" id="912401088">
 							<reference key="NSNextResponder" ref="1002453246"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{20, 225}, {250, 67}}</string>
+							<string key="NSFrame">{{20, 345}, {389, 67}}</string>
 							<reference key="NSSuperview" ref="1002453246"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="952242560"/>
@@ -130,7 +130,7 @@
 						<object class="NSButton" id="661512253">
 							<reference key="NSNextResponder" ref="1002453246"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{91, 19}, {132, 23}}</string>
+							<string key="NSFrame">{{154, 19}, {132, 23}}</string>
 							<reference key="NSSuperview" ref="1002453246"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
@@ -154,7 +154,7 @@
 						<object class="QTCaptureView" id="952242560">
 							<reference key="NSNextResponder" ref="1002453246"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{23, 66}, {268, 158}}</string>
+							<string key="NSFrame">{{20, 66}, {400, 300}}</string>
 							<reference key="NSSuperview" ref="1002453246"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="661512253"/>
@@ -163,7 +163,7 @@
 							<bool key="kQTCaptureViewCoderPreservesAspectRatio">YES</bool>
 						</object>
 					</object>
-					<string key="NSFrameSize">{314, 312}</string>
+					<string key="NSFrameSize">{440, 432}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="912401088"/>
@@ -513,9 +513,9 @@
 						<reference key="object" ref="1002453246"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="661512253"/>
 							<reference ref="912401088"/>
 							<reference ref="952242560"/>
+							<reference ref="661512253"/>
 						</object>
 						<reference key="parent" ref="300635358"/>
 					</object>

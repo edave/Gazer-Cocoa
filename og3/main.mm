@@ -6,28 +6,8 @@
 //  Copyright (c) 2011 Grow20 Corporation. All rights reserved.
 //
 
-#include <opencv/highgui.h>
-#include "utils.h"
-#include "OutputMethods.h"
-#include "MainGazeTracker.h"
-#include "WindowStore.h"
-
-#include "opencv2/objdetect/objdetect.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
 #import <Cocoa/Cocoa.h>
 #import "CoreFoundation/CoreFoundation.h"
-
-#import "LCCalibrationWindowController.h"
-
-#import "ogc.h"
-
-#import "GlobalManager.h"
 
 int main(int argc, char *argv[])
 {

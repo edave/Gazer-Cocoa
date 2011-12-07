@@ -156,7 +156,6 @@ void MainGazeTracker::addExemplar(OpenGazer::Point exemplar) {
                                       tracking->eyex.eyegrey.get());
 }
 
-//TODO: Screen size currently hardcoded
 static vector<OpenGazer::Point> scalebyscreen(const vector<OpenGazer::Point> &points) {
   NSRect screenRect = [[NSScreen mainScreen] frame];
     int screenX = (int)screenRect.size.width;
@@ -165,7 +164,7 @@ static vector<OpenGazer::Point> scalebyscreen(const vector<OpenGazer::Point> &po
 }
 
 void MainGazeTracker::startCalibration() {
-  printf("startCalibration signal received\n");
+  //printf("startCalibration signal received\n");
   shared_ptr<WindowPointer>
   pointer(new WindowPointer(WindowPointer::PointerSpec(appView, 60,60,255,0,0)));
   ifstream calfile("calpoints.txt");
