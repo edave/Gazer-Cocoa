@@ -14,7 +14,6 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize calibrationFlag;
 
 -(void)applicationWillFinishLaunching:(NSNotification*)aNotification{
     [[NSApplication sharedApplication] disableRelaunchOnLogin];
@@ -64,8 +63,6 @@
     openGazerCocoa->drawFrame();
 
 //    findEyes();
-//    YourAppDelegate *appDelegate = (YourAppDelegate *)[[UIApplication sharedApplication] delegate];
-//    app.delegate.calibrationFlag = NO;
     
     // to declare an object Object* blah = &gazeTracker
     
