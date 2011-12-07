@@ -233,16 +233,16 @@
 
 // Finish the calibration process
 -(void) finishCalibration:(NSString*)status{
-    NSLog(@"\n\n\n\nfinishCalibration called");
-    _targetLayer.hidden = YES;
-    if ([status isEqualToString: kGazeTrackerCalibrated]) {
-        [self centerAndShowWindow:successWindow];
-
-    }else if ([status isEqualToString:  kGazeTrackerNeedsRecalibration]){
-        [self centerAndShowWindow:failureWindow];
-
-    }
-    NSLog(@"Calibration Finished ------------------");
+    // NSLog(@"\n\n\n\nfinishCalibration called");
+    // _targetLayer.hidden = YES;
+    // if ([status isEqualToString: kGazeTrackerCalibrated]) {
+    //     [self centerAndShowWindow:successWindow];
+    // 
+    // }else if ([status isEqualToString:  kGazeTrackerNeedsRecalibration]){
+    //     [self centerAndShowWindow:failureWindow];
+    // 
+    // }
+    // NSLog(@"Calibration Finished ------------------");
 }
 
 // Go to the next calibration point

@@ -95,7 +95,8 @@
         }
             // [RYAN] I think this line inserts a kind of delay into the loop
             // which in turn makes the calibration dot animate at a more human speed.
-        char c = cvWaitKey(33);
+            // maybe can replace this with [nano]sleep call or something.
+            char c = cvWaitKey(33);
 //        switch(c) {
 //            case 'c':
 //                gazeTracker->startCalibration();
