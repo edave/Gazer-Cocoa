@@ -35,4 +35,13 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
+-(void)showCalibration;
+// Notifications
+-(void)moveGazeEstimationTarget:(NSNotification*)note;
+-(void)moveCalibrationPoint:(NSNotification*)note;
+-(void)calibrationStarted:(NSNotification*)note;
+-(void)finishedCalibration:(NSNotification*)note;
+-(void)terminationRequested:(NSNotification*)note;
+-(void)calibrationStartRequested:(NSNotification*)note;
+
 @end

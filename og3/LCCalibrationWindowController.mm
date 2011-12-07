@@ -213,7 +213,7 @@
     }
     [[NSDistributedNotificationCenter defaultCenter] 
      postNotificationName:kGazeTrackerCalibrationStart 
-                   object:nil
+                   object:kGazeSenderID
                  userInfo:nil];
     
    // [NSThread detachNewThreadSelector:@selector(readyToCalibrate) toTarget:_trackerDelegate withObject:nil];

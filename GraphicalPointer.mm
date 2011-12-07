@@ -34,6 +34,6 @@ void WindowPointer::setPosition(int x, int y) {
 void WindowPointer::hide() {
     [[NSDistributedNotificationCenter defaultCenter] 
      postNotificationName:kGrazeTrackerCalibrationEnded
-                   object:nil
+                   object:kGazeSenderID
                  userInfo:nil];
 }

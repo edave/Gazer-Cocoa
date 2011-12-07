@@ -9,6 +9,9 @@
 #import "LCGazePoint.h"
 #import "LCCalibrationPoint.h"
 
+// Used for Sender ID
+#define kGazeSenderID @"com.labcogs.gazetracking"
+
 // Distributed Notification Center Notifications
 #define kGazeTrackerReady @"kLCGazeTrackerReady"
 #define kGazeTrackerTerminating @"kLCGazeTrackerTerminating"

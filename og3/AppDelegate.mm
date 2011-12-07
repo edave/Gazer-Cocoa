@@ -19,15 +19,18 @@
     [[NSApplication sharedApplication] disableRelaunchOnLogin];
     gazeWindowController = [[LCGazeTrackerWindowController alloc] initWithScreen:[NSScreen mainScreen]];
      calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
-    [[calibrationWindowController window] makeKeyAndOrderFront:self];
+    [self showCalibration];
     
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(calibrationStarted:)
-                                                 name:kGazeTrackerCalibrationStart
-                                               object:nil];
+    // Local Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveCalibrationPoint:)
                                                  name:@"changeCalibrationTarget"
+                                               object:nil];
+    
+    // Inter process notifications (Distributed)
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(calibrationStarted:)
+                                                 name:kGazeTrackerCalibrationStart
                                                object:nil];
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveGazeEstimationTarget:)
@@ -38,6 +41,14 @@
                                              selector:@selector(finishedCalibration:)
                                                  name:kGrazeTrackerCalibrationEnded
                                                object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(terminationRequested:)
+                                                            name:kGazeTrackerTerminateRequest
+                                                          object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(calibrationStartRequested:)
+                                                            name:kGazeTrackerCalibrationStart
+                                                          object:nil];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -125,12 +136,29 @@
 //        if(c == 27) break;
     }
     });
-
+    
+    // Broadcast to other apps that we're up and running
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazeTrackerReady 
+                                                                   object:kGazeSenderID 
+                                                                 userInfo:[NSDictionary dictionaryWithObject:kGazeTrackerUncalibrated forKey:kGazeTrackerStatusKey]
+                                                        deliverImmediately: YES];
+    NSLog(@"OGC finished launching");
 }
 
 -(void)applicationWillTerminate:(NSNotification*)note{
     // Delist ourself from receiving distributed notifications
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+    
+    // Tell other apps we're shutting down
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazeTrackerTerminating 
+                                                                   object:nil 
+                                                                 userInfo:nil];
+}
+
+#pragma mark - Calibration
+// [DAVE] This is a hack, doesn't support multiple re-calibration attempts
+-(void)showCalibration{
+    [[calibrationWindowController window] makeKeyAndOrderFront:self];
 }
 
 #pragma mark - Notifications
@@ -159,9 +187,17 @@
     [gazeWindowController window];
 }
 
+-(void)calibrationStartRequested:(NSNotification*)note{
+    [self showCalibration];
+}
+
 -(void)finishedCalibration:(NSNotification*)note{
     NSLog(@"\n\n\n\n\n      finishedCalibration");
     [calibrationWindowController finishCalibration:kGazeTrackerCalibrated];
+}
+
+-(void)terminationRequested:(NSNotification*)note{
+    [self terminate];
 }
 
 @end
