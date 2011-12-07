@@ -25,6 +25,8 @@
 #define kGazeListenerAppUIDKey @"kLCGazeListenerAppUIDKey"
 #define kGazeTrackerStatusKey @"kLCGazeTrackerStatusKey"
 #define kGazePointKey @"kLCGazePointKey"
+#define kGazePointXKey @"kLCGazePointXKey"
+#define kGazePointYKey @"kLCGazePointYKey"
 #define kGazePointTimestampKey @"kLCGazePointTimestampKey"
 
 // Notification Values

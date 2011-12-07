@@ -26,7 +26,7 @@ void WindowPointer::setPosition(int x, int y) {
   [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCalibrationTarget"
                                                       object:nil
                                                     userInfo:[NSDictionary dictionaryWithObject:[NSValue valueWithPoint:NSMakePoint(x,y)] forKey:@"point"]];
- printf("you wanted me to move it to: %i, %i\n", x, y);
+ //printf("you wanted me to move it to: %i, %i\n", x, y);
 }
 
 // [Dave] Is this the best place to fire off the CalibrationEnded notification? Seems

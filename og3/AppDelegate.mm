@@ -29,7 +29,7 @@
                                              selector:@selector(moveCalibrationPoint:)
                                                  name:@"changeCalibrationTarget"
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveGazeEstimationTarget:)
                                                  name:kGazePointNotification
                                                object:nil];
@@ -128,11 +128,19 @@
 
 }
 
+-(void)applicationWillTerminate:(NSNotification*)note{
+    // Delist ourself from receiving distributed notifications
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Notifications
 
 -(void)moveGazeEstimationTarget:(NSNotification*)note{
     //NSLog(@"Receive move gaze tracking Point");
-    LCGazePoint* point = (LCGazePoint*)[(NSDictionary*)[note userInfo] objectForKey:kGazePointKey];
+    LCGazePoint* point = [[LCGazePoint alloc] init];
+    NSDictionary* dict = (NSDictionary*)[note userInfo];
+    point.x = [(NSNumber*)[dict objectForKey:kGazePointXKey] floatValue];
+    point.y = [(NSNumber*)[dict objectForKey:kGazePointYKey] floatValue];
     [gazeWindowController moveGazeTarget:point];
 }
 

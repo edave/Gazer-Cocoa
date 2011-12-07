@@ -126,13 +126,12 @@ void MainGazeTracker::doprocessing(void) {
     if (tracking->gazetracker.isActive()) {
       xforeach(iter, stores)
       (*iter)->store(tracking->gazetracker.output);
-        LCGazePoint* point = [[LCGazePoint alloc] init];
-        point.x = tracking->gazetracker.output.gazepoint.x;
-        point.y = tracking->gazetracker.output.gazepoint.y;
-        NSLog(@"GazePoint: %@", point);
-        [[NSNotificationCenter defaultCenter] postNotificationName:kGazePointNotification
-                                                                        object:nil
-                                                                     userInfo:[NSDictionary dictionaryWithObject:point forKey:kGazePointKey]];
+//        LCGazePoint* point = [[LCGazePoint alloc] init];
+//        point.x = tracking->gazetracker.output.gazepoint.x;
+//        point.y = tracking->gazetracker.output.gazepoint.y;
+//        NSLog(@"GazePoint: %@", point);
+        NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat: tracking->gazetracker.output.gazepoint.x ],kGazePointXKey, [NSNumber numberWithFloat:tracking->gazetracker.output.gazepoint.y], kGazePointYKey, nil];
+            [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazePointNotification object:nil userInfo:dict];
         NSLog(@"Notification Sent");
         //printf("Gaze: %f %f\n", tracking->gazetracker.output.gazepoint.x, tracking->gazetracker.output.gazepoint.y);
     }

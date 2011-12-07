@@ -240,7 +240,7 @@
     [CATransaction setValue:[NSNumber numberWithFloat:0.5f] forKey:kCATransactionAnimationDuration];
     _targetLayer.position = CGPointMake(point.x, point.y);
     [CATransaction commit];
-    NSLog(@"Calibration Point: %@ -> %f, %f", point,  _targetLayer.position.x,  _targetLayer.position.y);
+    //NSLog(@"Calibration Point: %@ -> %f, %f", point,  _targetLayer.position.x,  _targetLayer.position.y);
 }
 
 // Calibration display size
