@@ -23,7 +23,10 @@
                                              selector:@selector(moveCalibrationPoint:)
                                                  name:@"changeCalibrationTarget"
                                                object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(finishedCalibration:)
+                                                 name:@"endCalibration"
+                                               object:nil];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -40,9 +43,9 @@
     // end path settings
     // NSArray *args = [[NSProcessInfo processInfo] arguments];
     //int count = [args count];
-    
+
     //NSView* view = [[self window] contentView];
-    
+
     // calibrationWindowController.hostView
     NSLog(@"HostView:%@", calibrationWindowController.hostView);
     OGc* openGazerCocoa = new OGc::OGc(0, NULL, calibrationWindowController.hostView);
@@ -69,10 +72,10 @@
 //    openGazerCocoa->drawFrame();
 
 //    findEyes();
-    
+
     // to declare an object Object* blah = &gazeTracker
-    
-    
+
+
     GlobalManager *gm = [GlobalManager sharedGlobalManager];
     gm.calibrationFlag = NO;
     NSLog(@"Entering while loop");
@@ -127,6 +130,11 @@
     calibrationPoint.x = point.x;
     calibrationPoint.y = point.y;
     [calibrationWindowController moveToNextPoint:calibrationPoint];
+}
+
+-(void)finishedCalibration:(NSNotification*)note{
+    NSLog(@"\n\n\n\n\n      finishedCalibration");
+    [calibrationWindowController finishCalibration:@"kLCGazeTrackerCalibrated"];
 }
 
 @end
