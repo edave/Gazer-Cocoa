@@ -13,4 +13,8 @@
 @synthesize x = _x;
 @synthesize y = _y;
 
+- (NSString *)description{
+    return [NSString stringWithFormat:@"@% x: %f y:%f", [super description], _x, _y];
+}
+
 @end

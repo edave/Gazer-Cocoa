@@ -28,6 +28,7 @@
     CGDirectDisplayID currentDisplayID;
     LCCalibrationPoint* currentCalibrationPoint;
     CALayer* _targetLayer;
+    CALayer* _gazeTargetLayer;
     NSScreen* _screen;
     
     IBOutlet LCCalibrationCameraView *mCaptureView;
@@ -46,9 +47,24 @@
 - (IBAction)startCalibrationAction:(id)sender;
 - (IBAction)closeCalibrationAction:(id)sender;
 
+// Close any windows which are open
 - (void) closeWindows;
+
+// Setup the view that covers the whole screen
 -(void)setupHostView;
+
+// Setup the calibration focus layer and put it in parentLayer
 -(CALayer*)setupFocusTargetLayer:(CALayer*)parentLayer;
+
+// Setup the target that shows the estimation of the gaze tracking and put in the parentLayer
+-(CALayer*)setupGazeTargetLayer:(CALayer*)parentLayer;
+
+// Show the Calibration Intro window and position in the center of the screen
 -(void)centerAndShowWindow:(NSWindow*)window;
+
+// Get the webcam up and running for display in the intro window
 - (void) setupVideoCapture;
+
+// Move the gaze estimation target
+-(void) moveGazeTarget:(LCGazePoint*) point;
 @end

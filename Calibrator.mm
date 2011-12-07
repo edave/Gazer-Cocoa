@@ -81,7 +81,6 @@ void Calibrator::process() {
   } else {
     MovingTarget::process();
     MovingTarget::killPoint();
-    printf("this is the end of calibration");
   }
 }
 

@@ -54,8 +54,10 @@
     [panel setMaxSize:screenFrame.size];
     [panel orderFront:self];
     
-    // Setup target focus layer
+    // Setup calibration target focus layer
     _targetLayer = [self setupFocusTargetLayer:hostView.layer];
+    _gazeTargetLayer = [self setupGazeTargetLayer:hostView.layer];
+    
     [self setupVideoCapture];
 
     [self centerAndShowWindow:introWindow];
@@ -181,7 +183,18 @@
     CALayer *layer = [CALayer layer];
     NSImage* targetImage = [NSImage imageNamed:@"calibrationTarget"];
     layer.contents = targetImage;
-    layer.frame = CGRectMake(128,128, targetImage.size.width, targetImage.size.height);
+    layer.frame = CGRectMake(0,0, targetImage.size.width, targetImage.size.height);
+    layer.hidden = YES;
+    layer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
+    [parentLayer addSublayer:layer];
+    return layer;
+}
+
+-(CALayer*)setupGazeTargetLayer:(CALayer*)parentLayer{
+    CALayer *layer = [CALayer layer];
+    NSImage* gazeImage = [NSImage imageNamed:@"gazeTarget"];
+    layer.contents = gazeImage;
+    layer.frame = CGRectMake(0,0, gazeImage.size.width, gazeImage.size.height);
     layer.hidden = YES;
     layer.position = CGPointMake(_screen.frame.size.width/2.0, _screen.frame.size.height/2.0);
     [parentLayer addSublayer:layer];
@@ -209,6 +222,11 @@
     if(_targetLayer.hidden){
         _targetLayer.hidden = NO;
     }
+    
+    // Temp fix til we can tie into a notification that the gaze tracking has started
+    if(_gazeTargetLayer.hidden){
+        _gazeTargetLayer.hidden = NO;
+    }
    // [NSThread detachNewThreadSelector:@selector(readyToCalibrate) toTarget:_trackerDelegate withObject:nil];
 
 }
@@ -233,6 +251,15 @@
     _targetLayer.position = CGPointMake(point.x, point.y);
     [CATransaction commit];
     NSLog(@"Calibration Point: %@ -> %f, %f", point,  _targetLayer.position.x,  _targetLayer.position.y);
+}
+
+// Move the gaze estimation target
+-(void) moveGazeTarget:(LCGazePoint*) point{
+    //NSLog(@"Gaze Point: %@ -> %f, %f", point,  point.x,  point.y);
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:0.1f] forKey:kCATransactionAnimationDuration];
+    _gazeTargetLayer.position = CGPointMake(point.x, point.y);
+    [CATransaction commit];
 }
 
 // Calibration display size

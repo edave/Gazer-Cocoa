@@ -24,6 +24,10 @@
                                              selector:@selector(moveCalibrationPoint:)
                                                  name:@"changeCalibrationTarget"
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moveGazeEstimationTarget:)
+                                                 name:kGazePointNotification
+                                               object:nil];
 
 }
 
@@ -113,6 +117,12 @@
 }
 
 #pragma mark - Notifications
+
+-(void)moveGazeEstimationTarget:(NSNotification*)note{
+    NSLog(@"Receive move gaze tracking Point");
+    LCGazePoint* point = (LCGazePoint*)[(NSDictionary*)[note userInfo] objectForKey:kGazePointKey];
+    [calibrationWindowController moveGazeTarget:point];
+}
 
 -(void)moveCalibrationPoint:(NSNotification*)note{
     //NSLog(@"Receive move calibration Point");

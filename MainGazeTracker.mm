@@ -2,6 +2,8 @@
 #include <fstream>
 #include "MainGazeTracker.h"
 #import <Cocoa/Cocoa.h>
+#import "LCGazeFoundation.h"
+#import "LCGazePoint.h"
 
 class VideoWriter {
   CvVideoWriter *video;
@@ -119,12 +121,20 @@ void MainGazeTracker::doprocessing(void) {
   try {
     tracking->doprocessing(frame, canvas.get());
 
-    // RYAN - this is the updating mechanism
+    // This is where the gaze tracking output can be grabbed
+    // It is stored in: tracking->gazetracker.output.gazepoint (output is a TrackerOutput struct)
     if (tracking->gazetracker.isActive()) {
       xforeach(iter, stores)
       (*iter)->store(tracking->gazetracker.output);
-//      cout << point.x << " " << point.y << " -> "
-//     << tracking->gazetracker.getTargetId(point) << endl;
+        LCGazePoint* point = [[LCGazePoint alloc] init];
+        point.x = tracking->gazetracker.output.gazepoint.x;
+        point.y = tracking->gazetracker.output.gazepoint.y;
+        NSLog(@"GazePoint: %@", point);
+        [[NSNotificationCenter defaultCenter] postNotificationName:kGazePointNotification
+                                                                        object:nil
+                                                                     userInfo:[NSDictionary dictionaryWithObject:point forKey:kGazePointKey]];
+        NSLog(@"Notification Sent");
+        //printf("Gaze: %f %f\n", tracking->gazetracker.output.gazepoint.x, tracking->gazetracker.output.gazepoint.y);
     }
 //  if (!tracking->tracker.areallpointsactive())
 //      throw TrackingException();
