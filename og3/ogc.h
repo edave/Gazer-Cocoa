@@ -9,6 +9,8 @@
 #ifndef og3_OGc_h
 #define og3_OGc_h
 
+#include <opencv/cv.h>
+
 #include <opencv/highgui.h>
 #include "utils.h"
 #include "OutputMethods.h"
