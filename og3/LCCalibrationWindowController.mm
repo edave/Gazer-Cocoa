@@ -212,7 +212,7 @@
         _targetLayer.hidden = NO;
     }
     [[NSDistributedNotificationCenter defaultCenter] 
-     postNotificationName:kGazeTrackerCalibrationStart 
+     postNotificationName:kGazeTrackerCalibrationStarted 
                    object:kGazeSenderID
                  userInfo:nil];
     

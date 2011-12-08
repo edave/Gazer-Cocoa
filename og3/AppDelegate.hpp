@@ -31,11 +31,28 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
     LCCalibrationWindowController* calibrationWindowController;
     LCGazeTrackerWindowController* gazeWindowController;
+    BOOL _runHeadless;
+    BOOL gazeTrackingRunning;
+    MainGazeTracker *gazeTracker;
+    OGc* openGazerCocoa;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 
+@property BOOL gazeTrackingRunning;
+
+@property BOOL runHeadless;
+
+// Kick off the gaze tracking process
+-(void)launchGazeTracking;
+
+// Launch the Calibration GUI and invoke the gaze tracking if needed 
+-(void)launchCalibrationGUI;
+
+// Show the Calibration GUI elements
 -(void)showCalibration;
+
+
 // Notifications
 -(void)moveGazeEstimationTarget:(NSNotification*)note;
 -(void)moveCalibrationPoint:(NSNotification*)note;
