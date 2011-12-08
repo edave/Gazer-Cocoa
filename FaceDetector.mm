@@ -26,7 +26,7 @@ FaceDetector::~FaceDetector() {
 vector<CvRect> FaceDetector::detect(const IplImage *img) {
     double scale = 1.3;
     IplImage* gray = cvCreateImage( cvSize(img->width,img->height), 8, 1 );
-    IplImage* small_img = 
+    IplImage* small_img =
 	cvCreateImage( cvSize( cvRound (img->width/scale),
 			       cvRound (img->height/scale)), 8, 1 );
     int i;
@@ -36,7 +36,7 @@ vector<CvRect> FaceDetector::detect(const IplImage *img) {
     cvEqualizeHist( small_img, small_img );
     cvClearMemStorage( storage );
 
-    CvSeq* faces = 
+    CvSeq* faces =
 	cvHaarDetectObjects( small_img, cascade, storage,
 			     1.1, 2, 0/*CV_HAAR_DO_CANNY_PRUNING*/,
 			     cvSize(30, 30) );
