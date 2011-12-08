@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Grow20 Corporation. All rights reserved.
 //
 
-#import "AppDelegate.hpp"
+#import "AppDelegate.h"
 
 #import "CoreFoundation/CoreFoundation.h"
 #import "LCCalibrationPoint.h"
@@ -16,10 +16,11 @@
 @synthesize window = _window;
 @synthesize gazeTrackingRunning;
 @synthesize runHeadless = _runHeadless;
+@synthesize gazeTrackerStatus = _gazeTrackerStatus;
 
 -(void)applicationWillFinishLaunching:(NSNotification*)aNotification{
     self.gazeTrackingRunning = NO; // Gaze tracking is not active
-    
+    self.gazeTrackerStatus = kGazeTrackerUncalibrated;
     // Whether we should launch the GUI on start
     self.runHeadless = YES; // No, run in background
     #ifdef CONFIGURATION_Debug_GUI
@@ -37,6 +38,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveCalibrationPoint:)
                                                  name:@"changeCalibrationTarget"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(calibrationClosed:)
+                                                 name:kLCGazeCalibrationUIClosed
                                                object:nil];
 
     // Inter process notifications (Distributed)
@@ -91,6 +96,8 @@
 
 
 #pragma mark - OpenCV
+
+#ifdef CONFIGURATION_Debug_OpenCV
     MainGazeTracker *gazeTracker;
 // this is only used for debugging
 void mouseClick(int event, int x, int y, int flags, void* param) {
@@ -116,10 +123,10 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
     }
 }
 
+#endif
+
 -(void)launchGazeTracking{
-    if(!self.gazeTrackingRunning){
-        // set this to true for debugging with a cvwin
-        bool debug = FALSE;
+    if(!self.gazeTrackingRunning);
         
     self.gazeTrackingRunning = YES;
         CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -142,19 +149,19 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
         
 
         
-    if(debug) {
-        NSLog(@"\n\n\n\n   FYI - debug is enabled\n\n");
+#ifdef CONFIGURATION_Debug_OpenCV
+        NSLog(@"\n\n\n\n   FYI - OpenCV debug is enabled\n\n");
         cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
         cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
         //    createButtons();
         cvSetMouseCallback(MAIN_WINDOW_NAME, mouseClick, NULL);
-    }
+#endif
     
     gazeTracker->doprocessing();
     
-    if(debug) {
+#ifdef CONFIGURATION_Debug_OpenCV
         openGazerCocoa->drawFrame();
-    }
+#endif
     
     // to declare an object Object* blah = &gazeTracker
     
@@ -164,9 +171,10 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
         int count = 0;
         while(1) {
             gazeTracker->doprocessing();
-            if(debug) {
+            
+            #ifdef CONFIGURATION_Debug_OpenCV
                 openGazerCocoa->drawFrame();
-            }
+            #endif
             
             if (gm.calibrationFlag) {
                 gazeTracker->startCalibration();
@@ -183,7 +191,6 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
         }
         self.gazeTrackingRunning = NO;
     });
-    }
 }
 
 #pragma mark - Calibration
@@ -221,19 +228,33 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
     [calibrationWindowController moveToNextPoint:calibrationPoint];
 }
 
+// The calibration process has started
 -(void)calibrationStarted:(NSNotification*)note{
     NSLog(@"Calibration Started");
     [gazeWindowController window];
 }
 
+// There was a request to show the calibration GUI and such
 -(void)calibrationStartRequested:(NSNotification*)note{
     NSLog(@"Calibration Requested");
     [self launchCalibrationGUI];
 }
 
+// The calibration process ended, wbut we'll still show a GUI with the results
 -(void)finishedCalibration:(NSNotification*)note{
     NSLog(@"\n\n\n\n\n      finishedCalibration");
-    [calibrationWindowController finishCalibration:kGazeTrackerCalibrated];
+    self.gazeTrackerStatus = kGazeTrackerCalibrated;
+    [calibrationWindowController finishCalibration:self.gazeTrackerStatus];
+}
+
+// Called when the user closes the calibration interface
+-(void) calibrationClosed:(NSNotification*)note{
+    
+    // Send out a note that we've finished calibrating with the current status of the gaze tracker
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGrazeTrackerCalibrationEnded
+                                                                   object:kGazeSenderID
+                                                                 userInfo:[NSDictionary dictionaryWithObject:self.gazeTrackerStatus forKey:kGazeTrackerStatusKey]
+                                                       deliverImmediately:YES];
 }
 
 -(void)terminationRequested:(NSNotification*)note{

@@ -11,6 +11,7 @@
 @implementation LCCalibrationCameraView
 @synthesize openGazerCocoaPointer, cameraHeight, cameraWidth;
 
+#ifdef CONFIGURATION_Debug_OpenCV
 - (void) mouseDown:(NSEvent*) evt
 {
 //    NSLog(@"In Window: %f %f", [evt locationInWindow].x, [evt locationInWindow].y);
@@ -55,5 +56,6 @@
 //    }
 
 }
+#endif
 
 @end

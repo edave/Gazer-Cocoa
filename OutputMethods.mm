@@ -38,10 +38,12 @@ StreamStore::~StreamStore() {
 }
 
 void StreamStore::store(const TrackerOutput& output) {
+#ifdef CONFIGURATION_Debug_OpenCV
     stream << (int) output.gazepoint.x << " " 
 	   << (int) output.gazepoint.y << " -> "
 	   << output.targetid << endl;
     stream.flush();
+#endif
 }
 
 SocketStore::SocketStore(int port) {

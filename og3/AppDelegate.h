@@ -35,6 +35,8 @@
     BOOL gazeTrackingRunning;
     MainGazeTracker *gazeTracker;
     OGc* openGazerCocoa;
+    
+    NSString* _gazeTrackerStatus;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -42,6 +44,8 @@
 @property BOOL gazeTrackingRunning;
 
 @property BOOL runHeadless;
+
+@property NSString* gazeTrackerStatus;
 
 // Kick off the gaze tracking process
 -(void)launchGazeTracking;

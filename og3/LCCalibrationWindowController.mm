@@ -123,6 +123,10 @@
 
 
 - (void) closeWindows{
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName: kLCGazeCalibrationUIClosed
+     object:nil
+     userInfo:nil];
     [introWindow close];
     [successWindow close];
     [failureWindow close];
@@ -139,6 +143,10 @@
 }
 
 - (void)applicationWillResignActive:(NSNotification *)aNotification{
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName: kLCGazeCalibrationUIClosed
+     object:nil
+     userInfo:nil];
     [self closeWindows];
 }
 
