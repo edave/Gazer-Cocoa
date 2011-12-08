@@ -145,14 +145,16 @@
     NSLog(@"OGC finished launching");
 }
 
--(void)applicationWillTerminate:(NSNotification*)note{
+- (void)applicationWillTerminate:(NSNotification *)aNotification{
+    NSLog(@"OGC will terminate");
     // Delist ourself from receiving distributed notifications
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
     
     // Tell other apps we're shutting down
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazeTrackerTerminating 
-                                                                   object:nil 
-                                                                 userInfo:nil];
+                                                                   object:kGazeSenderID 
+                                                                 userInfo:nil
+                                                       deliverImmediately:YES];
 }
 
 #pragma mark - Calibration
