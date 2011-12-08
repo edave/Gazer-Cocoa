@@ -20,13 +20,13 @@
     gazeWindowController = [[LCGazeTrackerWindowController alloc] initWithScreen:[NSScreen mainScreen]];
      calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
     [self showCalibration];
-    
+
     // Local Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveCalibrationPoint:)
                                                  name:@"changeCalibrationTarget"
                                                object:nil];
-    
+
     // Inter process notifications (Distributed)
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(calibrationStarted:)
@@ -51,6 +51,39 @@
                                                           object:nil];
 }
 
+
+// this is out here, so that for debugging, mouseClick will work (click handler
+// for the cvwin)
+MainGazeTracker *gazeTracker;
+
+// this is only used for debugging
+void mouseClick(int event, int x, int y, int flags, void* param) {
+    if(event == CV_EVENT_LBUTTONDOWN || event == CV_EVENT_LBUTTONDBLCLK) {
+        OpenGazer::Point point(x, y);
+        PointTracker &tracker = gazeTracker->tracking->tracker;
+        int closest = tracker.getClosestTracker(point);
+        int lastPointId;
+
+        if(closest >= 0 && point.distance(tracker.currentpoints[closest]) <= 10) lastPointId = closest;
+        else
+            lastPointId = -1;
+
+        if(event == CV_EVENT_LBUTTONDOWN) {
+            if(lastPointId >= 0) tracker.updatetracker(lastPointId, point);
+            else {
+                tracker.addtracker(point);
+            }
+        }
+        if(event == CV_EVENT_LBUTTONDBLCLK) {
+            if(lastPointId >= 0) tracker.removetracker(lastPointId);
+        }
+    }
+}
+
+
+// set this to true for debugging with a cvwin
+bool debug = FALSE;
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {  // set the right path so the classifiers can find their data
     CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -63,83 +96,57 @@
     CFRelease(resourcesURL);
     chdir(path);
     // end path settings
-    // NSArray *args = [[NSProcessInfo processInfo] arguments];
-    //int count = [args count];
 
-    
     OGc* openGazerCocoa = new OGc::OGc(0, NULL, calibrationWindowController.hostView);
     int status = openGazerCocoa->loadClassifiers();
-    if (status==0) {
-        NSLog(@"\n\n\n\n Loaded classifiers fine");
-    }
-    else {
-        NSLog(@"\n\n\n\n Didn't load the classifiers");
-    }
 
-    MainGazeTracker *gazeTracker = openGazerCocoa->gazeTracker;
-//    new MainGazeTracker(argc, argv, getStores(win.hostView), win.hostView);
-
+    gazeTracker = openGazerCocoa->gazeTracker;
     calibrationWindowController.openGazerCocoaPointer = [NSValue valueWithPointer:openGazerCocoa];
 
-//    cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
-//    cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
-
-    //    createButtons();
-//    openGazerCocoa->registerMouseCallbacks();
+    if(debug) {
+        NSLog(@"\n\n\n\n   FYI - debug is enabled\n\n");
+      cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
+      cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
+      //    createButtons();
+      cvSetMouseCallback(MAIN_WINDOW_NAME, mouseClick, NULL);
+    }
 
     gazeTracker->doprocessing();
-//    openGazerCocoa->drawFrame();
 
-//    findEyes();
+    if(debug) {
+      openGazerCocoa->drawFrame();
+    }
 
     // to declare an object Object* blah = &gazeTracker
-
 
     GlobalManager *gm = [GlobalManager sharedGlobalManager];
     gm.calibrationFlag = NO;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0), ^{ // Run on a background thread - dispatch_get_main_queue()
-        while(1){
-        gazeTracker->doprocessing();
+        int count = 0;
+        while(1) {
+          gazeTracker->doprocessing();
+          if(debug) {
+            openGazerCocoa->drawFrame();
+          }
 
-//        openGazerCocoa->drawFrame();
-        if (gm.calibrationFlag) {
-            gazeTracker->startCalibration();
-            gm.calibrationFlag = NO;
-        }
-            // [RYAN] I think this line inserts a kind of delay into the loop
-            // which in turn makes the calibration dot animate at a more human speed.
-            // maybe can replace this with [nano]sleep call or something.
-            char c = cvWaitKey(33);
-//        switch(c) {
-//            case 'c':
-//                gazeTracker->startCalibration();
-//                break;
-//            case 't':
-//                gazeTracker->startTesting();
-//                break;
-//            case 's':
-//                gazeTracker->savepoints();
-//                break;
-//            case 'l':
-//                gazeTracker->loadpoints();
-//                break;
-//            case 'x':
-//                gazeTracker->clearpoints();
-//                break;
-//            case 'r':
-//                openGazerCocoa->findEyes();
-//                break;
-//            default:
-//                break;
-//        }
-//
-//        if(c == 27) break;
+          if (gm.calibrationFlag) {
+              gazeTracker->startCalibration();
+              gm.calibrationFlag = NO;
+          }
+          // [RYAN] I think this line inserts a kind of delay into the loop
+          // which in turn makes the calibration dot animate at a more human speed.
+          // maybe can replace this with [nano]sleep call or something.
+          char c = cvWaitKey(33);
+          if (count==100) {
+              openGazerCocoa->findEyes();
+          }
+          count = count + 1;
     }
     });
-    
+
     // Broadcast to other apps that we're up and running
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazeTrackerReady 
-                                                                   object:kGazeSenderID 
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazeTrackerReady
+                                                                   object:kGazeSenderID
                                                                  userInfo:[NSDictionary dictionaryWithObject:kGazeTrackerUncalibrated forKey:kGazeTrackerStatusKey]
                                                         deliverImmediately: YES];
     NSLog(@"OGC finished launching");
@@ -149,10 +156,10 @@
     NSLog(@"OGC will terminate");
     // Delist ourself from receiving distributed notifications
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
-    
+
     // Tell other apps we're shutting down
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazeTrackerTerminating 
-                                                                   object:kGazeSenderID 
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazeTrackerTerminating
+                                                                   object:kGazeSenderID
                                                                  userInfo:nil
                                                        deliverImmediately:YES];
 }
