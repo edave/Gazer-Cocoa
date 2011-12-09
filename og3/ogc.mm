@@ -102,8 +102,7 @@ void OGc::findEyes() {
 
             face_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
 
-            if(faces.size()==1)
-            {
+            if(faces.size()==1) {
                 int i = 0;
                 cv::Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5 );
                 //ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 255, 0, 255 ), 4, 8, 0 );
@@ -172,6 +171,12 @@ void OGc::findEyes() {
                     tracker.addtracker(right_point);
                     points_added = points_added + 2;
                 }
+                else {
+                  NSLog(@"didn't find 2 eyes");
+                }
+            }
+            else {
+              NSLog(@"didn't find 1 face");
             }
             // just for debug
             //imshow( window_name, frame );
