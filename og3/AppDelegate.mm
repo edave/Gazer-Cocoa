@@ -150,7 +150,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 
         
 #ifdef CONFIGURATION_Debug_OpenCV
-        NSLog(@"\n\n\n\n   FYI - OpenCV debug is enabled\n\n");
+        NSLog(@"\n\n  FYI - OpenCV debug is enabled\n\n");
         cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
         cvResizeWindow(MAIN_WINDOW_NAME, 640, 480);
         //    createButtons();
@@ -230,25 +230,32 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 
 // The calibration process has started
 -(void)calibrationStarted:(NSNotification*)note{
-    NSLog(@"Calibration Started");
+    NSLog(@"Notification :: Calibration Started");
     [gazeWindowController window];
 }
 
 // There was a request to show the calibration GUI and such
 -(void)calibrationStartRequested:(NSNotification*)note{
-    NSLog(@"Calibration Requested");
+    NSLog(@"Notification :: Calibration Requested");
     [self launchCalibrationGUI];
 }
 
 // The calibration process ended, wbut we'll still show a GUI with the results
 -(void)finishedCalibration:(NSNotification*)note{
-    NSLog(@"\n\n\n\n\n      finishedCalibration");
+    NSLog(@"Notification :: Calibration Finished");
     self.gazeTrackerStatus = kGazeTrackerCalibrated;
     [calibrationWindowController finishCalibration:self.gazeTrackerStatus];
 }
 
 // Called when the user closes the calibration interface
 -(void) calibrationClosed:(NSNotification*)note{
+    NSLog(@"Notification :: Calibration UI Closed");
+    
+    // Close the Gaze Target window
+    [[gazeWindowController window] close];
+    
+    // Resign focus
+    //[[NSApplication sharedApplication] hide:self];
     
     // Send out a note that we've finished calibrating with the current status of the gaze tracker
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGrazeTrackerCalibrationEnded
@@ -258,7 +265,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 }
 
 -(void)terminationRequested:(NSNotification*)note{
-    NSLog(@"Termination requested");
+    NSLog(@"Notification :: Termination requested");
     [[NSApplication sharedApplication] terminate:self];
 }
 
