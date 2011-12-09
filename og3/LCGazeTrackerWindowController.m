@@ -11,10 +11,13 @@
 
 @implementation LCGazeTrackerWindowController
 
+@synthesize isActive = _isActive;
+
 - (id)initWithScreen:(NSScreen*)screen{
     self = [super initWithWindowNibName:@"GazeTrackerWindow"];
     if (self) {
         _screen = screen;
+        _isActive = NO;
     }
     
     return self;
@@ -23,6 +26,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    //NSLog(@"GazeTrackerWindowController :: awakeFromNib");
     // Setup the window to float above everything else and not intercept events
     [self.window setBackgroundColor:[NSColor clearColor]];
     [self.window setIgnoresMouseEvents:YES];
@@ -63,6 +67,34 @@
     [CATransaction setValue:[NSNumber numberWithFloat:0.1f] forKey:kCATransactionAnimationDuration];
     _gazeTargetLayer.position = CGPointMake(point.x, point.y);
     [CATransaction commit];
+}
+
+-(void) show:(BOOL)show{
+    if(show != self.isActive){
+        self.isActive = show;
+        if(_isActive){
+            [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                                selector:@selector(moveGazeEstimationTarget:)
+                                                                    name:kGazePointNotification
+                                                                  object:kGazeSenderID];
+            [[self window] makeKeyAndOrderFront:self];
+            
+        }else{
+            [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+            [[self window] close];
+        }
+    }
+        
+}
+
+
+-(void)moveGazeEstimationTarget:(NSNotification*)note{
+    //NSLog(@"Receive move gaze tracking Point");
+    LCGazePoint* point = [[LCGazePoint alloc] init];
+    NSDictionary* dict = (NSDictionary*)[note userInfo];
+    point.x = [(NSNumber*)[dict objectForKey:kGazePointXKey] floatValue];
+    point.y = [(NSNumber*)[dict objectForKey:kGazePointYKey] floatValue];
+    [self moveGazeTarget:point];
 }
 
 

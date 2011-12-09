@@ -12,7 +12,10 @@
 @interface LCGazeTrackerWindowController : NSWindowController{
     CALayer* _gazeTargetLayer;
     NSScreen* _screen;
+    BOOL _isActive;
 }
+
+@property BOOL isActive;
 
 // Init to cover a particular screen
 - (id)initWithScreen:(NSScreen*)screen;
@@ -25,5 +28,11 @@
 
 // Move the gaze estimation target
 -(void) moveGazeTarget:(LCGazePoint*) point;
+
+// Show the gaze estimation target
+-(void) show:(BOOL)show;
+
+// Notification to move the gaze estimation target
+-(void)moveGazeEstimationTarget:(NSNotification*)note;
 
 @end

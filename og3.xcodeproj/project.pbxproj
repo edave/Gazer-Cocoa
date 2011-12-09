@@ -159,6 +159,8 @@
 		AE1D9F27148F35D9009FB298 /* gazeTarget.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1D9F26148F35D9009FB298 /* gazeTarget.png */; };
 		AE1D9F2A149002EE009FB298 /* LCGazeTrackerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1D9F29149002EE009FB298 /* LCGazeTrackerWindowController.m */; };
 		AE1D9F2C14901374009FB298 /* GazeTrackerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE1D9F2B14901373009FB298 /* GazeTrackerWindow.xib */; };
+		AE55644114927BEF0036008D /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE55644014927BEF0036008D /* DDHotKeyCenter.m */; };
+		AE556443149280950036008D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE556442149280950036008D /* Carbon.framework */; };
 		AE815AAA14863FA6009E362E /* LCCalibrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9A14863FA6009E362E /* LCCalibrationView.m */; };
 		AE815AAB14863FA6009E362E /* LCCalibrationWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9C14863FA6009E362E /* LCCalibrationWindowController.mm */; };
 		AE815AAC14863FA6009E362E /* LCCalibrationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9E14863FA6009E362E /* LCCalibrationLayer.m */; };
@@ -373,6 +375,9 @@
 		AE1D9F28149002ED009FB298 /* LCGazeTrackerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCGazeTrackerWindowController.h; sourceTree = "<group>"; };
 		AE1D9F29149002EE009FB298 /* LCGazeTrackerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCGazeTrackerWindowController.m; sourceTree = "<group>"; };
 		AE1D9F2B14901373009FB298 /* GazeTrackerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GazeTrackerWindow.xib; sourceTree = "<group>"; };
+		AE55643F14927BEF0036008D /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyCenter.h; path = DDHotKey/DDHotKeyCenter.h; sourceTree = "<group>"; };
+		AE55644014927BEF0036008D /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyCenter.m; path = DDHotKey/DDHotKeyCenter.m; sourceTree = "<group>"; };
+		AE556442149280950036008D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		AE815A9914863FA6009E362E /* LCCalibrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCalibrationView.h; sourceTree = "<group>"; };
 		AE815A9A14863FA6009E362E /* LCCalibrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCalibrationView.m; sourceTree = "<group>"; };
 		AE815A9B14863FA6009E362E /* LCCalibrationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCalibrationWindowController.h; sourceTree = "<group>"; };
@@ -400,6 +405,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE556443149280950036008D /* Carbon.framework in Frameworks */,
 				722F1CC21486B8D100276526 /* QuartzCore.framework in Frameworks */,
 				722F1CBC1486B19300276526 /* QTKit.framework in Frameworks */,
 				7212EA43147C50C700CB2A8D /* Cocoa.framework in Frameworks */,
@@ -468,6 +474,7 @@
 		7212EA33147C50C600CB2A8D = {
 			isa = PBXGroup;
 			children = (
+				AE556442149280950036008D /* Carbon.framework */,
 				7212EAC6147C516500CB2A8D /* opengazer */,
 				7212EA5F147C50DF00CB2A8D /* dylibs */,
 				7212EA48147C50C700CB2A8D /* og3 */,
@@ -488,6 +495,7 @@
 		7212EA41147C50C700CB2A8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE55643D14927B820036008D /* DDHotKey */,
 				7212EA42147C50C700CB2A8D /* Cocoa.framework */,
 				7212EA44147C50C700CB2A8D /* Other Frameworks */,
 			);
@@ -657,6 +665,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		AE55643D14927B820036008D /* DDHotKey */ = {
+			isa = PBXGroup;
+			children = (
+				AE55643F14927BEF0036008D /* DDHotKeyCenter.h */,
+				AE55644014927BEF0036008D /* DDHotKeyCenter.m */,
+			);
+			name = DDHotKey;
+			sourceTree = "<group>";
+		};
 		AE815A9414863F50009E362E /* LCGazeFoundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,6 +827,7 @@
 				7204E6751489649400D482B9 /* GlobalManager.mm in Sources */,
 				AEEAA609148C44E20049271E /* LCCalibrationCameraView.mm in Sources */,
 				AE1D9F2A149002EE009FB298 /* LCGazeTrackerWindowController.m in Sources */,
+				AE55644114927BEF0036008D /* DDHotKeyCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
