@@ -45,7 +45,7 @@
     [panel setBackgroundColor:[NSColor colorWithCalibratedHue:0.0
                                                    saturation:0.0
                                                    brightness:0.0
-                                                        alpha:0.3]];
+                                                        alpha:0.8]];
 
     // Resize panel
     NSRect screenFrame = [_screen frame];
