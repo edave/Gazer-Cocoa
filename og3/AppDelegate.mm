@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import <Carbon/Carbon.h>
 
 #import "CoreFoundation/CoreFoundation.h"
 #import "LCCalibrationPoint.h"
+#import "DDHotKeyCenter.h"
 
 @implementation AppDelegate
 
@@ -49,10 +51,6 @@
                                              selector:@selector(calibrationStarted:)
                                                  name:kGazeTrackerCalibrationStarted
                                                object:kGazeSenderID];
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(moveGazeEstimationTarget:)
-                                                 name:kGazePointNotification
-                                               object:kGazeSenderID];
 
      [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(finishedCalibration:)
@@ -79,6 +77,11 @@
     if(!self.runHeadless){
         [self launchCalibrationGUI];
     }
+    [[[DDHotKeyCenter alloc] init] registerHotKeyWithKeyCode:kVK_ANSI_G 
+                                               modifierFlags:(NSCommandKeyMask | NSControlKeyMask)  
+                                                      target:self 
+                                                      action:@selector(toggleGazeTarget:) 
+                                                      object:nil];
     NSLog(@"OGC finished launching");
 }
 
@@ -210,15 +213,6 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 
 #pragma mark - Notifications
 
--(void)moveGazeEstimationTarget:(NSNotification*)note{
-    //NSLog(@"Receive move gaze tracking Point");
-    LCGazePoint* point = [[LCGazePoint alloc] init];
-    NSDictionary* dict = (NSDictionary*)[note userInfo];
-    point.x = [(NSNumber*)[dict objectForKey:kGazePointXKey] floatValue];
-    point.y = [(NSNumber*)[dict objectForKey:kGazePointYKey] floatValue];
-    [gazeWindowController moveGazeTarget:point];
-}
-
 -(void)moveCalibrationPoint:(NSNotification*)note{
     //NSLog(@"Receive move calibration Point");
     NSPoint point = [(NSValue*)[(NSDictionary*)[note userInfo] objectForKey:@"point"] pointValue];
@@ -232,7 +226,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 // The calibration process has started
 -(void)calibrationStarted:(NSNotification*)note{
     NSLog(@"Notification :: Calibration Started");
-    [gazeWindowController window];
+    [gazeWindowController show:YES];
 }
 
 // There was a request to show the calibration GUI and such
@@ -253,8 +247,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
     NSLog(@"Notification :: Calibration UI Closed");
 
     // Close the Gaze Target window
-    [[gazeWindowController window] close];
-
+    [gazeWindowController show:NO];
     // Resign focus
     //[[NSApplication sharedApplication] hide:self];
 
@@ -268,6 +261,13 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 -(void)terminationRequested:(NSNotification*)note{
     NSLog(@"Notification :: Termination requested");
     [[NSApplication sharedApplication] terminate:self];
+}
+
+-(void)toggleGazeTarget:(NSEvent*)hotKeyEvent{
+    NSLog(@"HotKey :: Gaze Target estimation being toggled");
+    if(gazeWindowController != nil){
+        [gazeWindowController show:!gazeWindowController.isActive];
+    }
 }
 
 @end
