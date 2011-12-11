@@ -29,13 +29,13 @@
     NSLog(@"Launching with GUI");
         self.runHeadless = NO; // Launch the GUI on start
     #endif
-    
+
     [[NSApplication sharedApplication] disableRelaunchOnLogin];
-    
-    
+
+
     gazeWindowController = [[LCGazeTrackerWindowController alloc] initWithScreen:[NSScreen mainScreen]];
      calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
-    
+
     // Local Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveCalibrationPoint:)
@@ -68,7 +68,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {  // set the right path so the classifiers can find their data
-    
+
     // Broadcast to other apps that we're up and running
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazeTrackerReady
                                                                    object:kGazeSenderID
@@ -109,11 +109,11 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
         PointTracker &tracker = gazeTracker->tracking->tracker;
         int closest = tracker.getClosestTracker(point);
         int lastPointId;
-        
+
         if(closest >= 0 && point.distance(tracker.currentpoints[closest]) <= 10) lastPointId = closest;
         else
             lastPointId = -1;
-        
+
         if(event == CV_EVENT_LBUTTONDOWN) {
             if(lastPointId >= 0) tracker.updatetracker(lastPointId, point);
             else {
@@ -130,7 +130,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 
 -(void)launchGazeTracking{
     if(!self.gazeTrackingRunning);
-        
+
     self.gazeTrackingRunning = YES;
         CFBundleRef mainBundle = CFBundleGetMainBundle();
         CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
@@ -142,16 +142,16 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
         CFRelease(resourcesURL);
         chdir(path);
         // end path settings
-        
+
         openGazerCocoa = new OGc::OGc(0, NULL, calibrationWindowController.hostView);
         int status = openGazerCocoa->loadClassifiers();
-        
+
         gazeTracker = openGazerCocoa->gazeTracker;
         calibrationWindowController.openGazerCocoaPointer = [NSValue valueWithPointer:openGazerCocoa];
 
-        
 
-        
+
+
 #ifdef CONFIGURATION_Debug_OpenCV
         NSLog(@"\n\n  FYI - OpenCV debug is enabled\n\n");
         cvNamedWindow(MAIN_WINDOW_NAME, CV_GUI_EXPANDED);
@@ -159,26 +159,26 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
         //    createButtons();
         cvSetMouseCallback(MAIN_WINDOW_NAME, mouseClick, NULL);
 #endif
-    
+
     gazeTracker->doprocessing();
-    
+
 #ifdef CONFIGURATION_Debug_OpenCV
         openGazerCocoa->drawFrame();
 #endif
-    
+
     // to declare an object Object* blah = &gazeTracker
-    
+
     GlobalManager *gm = [GlobalManager sharedGlobalManager];
     gm.calibrationFlag = NO;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0), ^{ // Run on a background thread - dispatch_get_main_queue()
         int count = 0;
         while(1) {
             gazeTracker->doprocessing();
-            
+
             #ifdef CONFIGURATION_Debug_OpenCV
                 openGazerCocoa->drawFrame();
             #endif
-            
+
             if (gm.calibrationFlag) {
                 gazeTracker->startCalibration();
                 gm.calibrationFlag = NO;
@@ -188,6 +188,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
             // maybe can replace this with [nano]sleep call or something.
             char c = cvWaitKey(33);
             if (count==100) {
+                NSLog(@"finding Eyes");
                 openGazerCocoa->findEyes();
             }
             count = count + 1;
@@ -244,13 +245,12 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 // Called when the user closes the calibration interface
 -(void) calibrationClosed:(NSNotification*)note{
     NSLog(@"Notification :: Calibration UI Closed");
-    
+
     // Close the Gaze Target window
     [gazeWindowController show:NO];
-    
     // Resign focus
     //[[NSApplication sharedApplication] hide:self];
-    
+
     // Send out a note that we've finished calibrating with the current status of the gaze tracker
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGrazeTrackerCalibrationEnded
                                                                    object:kGazeSenderID
