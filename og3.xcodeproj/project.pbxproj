@@ -159,6 +159,8 @@
 		AE1D9F27148F35D9009FB298 /* gazeTarget.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1D9F26148F35D9009FB298 /* gazeTarget.png */; };
 		AE1D9F2A149002EE009FB298 /* LCGazeTrackerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1D9F29149002EE009FB298 /* LCGazeTrackerWindowController.m */; };
 		AE1D9F2C14901374009FB298 /* GazeTrackerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE1D9F2B14901373009FB298 /* GazeTrackerWindow.xib */; };
+		AE301A03149698AB00BBA5FF /* LCCalibrationFaceTrackingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE301A02149698AB00BBA5FF /* LCCalibrationFaceTrackingView.m */; };
+		AE301A091496A2C900BBA5FF /* CaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE301A081496A2C800BBA5FF /* CaptureView.m */; };
 		AE55644114927BEF0036008D /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE55644014927BEF0036008D /* DDHotKeyCenter.m */; };
 		AE556443149280950036008D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE556442149280950036008D /* Carbon.framework */; };
 		AE815AAA14863FA6009E362E /* LCCalibrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE815A9A14863FA6009E362E /* LCCalibrationView.m */; };
@@ -375,6 +377,10 @@
 		AE1D9F28149002ED009FB298 /* LCGazeTrackerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCGazeTrackerWindowController.h; sourceTree = "<group>"; };
 		AE1D9F29149002EE009FB298 /* LCGazeTrackerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCGazeTrackerWindowController.m; sourceTree = "<group>"; };
 		AE1D9F2B14901373009FB298 /* GazeTrackerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GazeTrackerWindow.xib; sourceTree = "<group>"; };
+		AE301A01149698AB00BBA5FF /* LCCalibrationFaceTrackingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCalibrationFaceTrackingView.h; sourceTree = "<group>"; };
+		AE301A02149698AB00BBA5FF /* LCCalibrationFaceTrackingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCalibrationFaceTrackingView.m; sourceTree = "<group>"; };
+		AE301A071496A2BE00BBA5FF /* CaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureView.h; sourceTree = "<group>"; };
+		AE301A081496A2C800BBA5FF /* CaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureView.m; sourceTree = "<group>"; };
 		AE55643F14927BEF0036008D /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyCenter.h; path = DDHotKey/DDHotKeyCenter.h; sourceTree = "<group>"; };
 		AE55644014927BEF0036008D /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyCenter.m; path = DDHotKey/DDHotKeyCenter.m; sourceTree = "<group>"; };
 		AE556442149280950036008D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -677,8 +683,12 @@
 		AE815A9414863F50009E362E /* LCGazeFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				AE301A081496A2C800BBA5FF /* CaptureView.m */,
+				AE301A071496A2BE00BBA5FF /* CaptureView.h */,
 				AEEAA607148C44E20049271E /* LCCalibrationCameraView.h */,
 				AEEAA608148C44E20049271E /* LCCalibrationCameraView.mm */,
+				AE301A01149698AB00BBA5FF /* LCCalibrationFaceTrackingView.h */,
+				AE301A02149698AB00BBA5FF /* LCCalibrationFaceTrackingView.m */,
 				AE815A9914863FA6009E362E /* LCCalibrationView.h */,
 				AE815A9A14863FA6009E362E /* LCCalibrationView.m */,
 				AE815A9B14863FA6009E362E /* LCCalibrationWindowController.h */,
@@ -828,6 +838,8 @@
 				AEEAA609148C44E20049271E /* LCCalibrationCameraView.mm in Sources */,
 				AE1D9F2A149002EE009FB298 /* LCGazeTrackerWindowController.m in Sources */,
 				AE55644114927BEF0036008D /* DDHotKeyCenter.m in Sources */,
+				AE301A03149698AB00BBA5FF /* LCCalibrationFaceTrackingView.m in Sources */,
+				AE301A091496A2C900BBA5FF /* CaptureView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

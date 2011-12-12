@@ -3,7 +3,7 @@
 //  og3
 //
 //  Created by Ryan Kabir on 11/22/11.
-//  Copyright (c) 2011 Grow20 Corporation. All rights reserved.
+//  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
 //
 
 #include <opencv/cv.h>

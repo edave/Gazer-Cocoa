@@ -3,7 +3,7 @@
 //  og3
 //
 //  Created by Ryan Kabir on 11/22/11.
-//  Copyright (c) 2011 Grow20 Corporation. All rights reserved.
+//  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -46,16 +46,18 @@
                                                  name:kLCGazeCalibrationUIClosed
                                                object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(finishedCalibration:)
+                                                 name:kGrazeTrackerCalibrationEnded
+                                               object:kGazeSenderID];
+    
     // Inter process notifications (Distributed)
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(calibrationStarted:)
                                                  name:kGazeTrackerCalibrationStarted
                                                object:kGazeSenderID];
 
-     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(finishedCalibration:)
-                                                 name:kGrazeTrackerCalibrationEnded
-                                               object:kGazeSenderID];
+
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                         selector:@selector(terminationRequested:)
                                                             name:kGazeTrackerTerminateRequest
@@ -187,7 +189,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
             // which in turn makes the calibration dot animate at a more human speed.
             // maybe can replace this with [nano]sleep call or something.
             char c = cvWaitKey(33);
-            if (count==100) {
+            if (count==25) {
                 NSLog(@"finding Eyes");
                 openGazerCocoa->findEyes();
             }
@@ -208,7 +210,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 // [DAVE] This is a hack, doesn't support multiple re-calibration attempts
 -(void)showCalibration{
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-    [[calibrationWindowController window] makeKeyAndOrderFront:self];
+    [calibrationWindowController awakeFromNib];
 }
 
 #pragma mark - Notifications
@@ -221,12 +223,14 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
     calibrationPoint.x = point.x;
     calibrationPoint.y = point.y;
     [calibrationWindowController moveToNextPoint:calibrationPoint];
+    [gazeWindowController setHotspot:calibrationPoint];
 }
 
 // The calibration process has started
 -(void)calibrationStarted:(NSNotification*)note{
     NSLog(@"Notification :: Calibration Started");
     [gazeWindowController show:YES];
+    gazeWindowController.trackHotspot = YES;
 }
 
 // There was a request to show the calibration GUI and such
@@ -239,6 +243,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
 -(void)finishedCalibration:(NSNotification*)note{
     NSLog(@"Notification :: Calibration Finished");
     self.gazeTrackerStatus = kGazeTrackerCalibrated;
+    //gazeWindowController.trackHotspot = NO;
     [calibrationWindowController finishCalibration:self.gazeTrackerStatus];
 }
 

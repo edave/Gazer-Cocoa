@@ -3,7 +3,7 @@
 //  og3
 //
 //  Created by Ryan Kabir on 12/1/11.
-//  Copyright (c) 2011 Grow20 Corporation. All rights reserved.
+//  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
 //
 
 #ifndef og3_OGc_h

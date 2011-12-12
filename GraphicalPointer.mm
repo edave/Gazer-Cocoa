@@ -32,7 +32,7 @@ void WindowPointer::setPosition(int x, int y) {
 // [Dave] Is this the best place to fire off the CalibrationEnded notification? Seems
 // brittle, is there a better central place?
 void WindowPointer::hide() {
-    [[NSDistributedNotificationCenter defaultCenter] 
+    [[NSNotificationCenter defaultCenter] 
      postNotificationName:kGrazeTrackerCalibrationEnded
                    object:kGazeSenderID
                  userInfo:nil];

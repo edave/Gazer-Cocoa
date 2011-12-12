@@ -11,11 +11,17 @@
 
 @interface LCGazeTrackerWindowController : NSWindowController{
     CALayer* _gazeTargetLayer;
+    LCCalibrationPoint* _hotspotPoint;
+    LCGazePoint* _currentGazePoint;
+    float _screenDiagonal;
     NSScreen* _screen;
     BOOL _isActive;
+    BOOL _trackHotspot;
 }
 
 @property BOOL isActive;
+
+@property BOOL trackHotspot;
 
 // Init to cover a particular screen
 - (id)initWithScreen:(NSScreen*)screen;
@@ -32,6 +38,11 @@
 // Show the gaze estimation target
 -(void) show:(BOOL)show;
 
+// Used to adjust gaze estimation opacity
+-(void) setHotspot:(LCCalibrationPoint*) point;
+
+-(float)opacityFromHotspot;
+  
 // Notification to move the gaze estimation target
 -(void)moveGazeEstimationTarget:(NSNotification*)note;
 

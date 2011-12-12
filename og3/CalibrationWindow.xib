@@ -7,17 +7,8 @@
 		<string key="IBDocument.AppKitVersion">1138.23</string>
 		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string>com.apple.QTKitIBPlugin</string>
-			</object>
-			<object class="NSMutableArray" key="dict.values">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>1938</string>
-				<string>822</string>
-			</object>
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
+			<string key="NS.object.0">1938</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -25,7 +16,7 @@
 			<string>NSView</string>
 			<string>NSWindowTemplate</string>
 			<string>NSCustomObject</string>
-			<string>QTCaptureView</string>
+			<string>NSCustomView</string>
 			<string>NSButtonCell</string>
 			<string>NSButton</string>
 			<string>NSTextFieldCell</string>
@@ -33,7 +24,6 @@
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string>com.apple.QTKitIBPlugin</string>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.Metadata">
 			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
@@ -61,22 +51,22 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="369586975">
 					<reference key="NSNextResponder"/>
-					<int key="NSvFlags">256</int>
+					<int key="NSvFlags">292</int>
 					<string key="NSFrameSize">{150, 175}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView"/>
 					<string key="NSReuseIdentifierKey">_NS:207</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
-				<int key="NSWindowCollectionBehavior">10</int>
-				<bool key="NSWindowIsRestorable">YES</bool>
+				<int key="NSWindowCollectionBehavior">38</int>
+				<bool key="NSWindowIsRestorable">NO</bool>
 			</object>
 			<object class="NSWindowTemplate" id="300635358">
 				<int key="NSWindowStyleMask">17</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{167, 107}, {440, 432}}</string>
+				<string key="NSWindowRect">{{167, 107}, {440, 533}}</string>
 				<int key="NSWTFlags">-1535638528</int>
 				<string key="NSWindowTitle">Gaze Calibration</string>
 				<string key="NSWindowClass">NSPanel</string>
@@ -90,16 +80,19 @@
 						<object class="NSTextField" id="912401088">
 							<reference key="NSNextResponder" ref="1002453246"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{20, 345}, {389, 67}}</string>
+							<string key="NSFrame">{{17, 411}, {407, 102}}</string>
 							<reference key="NSSuperview" ref="1002453246"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="952242560"/>
+							<reference key="NSNextKeyView" ref="309620807"/>
 							<string key="NSReuseIdentifierKey">_NS:3944</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="523604301">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">4194304</int>
-								<string key="NSContents">We're going to calibrate the gaze tracking. To start with, adjust the camera so your face is visible.</string>
+								<string type="base64-UTF8" key="NSContents">V2UncmUgZ29pbmcgdG8gY2FsaWJyYXRlIHlvdXIgTWFjJ3MgY2FtZXJhIHRvIGZvbGxvdyB5b3VyIGdh
+emUuIFRvIGJlZ2luIHdpdGgsIGFkanVzdCB0aGUgY2FtZXJhIHNvIHlvdXIgZmFjZSBpcyB2aXNpYmxl
+LiBXZSdsbCB0aGVuIGF0dGVtcHQgdG8gYXV0b21hdGljYWxseSBmaW5kIHlvdXIgZXllcy4KClN0YXJ0
+IHRoZSBjYWxpYnJhdGlvbiBhbmQgZm9sbG93IHRoZSB5ZWxsb3cgZG90IHdpdGggeW91ciBleWVzLg</string>
 								<object class="NSFont" key="NSSupport" id="205917074">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">13</double>
@@ -120,24 +113,45 @@
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">controlTextColor</string>
-									<object class="NSColor" key="NSColor" id="217942699">
+									<object class="NSColor" key="NSColor">
 										<int key="NSColorSpace">3</int>
 										<bytes key="NSWhite">MAA</bytes>
 									</object>
 								</object>
 							</object>
 						</object>
+						<object class="NSTextField" id="712985662">
+							<reference key="NSNextResponder" ref="1002453246"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{26, 59}, {389, 54}}</string>
+							<reference key="NSSuperview" ref="1002453246"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="661512253"/>
+							<string key="NSReuseIdentifierKey">_NS:3944</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="577733369">
+								<int key="NSCellFlags">67239424</int>
+								<int key="NSCellFlags2">4194304</int>
+								<string type="base64-UTF8" key="NSContents">V2hhdCBtYWtlcyBhIGdvb2QgY2FsaWJyYXRpb24/CuKAoiBLZWVwIHlvdXIgaGVhZCBzdGlsbCB3aGls
+ZSBjYWxpYnJhdGluZwrigKIgTWFrZSBzdXJlIHlvdXIgZmFjZSBpcyB3ZWxsIGxpdA</string>
+								<reference key="NSSupport" ref="205917074"/>
+								<string key="NSCellIdentifier">_NS:3944</string>
+								<reference key="NSControlView" ref="712985662"/>
+								<reference key="NSBackgroundColor" ref="163841051"/>
+								<reference key="NSTextColor" ref="691131052"/>
+							</object>
+						</object>
 						<object class="NSButton" id="661512253">
 							<reference key="NSNextResponder" ref="1002453246"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{154, 19}, {132, 23}}</string>
+							<string key="NSFrame">{{148, 29}, {145, 23}}</string>
 							<reference key="NSSuperview" ref="1002453246"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:2466</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="667875973">
-								<int key="NSCellFlags">-2080244224</int>
+								<int key="NSCellFlags">-1543373312</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">Start Calibration</string>
 								<reference key="NSSupport" ref="205917074"/>
@@ -151,25 +165,53 @@
 								<int key="NSPeriodicInterval">75</int>
 							</object>
 						</object>
-						<object class="QTCaptureView" id="952242560">
+						<object class="NSCustomView" id="309620807">
 							<reference key="NSNextResponder" ref="1002453246"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{20, 66}, {400, 300}}</string>
+							<string key="NSFrame">{{20, 121}, {400, 300}}</string>
 							<reference key="NSSuperview" ref="1002453246"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="661512253"/>
-							<string key="NSReuseIdentifierKey">_NS:67</string>
-							<reference key="kQTCaptureViewCoderFillColor" ref="217942699"/>
-							<bool key="kQTCaptureViewCoderPreservesAspectRatio">YES</bool>
+							<reference key="NSNextKeyView" ref="726203281"/>
+							<string key="NSReuseIdentifierKey">_NS:1192</string>
+							<string key="NSClassName">CaptureView</string>
+						</object>
+						<object class="NSCustomView" id="726203281">
+							<reference key="NSNextResponder" ref="1002453246"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{20, 121}, {400, 300}}</string>
+							<reference key="NSSuperview" ref="1002453246"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="712985662"/>
+							<string key="NSReuseIdentifierKey">_NS:1192</string>
+							<string key="NSClassName">LCCalibrationFaceTrackingView</string>
+						</object>
+						<object class="NSTextField" id="815961223">
+							<reference key="NSNextResponder" ref="1002453246"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{149, 11}, {142, 17}}</string>
+							<reference key="NSSuperview" ref="1002453246"/>
+							<reference key="NSWindow"/>
+							<string key="NSReuseIdentifierKey">_NS:3944</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="30334027">
+								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags2">272630784</int>
+								<string key="NSContents">Detecting your eyes...</string>
+								<reference key="NSSupport" ref="205917074"/>
+								<string key="NSCellIdentifier">_NS:3944</string>
+								<reference key="NSControlView" ref="815961223"/>
+								<reference key="NSBackgroundColor" ref="163841051"/>
+								<reference key="NSTextColor" ref="691131052"/>
+							</object>
 						</object>
 					</object>
-					<string key="NSFrameSize">{440, 432}</string>
+					<string key="NSFrameSize">{440, 533}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="912401088"/>
 					<string key="NSReuseIdentifierKey">_NS:207</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<int key="NSWindowCollectionBehavior">64</int>
 				<bool key="NSWindowIsRestorable">NO</bool>
@@ -184,7 +226,7 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="377172968">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -193,6 +235,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{17, 42}, {250, 58}}</string>
 							<reference key="NSSuperview" ref="377172968"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="219714421"/>
 							<string key="NSReuseIdentifierKey">_NS:360</string>
 							<string key="NSAntiCompressionPriority">{250, 750}</string>
@@ -217,6 +260,8 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{158, 10}, {106, 25}}</string>
 							<reference key="NSSuperview" ref="377172968"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:2466</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="222085894">
@@ -236,10 +281,12 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{276, 120}</string>
+					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="234031573"/>
 					<string key="NSReuseIdentifierKey">_NS:207</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">NO</bool>
 			</object>
@@ -253,7 +300,7 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="115151594">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -262,6 +309,8 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{148, 18}, {116, 25}}</string>
 							<reference key="NSSuperview" ref="115151594"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:287</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="369741819">
@@ -284,6 +333,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 18}, {116, 25}}</string>
 							<reference key="NSSuperview" ref="115151594"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1065886819"/>
 							<string key="NSReuseIdentifierKey">_NS:287</string>
 							<bool key="NSEnabled">YES</bool>
@@ -307,6 +357,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{17, 64}, {250, 51}}</string>
 							<reference key="NSSuperview" ref="115151594"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="881708656"/>
 							<string key="NSReuseIdentifierKey">_NS:360</string>
 							<string key="NSAntiCompressionPriority">{250, 750}</string>
@@ -324,10 +375,12 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{276, 135}</string>
+					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="369400736"/>
 					<string key="NSReuseIdentifierKey">_NS:207</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">NO</bool>
 			</object>
@@ -393,14 +446,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">mCaptureView</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="952242560"/>
-					</object>
-					<int key="connectionID">34</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">failureWindow</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="989369453"/>
@@ -422,6 +467,30 @@
 						<reference key="destination" ref="1065886819"/>
 					</object>
 					<int key="connectionID">47</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">faceTrackingView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="726203281"/>
+					</object>
+					<int key="connectionID">51</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">capureView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="309620807"/>
+					</object>
+					<int key="connectionID">53</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">faceTrackingTextField</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="815961223"/>
+					</object>
+					<int key="connectionID">56</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -513,9 +582,12 @@
 						<reference key="object" ref="1002453246"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="712985662"/>
 							<reference ref="912401088"/>
-							<reference ref="952242560"/>
+							<reference ref="726203281"/>
+							<reference ref="309620807"/>
 							<reference ref="661512253"/>
+							<reference ref="815961223"/>
 						</object>
 						<reference key="parent" ref="300635358"/>
 					</object>
@@ -595,11 +667,6 @@
 						<reference key="parent" ref="219714421"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">33</int>
-						<reference key="object" ref="952242560"/>
-						<reference key="parent" ref="1002453246"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">35</int>
 						<reference key="object" ref="989369453"/>
 						<object class="NSMutableArray" key="children">
@@ -661,6 +728,47 @@
 						<reference key="object" ref="100586629"/>
 						<reference key="parent" ref="881708656"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">48</int>
+						<reference key="object" ref="712985662"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="577733369"/>
+						</object>
+						<reference key="parent" ref="1002453246"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">49</int>
+						<reference key="object" ref="577733369"/>
+						<reference key="parent" ref="712985662"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">50</int>
+						<reference key="object" ref="726203281"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
+						<reference key="parent" ref="1002453246"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">52</int>
+						<reference key="object" ref="309620807"/>
+						<reference key="parent" ref="1002453246"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">54</int>
+						<reference key="object" ref="815961223"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="30334027"/>
+						</object>
+						<reference key="parent" ref="1002453246"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">55</int>
+						<reference key="object" ref="30334027"/>
+						<reference key="parent" ref="815961223"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -682,10 +790,10 @@
 					<string>25.IBPluginDependency</string>
 					<string>26.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
+					<string>3.IBNSWindowAutoPositionCentersHorizontal</string>
+					<string>3.IBNSWindowAutoPositionCentersVertical</string>
 					<string>3.IBPluginDependency</string>
 					<string>3.NSWindowTemplate.visibleAtLaunch</string>
-					<string>33.CustomClassName</string>
-					<string>33.IBPluginDependency</string>
 					<string>35.IBPluginDependency</string>
 					<string>35.NSWindowTemplate.visibleAtLaunch</string>
 					<string>36.IBPluginDependency</string>
@@ -696,6 +804,12 @@
 					<string>40.IBPluginDependency</string>
 					<string>41.IBPluginDependency</string>
 					<string>42.IBPluginDependency</string>
+					<string>48.IBPluginDependency</string>
+					<string>49.IBPluginDependency</string>
+					<string>50.IBPluginDependency</string>
+					<string>52.IBPluginDependency</string>
+					<string>54.IBPluginDependency</string>
+					<string>55.IBPluginDependency</string>
 					<string>9.IBPluginDependency</string>
 					<string>9.NSWindowTemplate.visibleAtLaunch</string>
 				</object>
@@ -716,12 +830,18 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<boolean value="YES"/>
+					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>LCCalibrationCameraView</string>
-					<string>com.apple.QTKitIBPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -746,17 +866,25 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">47</int>
+			<int key="maxID">56</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">LCCalibrationCameraView</string>
-					<string key="superclassName">QTCaptureView</string>
+					<string key="className">CaptureView</string>
+					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/LCCalibrationCameraView.h</string>
+						<string key="minorKey">./Classes/CaptureView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">LCCalibrationFaceTrackingView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/LCCalibrationFaceTrackingView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -798,19 +926,23 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>capureView</string>
+							<string>faceTrackingTextField</string>
+							<string>faceTrackingView</string>
 							<string>failureWindow</string>
 							<string>hostView</string>
 							<string>introWindow</string>
-							<string>mCaptureView</string>
 							<string>startButton</string>
 							<string>successWindow</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>CaptureView</string>
+							<string>NSTextField</string>
+							<string>LCCalibrationFaceTrackingView</string>
 							<string>NSWindow</string>
 							<string>NSView</string>
 							<string>NSWindow</string>
-							<string>LCCalibrationCameraView</string>
 							<string>NSButton</string>
 							<string>NSWindow</string>
 						</object>
@@ -819,15 +951,29 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>capureView</string>
+							<string>faceTrackingTextField</string>
+							<string>faceTrackingView</string>
 							<string>failureWindow</string>
 							<string>hostView</string>
 							<string>introWindow</string>
-							<string>mCaptureView</string>
 							<string>startButton</string>
 							<string>successWindow</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">capureView</string>
+								<string key="candidateClassName">CaptureView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">faceTrackingTextField</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">faceTrackingView</string>
+								<string key="candidateClassName">LCCalibrationFaceTrackingView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">failureWindow</string>
 								<string key="candidateClassName">NSWindow</string>
@@ -839,10 +985,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">introWindow</string>
 								<string key="candidateClassName">NSWindow</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">mCaptureView</string>
-								<string key="candidateClassName">LCCalibrationCameraView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">startButton</string>

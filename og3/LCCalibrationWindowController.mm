@@ -10,6 +10,7 @@
 #import "LCGazeTracker.h"
 #import "LCDummyGazeTracker.h"
 #import "LCCalibrationCameraView.h"
+#import "LCCalibrationFaceTrackingView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GlobalManager.h"
 
@@ -36,6 +37,8 @@
 
     [self setupHostView];
     //NSLog(@"Calibration Window Controller :: awakeFromNib");
+    
+     
     NSPanel *panel = (id)[self window];
     [panel setAcceptsMouseMovedEvents:NO];
     [panel setStyleMask:[panel styleMask] ^ NSBorderlessWindowMask];
@@ -49,6 +52,7 @@
 
     // Resize panel
     NSRect screenFrame = [_screen frame];
+    [panel setFrameOrigin:screenFrame.origin];
     [panel setFrame:screenFrame display:NO];
     [panel setMinSize:screenFrame.size];
     [panel setMaxSize:screenFrame.size];
@@ -58,69 +62,31 @@
     _targetLayer = [self setupFocusTargetLayer:hostView.layer];
    // _gazeTargetLayer = [self setupGazeTargetLayer:hostView.layer];
     
-    [self setupVideoCapture];
+    //[self setupVideoCapture];
 
+    faceTrackingView.cameraHeight = 480.0f;
+    faceTrackingView.cameraWidth = 640.0f;
+    
     [self centerAndShowWindow:introWindow];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector: @selector(applicationWillResignActive:)
                                                  name: NSApplicationWillResignActiveNotification
                                                object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(enableCalibration:)
+                                                 name:@"com.labcogs.ogc.enableCalibration"
+                                               object:nil];
 }
 
 -(void) setOpenGazerCocoaPointer:(NSValue*)pointerValue{
     [openGazerCocoaPointer release];
     openGazerCocoaPointer = pointerValue;
     [openGazerCocoaPointer retain];
-    if(mCaptureView != nil){
-        mCaptureView.openGazerCocoaPointer = openGazerCocoaPointer;
-    }
+    //if(mCaptureView != nil){
+    //    mCaptureView.openGazerCocoaPointer = //openGazerCocoaPointer;
+    //}
 }
-
-- (void) setupVideoCapture{
-    // Create the capture session
-	mCaptureSession = [[QTCaptureSession alloc] init];
-
-    // Connect inputs and outputs to the session
-	BOOL success = NO;
-	NSError *error;
-
-    // Find a video device
-    QTCaptureDevice *videoDevice = [QTCaptureDevice defaultInputDeviceWithMediaType:QTMediaTypeVideo];
-    success = [videoDevice open:&error];
-
-
-    // If a video input device can't be found or opened, try to find and open a muxed input device
-	if (!success) {
-		videoDevice = [QTCaptureDevice defaultInputDeviceWithMediaType:QTMediaTypeMuxed];
-		success = [videoDevice open:&error];
-
-    }
-
-    if (!success) {
-        videoDevice = nil;
-        // Handle error
-
-    }
-
-    if (videoDevice) {
-        //Add the video device to the session as a device input
-		mCaptureVideoDeviceInput = [[QTCaptureDeviceInput alloc] initWithDevice:videoDevice];
-		success = [mCaptureSession addInput:mCaptureVideoDeviceInput error:&error];
-		if (!success) {
-			// Handle error
-		}
-
-        // Associate the capture view in the UI with the session
-        [mCaptureView setCaptureSession:mCaptureSession];
-        mCaptureView.cameraHeight = 480.0f;
-        mCaptureView.cameraWidth = 640.0f;
-        [mCaptureSession startRunning];
-	}
-}
-
-
 
 - (void) closeWindows{
     [[NSNotificationCenter defaultCenter] 
@@ -150,6 +116,11 @@
     [self closeWindows];
 }
 
+
+-(void)enableCalibration:(NSNotification*)note{
+    [startButton setEnabled:YES];
+    [faceTrackingTextField setStringValue:@"Eyes Detected!"];
+}
 
 - (IBAction)startCalibrationAction:(id)sender{
     NSLog(@"Start Calibration Action");
@@ -215,7 +186,7 @@
 -(void) beginCalibration:(CGDirectDisplayID)displayID{
     NSLog(@"Begin Calibration");
     currentDisplayID = displayID;
-    _trackerDelegate = [[LCDummyGazeTracker alloc] init];
+    //_trackerDelegate = [[LCDummyGazeTracker alloc] init];
     if(_targetLayer.hidden){
         _targetLayer.hidden = NO;
     }

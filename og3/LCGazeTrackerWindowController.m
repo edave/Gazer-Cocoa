@@ -12,11 +12,17 @@
 @implementation LCGazeTrackerWindowController
 
 @synthesize isActive = _isActive;
+@synthesize trackHotspot = _trackHotspot;
 
 - (id)initWithScreen:(NSScreen*)screen{
     self = [super initWithWindowNibName:@"GazeTrackerWindow"];
     if (self) {
         _screen = screen;
+        NSRect screenFrame = [screen frame];
+        _screenDiagonal = (pow(screenFrame.size.height,2) + pow(screenFrame.size.width,2)) / 2.0f;
+        _hotspotPoint = [[LCCalibrationPoint alloc] init];
+        _hotspotPoint.x = 0.0f;
+        _hotspotPoint.y = 0.0f;
         _isActive = NO;
     }
     
@@ -66,6 +72,11 @@
     [CATransaction begin];
     [CATransaction setValue:[NSNumber numberWithFloat:0.1f] forKey:kCATransactionAnimationDuration];
     _gazeTargetLayer.position = CGPointMake(point.x, point.y);
+    if(_trackHotspot){
+        _gazeTargetLayer.opacity = [self opacityFromHotspot];
+    }else{
+        _gazeTargetLayer.opacity = 1.0;
+    }
     [CATransaction commit];
 }
 
@@ -94,7 +105,25 @@
     NSDictionary* dict = (NSDictionary*)[note userInfo];
     point.x = [(NSNumber*)[dict objectForKey:kGazePointXKey] floatValue];
     point.y = [(NSNumber*)[dict objectForKey:kGazePointYKey] floatValue];
-    [self moveGazeTarget:point];
+    if(point.x != NAN && point.y != NAN){
+        _currentGazePoint = point;
+        [self moveGazeTarget:point];
+    }
+}
+
+-(float)opacityFromHotspot{
+    float distRatio = (pow(_hotspotPoint.x - _currentGazePoint.x, 2) + pow(_hotspotPoint.y - _currentGazePoint.y, 2)) / _screenDiagonal;
+    return 0.1f + distRatio * 0.5;
+}
+
+-(void) setHotspot:(LCCalibrationPoint*) point{
+    _hotspotPoint = point;
+    if(_trackHotspot){
+        [CATransaction begin];
+        [CATransaction setValue:[NSNumber numberWithFloat:0.1f] forKey:kCATransactionAnimationDuration];
+        _gazeTargetLayer.opacity = [self opacityFromHotspot];
+        [CATransaction commit];
+    }
 }
 
 

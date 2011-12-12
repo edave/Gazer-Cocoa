@@ -9,9 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import <QTKit/QTkit.h>
 #import "LCGazeCalibratorInterface.h"
+#import "CaptureView.h"
 #import "ogc.h"
 
+
 @class LCCalibrationCameraView;
+@class LCCalibrationFaceTrackingView;
 
 @interface LCCalibrationWindowController : NSWindowController<NSWindowDelegate, LCGazeCalibratorInterface>{
     
@@ -22,6 +25,8 @@
     IBOutlet NSWindow* successWindow;
     IBOutlet NSWindow* failureWindow;
     
+    IBOutlet NSTextField* faceTrackingTextField;
+    
     NSValue *openGazerCocoaPointer;
     void *gazeTrackerPointer;
     
@@ -30,7 +35,8 @@
     CALayer* _targetLayer;
     NSScreen* _screen;
     
-    IBOutlet LCCalibrationCameraView *mCaptureView;
+     IBOutlet LCCalibrationFaceTrackingView *faceTrackingView;
+    IBOutlet CaptureView* capureView;
     
     QTCaptureSession            *mCaptureSession;
     QTCaptureDeviceInput        *mCaptureVideoDeviceInput;
