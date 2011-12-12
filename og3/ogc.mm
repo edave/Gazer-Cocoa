@@ -203,7 +203,7 @@ void OGc::findEyes() {
                                                                            userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithRect:faceRect], @"kFaceRect",
                                                                                      [NSValue valueWithRect:eyeLeft],@"kEyeLeft",
                                                 [NSValue valueWithRect:eyeRight], @"kEyeRight", nil]];
-            [queue enqueueNotification:faceNotification postingStyle: NSPostNow];
+            [queue enqueueNotification:faceNotification postingStyle: NSPostASAP];
             //[[NSNotificationCenter defaultCenter] postNotification:faceNotification];
             // just for debug
             //imshow( window_name, frame );
