@@ -30,8 +30,17 @@
         self.runHeadless = NO; // Launch the GUI on start
     #endif
 
-    [[NSApplication sharedApplication] disableRelaunchOnLogin];
-
+    
+    SInt32 OSXversionMajor, OSXversionMinor;
+    if(Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) == noErr && Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) == noErr)
+    {
+        if(OSXversionMajor == 10 && OSXversionMinor >= 7)
+        {
+            [[NSApplication sharedApplication] disableRelaunchOnLogin];
+        }else{
+           
+        }
+    }
 
     gazeWindowController = [[LCGazeTrackerWindowController alloc] initWithScreen:[NSScreen mainScreen]];
      calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
