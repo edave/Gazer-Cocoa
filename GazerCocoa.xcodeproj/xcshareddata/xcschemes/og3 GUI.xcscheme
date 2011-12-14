@@ -15,8 +15,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7212EA3D147C50C700CB2A8D"
                BuildableName = "og3.app"
-               BlueprintName = "og3"
-               ReferencedContainer = "container:og3.xcodeproj">
+               BlueprintName = "GazerCocoa"
+               ReferencedContainer = "container:GazerCocoa.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,8 +33,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7212EA3D147C50C700CB2A8D"
             BuildableName = "og3.app"
-            BlueprintName = "og3"
-            ReferencedContainer = "container:og3.xcodeproj">
+            BlueprintName = "GazerCocoa"
+            ReferencedContainer = "container:GazerCocoa.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -43,7 +43,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Debug GUI"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
@@ -51,8 +51,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7212EA3D147C50C700CB2A8D"
             BuildableName = "og3.app"
-            BlueprintName = "og3"
-            ReferencedContainer = "container:og3.xcodeproj">
+            BlueprintName = "GazerCocoa"
+            ReferencedContainer = "container:GazerCocoa.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,8 +69,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7212EA3D147C50C700CB2A8D"
             BuildableName = "og3.app"
-            BlueprintName = "og3"
-            ReferencedContainer = "container:og3.xcodeproj">
+            BlueprintName = "GazerCocoa"
+            ReferencedContainer = "container:GazerCocoa.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

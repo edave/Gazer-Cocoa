@@ -261,10 +261,10 @@
 		7212EA45147C50C700CB2A8D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7212EA46147C50C700CB2A8D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7212EA47147C50C700CB2A8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		7212EA4A147C50C700CB2A8D /* og3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "og3-Info.plist"; sourceTree = "<group>"; };
+		7212EA4A147C50C700CB2A8D /* GazerCocoa-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GazerCocoa-Info.plist"; sourceTree = "<group>"; };
 		7212EA4C147C50C700CB2A8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7212EA4E147C50C700CB2A8D /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		7212EA50147C50C700CB2A8D /* og3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "og3-Prefix.pch"; sourceTree = "<group>"; };
+		7212EA50147C50C700CB2A8D /* GazerCocoa-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GazerCocoa-Prefix.pch"; sourceTree = "<group>"; };
 		7212EA52147C50C700CB2A8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		7212EA54147C50C700CB2A8D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7212EA55147C50C700CB2A8D /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -480,10 +480,9 @@
 		7212EA33147C50C600CB2A8D = {
 			isa = PBXGroup;
 			children = (
-				AE556442149280950036008D /* Carbon.framework */,
 				7212EAC6147C516500CB2A8D /* opengazer */,
 				7212EA5F147C50DF00CB2A8D /* dylibs */,
-				7212EA48147C50C700CB2A8D /* og3 */,
+				7212EA48147C50C700CB2A8D /* GazerCocoa */,
 				729A599F14874C78006155E1 /* Resources */,
 				7212EA41147C50C700CB2A8D /* Frameworks */,
 				7212EA3F147C50C700CB2A8D /* Products */,
@@ -501,6 +500,7 @@
 		7212EA41147C50C700CB2A8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE556442149280950036008D /* Carbon.framework */,
 				AE55643D14927B820036008D /* DDHotKey */,
 				7212EA42147C50C700CB2A8D /* Cocoa.framework */,
 				7212EA44147C50C700CB2A8D /* Other Frameworks */,
@@ -520,7 +520,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		7212EA48147C50C700CB2A8D /* og3 */ = {
+		7212EA48147C50C700CB2A8D /* GazerCocoa */ = {
 			isa = PBXGroup;
 			children = (
 				AE815A9414863F50009E362E /* LCGazeFoundation */,
@@ -529,6 +529,7 @@
 				7212EA57147C50C700CB2A8D /* MainMenu.xib */,
 				7212EA49147C50C700CB2A8D /* Supporting Files */,
 			);
+			name = GazerCocoa;
 			path = og3;
 			sourceTree = "<group>";
 		};
@@ -536,10 +537,10 @@
 			isa = PBXGroup;
 			children = (
 				7204E6721489646E00D482B9 /* SynthesizeSingleton.h */,
-				7212EA4A147C50C700CB2A8D /* og3-Info.plist */,
+				7212EA4A147C50C700CB2A8D /* GazerCocoa-Info.plist */,
 				7212EA4B147C50C700CB2A8D /* InfoPlist.strings */,
 				7212EA4E147C50C700CB2A8D /* main.mm */,
-				7212EA50147C50C700CB2A8D /* og3-Prefix.pch */,
+				7212EA50147C50C700CB2A8D /* GazerCocoa-Prefix.pch */,
 				7212EA51147C50C700CB2A8D /* Credits.rtf */,
 				729A59B114880FDC006155E1 /* ogc.h */,
 				729A59B214880FF3006155E1 /* ogc.mm */,
@@ -717,9 +718,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7212EA3D147C50C700CB2A8D /* og3 */ = {
+		7212EA3D147C50C700CB2A8D /* GazerCocoa */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7212EA5C147C50C700CB2A8D /* Build configuration list for PBXNativeTarget "og3" */;
+			buildConfigurationList = 7212EA5C147C50C700CB2A8D /* Build configuration list for PBXNativeTarget "GazerCocoa" */;
 			buildPhases = (
 				7212EA3A147C50C700CB2A8D /* Sources */,
 				7212EA3B147C50C700CB2A8D /* Frameworks */,
@@ -732,7 +733,7 @@
 			);
 			dependencies = (
 			);
-			name = og3;
+			name = GazerCocoa;
 			productName = og3;
 			productReference = 7212EA3E147C50C700CB2A8D /* og3.app */;
 			productType = "com.apple.product-type.application";
@@ -746,7 +747,7 @@
 				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Lab Cogs Co.";
 			};
-			buildConfigurationList = 7212EA38147C50C600CB2A8D /* Build configuration list for PBXProject "og3" */;
+			buildConfigurationList = 7212EA38147C50C600CB2A8D /* Build configuration list for PBXProject "GazerCocoa" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -758,7 +759,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7212EA3D147C50C700CB2A8D /* og3 */,
+				7212EA3D147C50C700CB2A8D /* GazerCocoa */,
 			);
 		};
 /* End PBXProject section */
@@ -928,7 +929,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "og3/og3-Prefix.pch";
+				GCC_PREFIX_HEADER = "og3/GazerCocoa-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = CONFIGURATION_Debug;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -940,14 +941,14 @@
 					/opt/local/include/vxl,
 					/opt/local/include,
 				);
-				INFOPLIST_FILE = "og3/og3-Info.plist";
+				INFOPLIST_FILE = "og3/GazerCocoa-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-lstdc++";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GazerCocoa;
 				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -961,7 +962,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "og3/og3-Prefix.pch";
+				GCC_PREFIX_HEADER = "og3/GazerCocoa-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = CONFIGURATION_Release;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -995,14 +996,14 @@
 					/opt/local/include/vxl,
 					/opt/local/include,
 				);
-				INFOPLIST_FILE = "og3/og3-Info.plist";
+				INFOPLIST_FILE = "og3/GazerCocoa-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-lstdc++";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GazerCocoa;
 				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1043,7 +1044,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "og3/og3-Prefix.pch";
+				GCC_PREFIX_HEADER = "og3/GazerCocoa-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CONFIGURATION_Debug_OpenCV,
 					CONFIGURATION_Debug_GUI,
@@ -1059,14 +1060,14 @@
 					/opt/local/include/vxl,
 					/opt/local/include,
 				);
-				INFOPLIST_FILE = "og3/og3-Info.plist";
+				INFOPLIST_FILE = "og3/GazerCocoa-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-lstdc++";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GazerCocoa;
 				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1107,7 +1108,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "og3/og3-Prefix.pch";
+				GCC_PREFIX_HEADER = "og3/GazerCocoa-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					CONFIGURATION_Debug_GUI,
 					CONFIGURATION_Debug,
@@ -1122,14 +1123,14 @@
 					/opt/local/include/vxl,
 					/opt/local/include,
 				);
-				INFOPLIST_FILE = "og3/og3-Info.plist";
+				INFOPLIST_FILE = "og3/GazerCocoa-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-lstdc++";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GazerCocoa;
 				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1138,7 +1139,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7212EA38147C50C600CB2A8D /* Build configuration list for PBXProject "og3" */ = {
+		7212EA38147C50C600CB2A8D /* Build configuration list for PBXProject "GazerCocoa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7212EA5A147C50C700CB2A8D /* Debug */,
@@ -1149,7 +1150,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7212EA5C147C50C700CB2A8D /* Build configuration list for PBXNativeTarget "og3" */ = {
+		7212EA5C147C50C700CB2A8D /* Build configuration list for PBXNativeTarget "GazerCocoa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7212EA5D147C50C700CB2A8D /* Debug */,

@@ -25,6 +25,7 @@
     self.gazeTrackerStatus = kGazeTrackerUncalibrated;
     // Whether we should launch the GUI on start
     self.runHeadless = YES; // No, run in background
+    
     #ifdef CONFIGURATION_Debug_GUI
     NSLog(@"Launching with GUI");
         self.runHeadless = NO; // Launch the GUI on start
@@ -41,6 +42,8 @@
            
         }
     }
+    
+    [NSApp setPresentationOptions:(NSApplicationPresentationAutoHideMenuBar + NSApplicationPresentationAutoHideDock)];
 
     gazeWindowController = [[LCGazeTrackerWindowController alloc] initWithScreen:[NSScreen mainScreen]];
      calibrationWindowController = [[LCCalibrationWindowController alloc] initWithWindowNibName:@"CalibrationWindow"];
