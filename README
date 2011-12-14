@@ -1,12 +1,36 @@
 GazerCocoa :: Bolt-on gaze tracking for OS X
 =================================================
 
+GazerCocoa is an OS X service for easily incorporating gaze tracking into any mac application with only a few lines of code. GazerCocoa wants to employ the unused webcam sitting on the top of every Mac's display.
 
+Gaze tracking is a quick, low-precision and low-cost method to determine where a user is focused. It's the cheaper cousin of eye tracking, which strives for precision with expensive, high quality equipment.
+
+Common Questions:
+
+_But don't I want eye tracking?_
+
+Probably not.
+
+Are you running a controlled experiment to determine which apple someone is looking at in a photograph of a tree? Then yes, you would want eye tracking. Otherwise, gaze tracking probably meets your requirements.
+
+_So now I can control my computer with my eyes instead of my mouse?_
+
+Probably not.
+
+Although eye/gaze tracking has been used as a replacement for the mouse, it requires extensive user training and is usually not worth the hassle. Unless you have the ability to move objects with your mind, or tell someone that these aren't the droids they're looking for, your gaze mostly represents where your focus is.
+
+The point is, there's a lot of cool things you can do with passive gaze/face tracking. That's why we want this to be open source, to see how people push the boundaries.
+
+Contributors
+------------------------------
+* [rkabir](https://github.com/rkabir), [LabCogs](http://www.labcogs.com)
+* [edave](https://github.com/edave), [LabCogs](http://www.labcogs.com)
+* Based on [OpenGazer](https://github.com/OpenGazer/OpenGazer)
 
 How to Use
 =================================================
 
-GazerCocoa runs as a separate process in the background. You are responsible for starting and terminating GazerCocoa as necessary. Communication with GazerCocoa happens via the Cocoa's NSDistributedNotificationCenter (see [Notification Center](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Notifications/Articles/NotificationCenters.html) ) using a combination of pre-defined keys and NSDictionaries
+GazerCocoa runs as a separate process in the background. You are responsible for starting and terminating GazerCocoa as necessary (see the wiki for examples of doing this). Communication with GazerCocoa happens via the Cocoa's NSDistributedNotificationCenter (see [Notification Center](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Notifications/Articles/NotificationCenters.html) ) using a combination of pre-defined keys and NSDictionaries
 
 For example, to tell GazerCocoa you want to calibrate, you would use:
 
@@ -68,6 +92,12 @@ In the GazerCocoa XCode project, you will need to add paths to the Header Search
 For example, using these install instructions, they might look like this:
 `/opt/local/include/vxl/vcl /opt/local/include/boost /opt/local/include/vxl/core/vnl /opt/local/include/vxl/core /opt/local/include/vxl /opt/local/include
 `
+
+GazerCocoa has four different schemas you can build:
+* GazerCocoa Debug - This is the normal way GazerCocoa runs, as a background process but with the standard Debug options set for a XCode process. It starts up and then waits for notifications to display the calibration UI. Useful for debugging and testing with other applications.
+* GazerCocoa GUI - GazerCocoa starts normally, but then immediately launches the calibration UI. Useful for development at a high level.
+* GazerCocoa OpenCV - This is a derivative of the GUI schema, but also displays additional windows/logs useful for debugging OpenCV. Useful for low-level development.
+* GazerCocoa Release - The normal way GazerCocoa runs, as a background process, but optimized. Use this for releasing with your applications.
 
 License
 =================================================
