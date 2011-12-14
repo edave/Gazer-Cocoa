@@ -1,12 +1,12 @@
 //
-//  OGc.mm
-//  og3
+//  GazerCocoaBridge.mm
+//  com.labcogs.gazercocoa
 //
 //  Created by Ryan Kabir on 12/1/11.
 //  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
 //
 
-#import "OGc.h"
+#import "GazerCocoaBridge.h"
 #import <Cocoa/Cocoa.h>
 
 using namespace std;
@@ -19,13 +19,13 @@ static vector<shared_ptr<AbstractStore> > getStores(NSView *theView) {
     stores.push_back(shared_ptr<AbstractStore>(new StreamStore(cout)));
     return stores;
 }
-OGc *g;
-OGc::OGc(int argc, char **argv, NSView *view):
+GazerCocoaBridge *g;
+GazerCocoaBridge::GazerCocoaBridge(int argc, char **argv, NSView *view):
   gazeTracker(new MainGazeTracker(argc, argv, getStores(view), view))
     {
 }
 
-int OGc::loadClassifiers() {
+int GazerCocoaBridge::loadClassifiers() {
     String face_cascade_name = "haarcascade_frontalface_alt.xml";
     String eyes_cascade_name = "haarcascade_eye_tree_eyeglasses.xml";
     string window_name = "Capture - Face detection";
@@ -37,43 +37,43 @@ int OGc::loadClassifiers() {
     return 0;
 }
 
-void OGc::startCalibration() {
+void GazerCocoaBridge::startCalibration() {
     gazeTracker->startCalibration();
 }
 
 // Redundant work to wrap the buttons
 // TODO: Abstract this using macros
-void OGc::calibrateCallbackWrapper(int state, void*) {
+void GazerCocoaBridge::calibrateCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->startCalibration();
     }
 }
 
-void OGc::testCallbackWrapper(int state, void*) {
+void GazerCocoaBridge::testCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->startTesting();
     }
 }
 
-void OGc::savePointsCallbackWrapper(int state, void*) {
+void GazerCocoaBridge::savePointsCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->savepoints();
     }
 }
 
-void OGc::loadPointsCallbackWrapper(int state, void*) {
+void GazerCocoaBridge::loadPointsCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->loadpoints();
     }
 }
 
-void OGc::clearPointsCallbackWrapper(int state, void*) {
+void GazerCocoaBridge::clearPointsCallbackWrapper(int state, void*) {
     if(state == -1) {       // for push buttons
         gazeTracker->clearpoints();
     }
 }
 
-void OGc::drawFrame() {
+void GazerCocoaBridge::drawFrame() {
     cvShowImage(MAIN_WINDOW_NAME, gazeTracker->canvas.get());
 }
 
@@ -85,7 +85,7 @@ RNG rng(12345);
 
 NSNotificationQueue* queue = [NSNotificationQueue defaultQueue];
 
-void OGc::findEyes() {
+void GazerCocoaBridge::findEyes() {
     PointTracker &tracker = gazeTracker->tracking->tracker;
     std::vector<cv::Point> all_eyes;
 
@@ -209,7 +209,7 @@ void OGc::findEyes() {
             //imshow( window_name, frame );
         }
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.labcogs.ogc.enableCalibration"
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.labcogs.GazerCocoaBridge.enableCalibration"
                                                         object:nil
                                                       userInfo:nil];
     //NSLog(@"All points collected");

@@ -1,6 +1,6 @@
 //
 //  LCCalibrationCameraView.m
-//  og3
+//  com.labcogs.gazercocoa
 //
 //  Created by David Pitman on 12/4/11.
 //  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
@@ -37,7 +37,7 @@
     float x = ((windowPoint.x) / mySize.width)*self.cameraWidth;
         NSLog(@"Final Point: %f %f", x, y);
     OpenGazer::Point point(x, y);
-    OGc* openGazerCocoa = (OGc*)[openGazerCocoaPointer pointerValue];
+    GazerCocoaBridge* openGazerCocoa = (GazerCocoaBridge*)[openGazerCocoaPointer pointerValue];
     PointTracker &tracker = openGazerCocoa->gazeTracker->tracking->tracker;
     int closest = tracker.getClosestTracker(point);
     int lastPointId;

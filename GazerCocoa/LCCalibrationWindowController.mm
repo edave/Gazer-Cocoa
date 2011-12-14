@@ -18,7 +18,7 @@
 
 @synthesize hostView;
 @synthesize _targetLayer;
-@synthesize openGazerCocoaPointer;
+@synthesize gazerCocoaBridgePointer;
 @synthesize gazeTrackerPointer;
 
 - (id)initWithWindowNibName:(NSString *)windowNibName
@@ -75,16 +75,16 @@
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(enableCalibration:)
-                                                 name:@"com.labcogs.ogc.enableCalibration"
+                                                 name:@"com.labcogs.GazerCocoaBridge.enableCalibration"
                                                object:nil];
 }
 
--(void) setOpenGazerCocoaPointer:(NSValue*)pointerValue{
-    [openGazerCocoaPointer release];
-    openGazerCocoaPointer = pointerValue;
-    [openGazerCocoaPointer retain];
+-(void) setgazerCocoaBridgePointer:(NSValue*)pointerValue{
+    [gazerCocoaBridgePointer release];
+    gazerCocoaBridgePointer = pointerValue;
+    [gazerCocoaBridgePointer retain];
     //if(mCaptureView != nil){
-    //    mCaptureView.openGazerCocoaPointer = //openGazerCocoaPointer;
+    //    mCaptureView.gazerCocoaBridgePointer = //gazerCocoaBridgePointer;
     //}
 }
 
@@ -129,7 +129,7 @@
     [introWindow close];
     [failureWindow close];
 //    gt = [pv pointerValue];
-//    ogc *t = (ogc *)gt;
+//    GazerCocoaBridge *t = (GazerCocoaBridge *)gt;
 //    t->startCalibration();
 
 //    NSApplication *app = [NSApplication sharedApplication];

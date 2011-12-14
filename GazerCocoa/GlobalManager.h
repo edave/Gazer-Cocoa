@@ -1,13 +1,13 @@
 //
 //  GlobalManager.h
-//  og3
+//  com.labcogs.gazercocoa
 //
 //  Created by Ryan Kabir on 12/2/11.
 //  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
 //
 
-#ifndef og3_GlobalManager_h
-#define og3_GlobalManager_h
+#ifndef GlobalManager_com.labcogs.gazercocoa_h
+#define GlobalManager_com.labcogs.gazercocoa_h
 
 #import "SynthesizeSingleton.h"
 

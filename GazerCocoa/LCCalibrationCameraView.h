@@ -1,6 +1,6 @@
 //
 //  LCCalibrationCameraView.h
-//  og3
+//  com.labcogs.gazercocoa
 //
 //  Created by David Pitman on 12/4/11.
 //  Copyright (c) 2011 Lab Cogs Co. All rights reserved.

@@ -10,7 +10,7 @@
 #import <QTKit/QTkit.h>
 #import "LCGazeCalibratorInterface.h"
 #import "CaptureView.h"
-#import "ogc.h"
+#import "GazerCocoaBridge.h"
 
 
 @class LCCalibrationCameraView;
@@ -27,7 +27,7 @@
     
     IBOutlet NSTextField* faceTrackingTextField;
     
-    NSValue *openGazerCocoaPointer;
+    NSValue *gazerCocoaBridgePointer;
     void *gazeTrackerPointer;
     
     CGDirectDisplayID currentDisplayID;
@@ -46,7 +46,7 @@
 
 @property (nonatomic, retain) IBOutlet NSView* hostView;
 @property (nonatomic, retain) CALayer* _targetLayer;
-@property (nonatomic, retain) NSValue *openGazerCocoaPointer;
+@property (nonatomic, retain) NSValue *gazerCocoaBridgePointer;
 @property void *gazeTrackerPointer;
 
 - (IBAction)startCalibrationAction:(id)sender;

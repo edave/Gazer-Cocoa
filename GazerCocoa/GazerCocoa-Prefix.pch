@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'og3' target in the 'og3' project
+// Prefix header for all source files of the 'com.labcogs.gazercocoa' target in the 'com.labcogs.gazercocoa' project
 //
 #include <opencv/cv.h>
 #ifdef __OBJC__

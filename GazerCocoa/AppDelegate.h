@@ -1,27 +1,11 @@
 //
 //  AppDelegate.h
-//  og3
+//  com.labcogs.gazercocoa
 //
 //  Created by Ryan Kabir on 11/22/11.
 //  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
 //
-
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
-#include "utils.h"
-#include "OutputMethods.h"
-#include "MainGazeTracker.h"
-#include "WindowStore.h"
-
-#include "opencv2/objdetect/objdetect.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-#import "ogc.h"
+#import "GazerCocoaBridge.h"
 
 #import "GlobalManager.h"
 #import <Cocoa/Cocoa.h>
@@ -34,7 +18,7 @@
     BOOL _runHeadless;
     BOOL gazeTrackingRunning;
     MainGazeTracker *gazeTracker;
-    OGc* openGazerCocoa;
+    GazerCocoaBridge* gazerCocoaBridge;
     
     NSString* _gazeTrackerStatus;
 }
@@ -45,7 +29,7 @@
 
 @property BOOL runHeadless;
 
-@property NSString* gazeTrackerStatus;
+@property(retain) NSString* gazeTrackerStatus;
 
 // Kick off the gaze tracking process
 -(void)launchGazeTracking;

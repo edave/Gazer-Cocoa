@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  og3
+//  com.labcogs.gazercocoa
 //
 //  Created by Ryan Kabir on 11/22/11.
 //  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
@@ -96,11 +96,11 @@
                                                       target:self 
                                                       action:@selector(toggleGazeTarget:) 
                                                       object:nil];
-    NSLog(@"OGC finished launching");
+    NSLog(@"GazerCocoa finished launching");
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification{
-    NSLog(@"OGC will terminate");
+    NSLog(@"GazerCocoa will terminate");
     // Delist ourself from receiving distributed notifications
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 
@@ -157,11 +157,11 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
         chdir(path);
         // end path settings
 
-        openGazerCocoa = new OGc::OGc(0, NULL, calibrationWindowController.hostView);
-        int status = openGazerCocoa->loadClassifiers();
+        gazerCocoaBridge = new GazerCocoaBridge::GazerCocoaBridge(0, NULL, calibrationWindowController.hostView);
+        int status = gazerCocoaBridge->loadClassifiers();
 
-        gazeTracker = openGazerCocoa->gazeTracker;
-        calibrationWindowController.openGazerCocoaPointer = [NSValue valueWithPointer:openGazerCocoa];
+        gazeTracker = gazerCocoaBridge->gazeTracker;
+        calibrationWindowController.gazerCocoaBridgePointer = [NSValue valueWithPointer:gazerCocoaBridge];
 
 
 
@@ -177,7 +177,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
     gazeTracker->doprocessing();
 
 #ifdef CONFIGURATION_Debug_OpenCV
-        openGazerCocoa->drawFrame();
+        gazerCocoaBridge->drawFrame();
 #endif
 
     // to declare an object Object* blah = &gazeTracker
@@ -190,7 +190,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
             gazeTracker->doprocessing();
 
             #ifdef CONFIGURATION_Debug_OpenCV
-                openGazerCocoa->drawFrame();
+                gazerCocoaBridge->drawFrame();
             #endif
 
             if (gm.calibrationFlag) {
@@ -203,7 +203,7 @@ void mouseClick(int event, int x, int y, int flags, void* param) {
             char c = cvWaitKey(33);
             if (count==25) {
                 NSLog(@"finding Eyes");
-                openGazerCocoa->findEyes();
+                gazerCocoaBridge->findEyes();
             }
             count = count + 1;
         }

@@ -1,6 +1,6 @@
 //
 //  LCGazeTrackerWindowController.h
-//  og3
+//  com.labcogs.gazercocoa
 //
 //  Created by David Pitman on 12/7/11.
 //  Copyright (c) 2011 Lab Cogs Co. All rights reserved.

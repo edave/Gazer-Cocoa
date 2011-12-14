@@ -1,13 +1,13 @@
 //
-//  OGc.h
-//  og3
+//  GazerCocoaBridge.h
+//  com.labcogs.gazercocoa
 //
 //  Created by Ryan Kabir on 12/1/11.
 //  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
 //
 
-#ifndef og3_OGc_h
-#define og3_OGc_h
+#ifndef GazerCocoaBridge_com.labcogs.gazercocoa_h
+#define GazerCocoaBridge_com.labcogs.gazercocoa_h
 
 #include <opencv/cv.h>
 
@@ -33,7 +33,7 @@
 
 void mouseClick(int event, int x, int y, int flags, void* param);
 
-class OGc {
+class GazerCocoaBridge {
 
   public:
         MainGazeTracker* gazeTracker;
@@ -41,7 +41,7 @@ class OGc {
         cv::CascadeClassifier eyes_cascade;
 
 
-      OGc(int argc, char **argv, NSView *view);
+      GazerCocoaBridge(int argc, char **argv, NSView *view);
 
       int loadClassifiers();
       void startCalibration();

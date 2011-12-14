@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7212EA3D147C50C700CB2A8D"
-               BuildableName = "og3.app"
+               BuildableName = "GazerCocoa.app"
                BlueprintName = "GazerCocoa"
                ReferencedContainer = "container:GazerCocoa.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7212EA3D147C50C700CB2A8D"
-            BuildableName = "og3.app"
+            BuildableName = "GazerCocoa.app"
             BlueprintName = "GazerCocoa"
             ReferencedContainer = "container:GazerCocoa.xcodeproj">
          </BuildableReference>
@@ -43,14 +43,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug OpenCV"
+      buildConfiguration = "Debug GUI"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7212EA3D147C50C700CB2A8D"
-            BuildableName = "og3.app"
+            BuildableName = "GazerCocoa.app"
             BlueprintName = "GazerCocoa"
             ReferencedContainer = "container:GazerCocoa.xcodeproj">
          </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7212EA3D147C50C700CB2A8D"
-            BuildableName = "og3.app"
+            BuildableName = "GazerCocoa.app"
             BlueprintName = "GazerCocoa"
             ReferencedContainer = "container:GazerCocoa.xcodeproj">
          </BuildableReference>

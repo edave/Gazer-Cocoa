@@ -1,6 +1,6 @@
 //
 //  LCCalibrationFaceTrackingView.h
-//  og3
+//  com.labcogs.gazercocoa
 //
 //  Created by David Pitman on 12/12/11.
 //  Copyright (c) 2011 Lab Cogs Co. All rights reserved.
