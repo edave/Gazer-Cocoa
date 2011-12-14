@@ -529,8 +529,7 @@
 				7212EA57147C50C700CB2A8D /* MainMenu.xib */,
 				7212EA49147C50C700CB2A8D /* Supporting Files */,
 			);
-			name = GazerCocoa;
-			path = og3;
+			path = GazerCocoa;
 			sourceTree = "<group>";
 		};
 		7212EA49147C50C700CB2A8D /* Supporting Files */ = {
