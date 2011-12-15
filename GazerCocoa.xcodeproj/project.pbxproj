@@ -659,7 +659,7 @@
 				7212EBB7147C5BD100CB2A8D /* utils.mm */,
 				7212EBB8147C5BD100CB2A8D /* WindowStore.mm */,
 			);
-			name = opengazer;
+			path = opengazer;
 			sourceTree = "<group>";
 		};
 		729A599F14874C78006155E1 /* Resources */ = {
@@ -908,6 +908,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"${SRCROOT}/dylibs\"",
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -925,6 +926,7 @@
 				);
 				INFOPLIST_FILE = "GazerCocoa/GazerCocoa-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/dylibs\"",
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
@@ -941,6 +943,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"${SRCROOT}/dylibs\"",
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -980,6 +983,7 @@
 				);
 				INFOPLIST_FILE = "GazerCocoa/GazerCocoa-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/dylibs\"",
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
@@ -1023,6 +1027,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"${SRCROOT}/dylibs\"",
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1044,6 +1049,7 @@
 				);
 				INFOPLIST_FILE = "GazerCocoa/GazerCocoa-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/dylibs\"",
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
@@ -1087,6 +1093,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"${SRCROOT}/dylibs\"",
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1107,6 +1114,7 @@
 				);
 				INFOPLIST_FILE = "GazerCocoa/GazerCocoa-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/dylibs\"",
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
