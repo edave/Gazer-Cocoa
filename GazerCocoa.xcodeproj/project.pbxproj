@@ -610,7 +610,7 @@
 				72A6122B14858C9E000FF917 /* libx264.118.dylib */,
 				72A6122C14858C9E000FF917 /* libz.1.dylib */,
 			);
-			name = dylibs;
+			path = dylibs;
 			sourceTree = "<group>";
 		};
 		7212EAC6147C516500CB2A8D /* opengazer */ = {
