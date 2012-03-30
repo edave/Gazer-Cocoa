@@ -23,8 +23,8 @@ The point is, there's a lot of cool things you can do with passive gaze/face tra
 
 Contributors
 ------------------------------
-* [rkabir](https://github.com/rkabir), [LabCogs](http://www.labcogs.com)
 * [edave](https://github.com/edave), [LabCogs](http://www.labcogs.com)
+* [rkabir](https://github.com/rkabir)
 * Based on [OpenGazer](https://github.com/OpenGazer/OpenGazer)
 
 How to Use
