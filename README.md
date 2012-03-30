@@ -30,15 +30,16 @@ Contributors
 How to Use
 =================================================
 
-GazerCocoa runs as a separate process in the background. You are responsible for starting and terminating GazerCocoa as necessary (see the wiki for examples of doing this). Communication with GazerCocoa happens via the Cocoa's NSDistributedNotificationCenter (see [Notification Center](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Notifications/Articles/NotificationCenters.html) ) using a combination of pre-defined keys and NSDictionaries
+GazerCocoa runs as a separate process in the background. You are responsible for starting and terminating GazerCocoa as necessary (see the wiki/examples directory). Communication with GazerCocoa happens via the Cocoa's NSDistributedNotificationCenter (see [Notification Center](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Notifications/Articles/NotificationCenters.html) ) using a combination of pre-defined keys and NSDictionaries
 
 For example, to tell GazerCocoa you want to calibrate, you would use:
 
 ```
-[[NSDistributedNotificationCenter defaultCenter] postNotificationName:kGazeTrackerCalibrationRequestStart 
-                                                        object:kGazeSenderID
-                                                      userInfo:nil
-                                                    deliverImmediately:YES];
+[[NSDistributedNotificationCenter defaultCenter] 
+postNotificationName: kGazeTrackerCalibrationRequestStart 
+              object:kGazeSenderID
+            userInfo:nil
+  deliverImmediately:YES];
 ```
 
 which will kick off the calibration interface for the user.
@@ -70,6 +71,7 @@ How to Build/Develop
 GazerCocoa depends upon a few different libraries, and as such, can't be built out of the box. Installing the supporting libraries is a straightforward process:
 
 Dependent Libraries:
+
 * Boost
 * OpenCV 2
 * VXL
@@ -94,6 +96,7 @@ For example, using these install instructions, they might look like this:
 `
 
 GazerCocoa has four different schemas you can build:
+
 * GazerCocoa Debug - This is the normal way GazerCocoa runs, as a background process but with the standard Debug options set for a XCode process. It starts up and then waits for notifications to display the calibration UI. Useful for debugging and testing with other applications.
 * GazerCocoa GUI - GazerCocoa starts normally, but then immediately launches the calibration UI. Useful for development at a high level.
 * GazerCocoa OpenCV - This is a derivative of the GUI schema, but also displays additional windows/logs useful for debugging OpenCV. Useful for low-level development.
