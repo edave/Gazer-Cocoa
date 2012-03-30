@@ -63,7 +63,7 @@ when a new gaze point is broadcasted, your notification method will be called wi
 }
 ```
 
-That's it! See the wiki for a full list of the notifications you can subscribe to, and what you can tell GazerCocoa to do.
+That's it! See the wiki for a full [list of the notifications](https://github.com/edave/OpenGazer-Cocoa/wiki/Notifications) you can subscribe to, and what you can tell GazerCocoa to do. See the [examples](https://github.com/edave/OpenGazer-Cocoa/tree/master/examples) directory for an implementation that interacts with OpenGazer. For an example application that uses OpenGazer Cocoa, see [Blinders](http://labcogs.com/blinders)
 
 How to Build/Develop
 =================================================
